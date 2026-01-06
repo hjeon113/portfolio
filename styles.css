@@ -630,9 +630,13 @@ a {
 
   /* 모바일에서 sunset-info 위치 조정 */
   .sunset-info {
-    bottom: 12px;
-    left: 12px;
-    width: calc(100% - 24px);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(245, 245, 245, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .sunset-location,
