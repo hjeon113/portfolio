@@ -519,6 +519,21 @@ a {
   color: var(--text-hover);
 }
 
+.mobile-header-right {
+  display: flex;
+  gap: 16px;
+}
+
+.mobile-about {
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.mobile-about:hover {
+  color: var(--text-hover);
+}
+
 @media (max-width: 1200px) {
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
