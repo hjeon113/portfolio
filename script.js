@@ -413,7 +413,7 @@ function showProject(id, skipHistory) {
           return (
             '<video src="' +
             src +
-            '" controls onloadeddata="var v=this;setTimeout(function(){v.play()},3000)"></video>'
+            '" controls playsinline webkit-playsinline onloadeddata="var v=this;setTimeout(function(){v.play()},3000)"></video>'
           );
         }
         return '<img src="' + src + '" alt="">';
