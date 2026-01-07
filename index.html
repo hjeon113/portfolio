@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html lang="ko" style="background: #ffffff">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>HYEJIN JEON</title>
+    <style>
+      html {
+        background: #ffffff;
+      }
+    </style>
     <link
       rel="icon"
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23fe0032'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script>
-      // 즉시 흰색 배경
-      document.documentElement.style.background = "#ffffff";
-      window.addEventListener("pageshow", function () {
-        document.documentElement.style.background = "#ffffff";
-      });
-    </script>
   </head>
   <body>
+    <script>
+      (function () {
+        var html = document.documentElement;
+        html.removeAttribute("style");
+        html.style.background = "#ffffff";
+        html.style.backgroundAttachment = "fixed";
+        window.addEventListener("pageshow", function (e) {
+          html.removeAttribute("style");
+          html.style.background = "#ffffff";
+          html.style.backgroundAttachment = "fixed";
+        });
+      })();
+    </script>
     <header class="mobile-header">
       <span class="mobile-logo" onclick="showIndex()">HYEJIN JEON</span>
       <div class="mobile-header-right">

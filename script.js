@@ -72,74 +72,15 @@ function applyWeatherEffect(color, opacity) {
 // 실시간 하늘 그라디언트 계산
 function updateBackgroundByTime() {
   var now = new Date();
-  var gradient;
-  var bottomBrightness = 255; // 기본값 (밝음)
 
-  // 모바일 여부 체크
-  var isMobile = window.innerWidth <= 768;
-  var w = isMobile ? "40%" : "60%"; // 흰색 끝
-  var c1 = isMobile ? "55%" : "75%"; // 컬러 시작
-  var c2 = isMobile ? "78%" : "88%"; // 컬러 중간
-  var c3 = isMobile ? "90%" : "95%"; // 컬러 끝 전
-
-  // 일출/일몰 데이터가 있으면 실시간 계산
-  if (sunsetData.sunset && sunsetData.sunrise) {
-    var result = calculateRealtimeSkyGradient(now);
-    gradient = result.gradient;
-    bottomBrightness = result.brightness;
-  } else {
-    // 데이터 없으면 기본 그라디언트 (시간 기반)
-    var hour = now.getHours();
-    if (hour >= 5 && hour < 9) {
-      gradient =
-        "linear-gradient(to bottom, #ffffff 0%, #ffffff " +
-        w +
-        ", rgba(189, 255, 242, 0.84) " +
-        c1 +
-        ", rgba(251, 204, 251, 0.52) " +
-        c2 +
-        ", rgba(249, 204, 224, 0.75) " +
-        c3 +
-        ", rgba(255, 249, 184, 1) 100%)";
-      bottomBrightness = 230;
-    } else if (hour >= 9 && hour < 17) {
-      gradient =
-        "linear-gradient(to bottom, #ffffff 0%, #ffffff " +
-        w +
-        ", rgba(95, 250, 248, 0.4) " +
-        c1 +
-        ", rgba(109, 221, 246, 0.45) " +
-        c2 +
-        ", rgba(255, 238, 126, 0.5) " +
-        c3 +
-        ", rgba(255, 233, 136, 1) 100%)";
-      bottomBrightness = 220;
-    } else if (hour >= 17 && hour < 21) {
-      gradient =
-        "linear-gradient(to bottom, #ffffff 0%, #ffffff " +
-        w +
-        ", rgba(255, 210, 180, 0.6) " +
-        c1 +
-        ", rgba(255, 160, 150, 0.7) " +
-        c2 +
-        ", rgba(200, 140, 170, 0.8) " +
-        c3 +
-        ", rgba(140, 100, 140, 0.9) 100%)";
-      bottomBrightness = 120;
-    } else {
-      gradient =
-        "linear-gradient(to bottom, #ffffff 0%, #ffffff " +
-        w +
-        ", rgba(180, 190, 210, 0.5) " +
-        c1 +
-        ", rgba(100, 160, 170, 0.55) " +
-        c2 +
-        ", rgba(80, 100, 150, 0.75) " +
-        c3 +
-        ", rgba(30, 30, 70, 1) 100%)";
-      bottomBrightness = 40;
-    }
+  // 일출/일몰 데이터가 없으면 배경 적용 안 함 (흰색 유지)
+  if (!sunsetData.sunset || !sunsetData.sunrise) {
+    return;
   }
+
+  var result = calculateRealtimeSkyGradient(now);
+  var gradient = result.gradient;
+  var bottomBrightness = result.brightness;
 
   document.documentElement.style.transition = "background 1s ease";
   document.documentElement.style.background = gradient;
@@ -450,12 +391,12 @@ async function initSunsetCountdown() {
       }
       updateBackgroundByTime();
 
-      // 5. 3초 후 카운트다운으로 전환
+      // 5. 2초 후 카운트다운으로 전환
       setTimeout(function () {
         updateSunsetDisplay();
-        // 1분마다 카운트다운 업데이트
-        setInterval(updateSunsetDisplay, 60000);
-      }, 3000);
+        // 1초마다 카운트다운 업데이트
+        setInterval(updateSunsetDisplay, 1000);
+      }, 2000);
 
       // 6. 30초마다 배경 업데이트
       setInterval(updateBackgroundByTime, 30000);
@@ -489,7 +430,7 @@ function updateSunsetDisplay() {
   }
   locationEl.textContent = location;
 
-  var diff, hours, minutes, timeText;
+  var diff, hours, minutes, seconds, timeText;
 
   // 오늘의 sunrise, sunset
   var todaySunrise = sunsetData.sunrise;
@@ -503,37 +444,29 @@ function updateSunsetDisplay() {
     diff = todaySunrise - now;
     hours = Math.floor(diff / (1000 * 60 * 60));
     minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    timeText =
-      hours > 0
-        ? hours + "h " + minutes + "m until sunrise"
-        : minutes + "m until sunrise";
+    seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    timeText = hours + "h " + minutes + "m " + seconds + "s until sunrise";
   } else if (now < todaySunset) {
     // 일출 후 ~ 일몰 전 (낮): 일몰까지 카운트다운
     diff = todaySunset - now;
     hours = Math.floor(diff / (1000 * 60 * 60));
     minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    timeText =
-      hours > 0
-        ? hours + "h " + minutes + "m until sunset"
-        : minutes + "m until sunset";
+    seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    timeText = hours + "h " + minutes + "m " + seconds + "s until sunset";
   } else if (tomorrowSunrise && now < tomorrowSunrise) {
     // 일몰 후 ~ 내일 일출 전 (밤): 일출까지 카운트다운
     diff = tomorrowSunrise - now;
     hours = Math.floor(diff / (1000 * 60 * 60));
     minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    timeText =
-      hours > 0
-        ? hours + "h " + minutes + "m until sunrise"
-        : minutes + "m until sunrise";
+    seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    timeText = hours + "h " + minutes + "m " + seconds + "s until sunrise";
   } else if (tomorrowSunset) {
     // 내일 일출 후: 내일 일몰까지 카운트다운
     diff = tomorrowSunset - now;
     hours = Math.floor(diff / (1000 * 60 * 60));
     minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    timeText =
-      hours > 0
-        ? hours + "h " + minutes + "m until sunset"
-        : minutes + "m until sunset";
+    seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    timeText = hours + "h " + minutes + "m " + seconds + "s until sunset";
   } else {
     // 데이터 다시 가져오기
     initSunsetCountdown();
@@ -741,6 +674,17 @@ function showIndex(skipHistory) {
   window.scrollTo(0, 0);
   if (!skipHistory) {
     history.pushState({ view: "index" }, "", "#");
+  }
+
+  // 날짜+날씨 다시 표시 후 2초 뒤 카운트다운
+  var timeEl = document.getElementById("sunsetTime");
+  if (timeEl && weatherData) {
+    var dateText = getDateText();
+    var weatherText = getWeatherText(weatherData.weatherCode);
+    timeEl.textContent = dateText + " " + weatherText;
+    setTimeout(function () {
+      updateSunsetDisplay();
+    }, 2000);
   }
 }
 
