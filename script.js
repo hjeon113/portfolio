@@ -86,14 +86,8 @@ function updateBackgroundByTime() {
   document.documentElement.style.background = gradient;
   document.documentElement.style.backgroundAttachment = "fixed";
 
-  // 배경 밝기에 따라 회색 텍스트 색상 동적 조절
-  // 배경 어두우면(0) → 회색 밝게(#bbb), 배경 밝으면(255) → 회색 어둡게(#777)
-  var grayValue = Math.round(187 - (187 - 119) * (bottomBrightness / 255));
-  var grayHex = grayValue.toString(16).padStart(2, "0");
-  document.documentElement.style.setProperty(
-    "--text-light",
-    "#" + grayHex + grayHex + grayHex
-  );
+  // 배경 밝기에 따라 회색 텍스트 색상 동적 조절 - 비활성화 (항상 검정)
+  document.documentElement.style.setProperty("--text-light", "#000");
 }
 
 // 실시간 하늘 색상 계산
