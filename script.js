@@ -13,6 +13,7 @@ var weatherData = {
   isRaining: false,
   isSnowing: false,
   weatherCode: 0,
+  loaded: false,
 };
 
 // 날씨 정보 가져오기 (Open-Meteo, 무료/키불필요)
@@ -36,9 +37,11 @@ async function fetchWeather(lat, lon) {
       weatherData.isSnowing =
         (weatherData.weatherCode >= 71 && weatherData.weatherCode <= 77) ||
         (weatherData.weatherCode >= 85 && weatherData.weatherCode <= 86);
+      weatherData.loaded = true;
     }
   } catch (e) {
     console.log("Weather API failed, using clear sky");
+    weatherData.loaded = false;
   }
 }
 
@@ -304,6 +307,10 @@ function getDateText() {
 
 // IP 기반 위치 가져오기 + 일몰 시간 계산
 async function initSunsetCountdown() {
+  // 초기 로딩 표시
+  var timeEl = document.getElementById("sunsetTime");
+  if (timeEl) timeEl.textContent = "Loading...";
+
   try {
     // 1. IP 기반 위치 가져오기
     var lat, lon;
@@ -378,19 +385,19 @@ async function initSunsetCountdown() {
 
       // 4. 날짜 + 날씨 + 그라디언트 동시에 표시
       var timeEl = document.getElementById("sunsetTime");
-      if (timeEl) {
+      if (timeEl && weatherData.loaded) {
         var dateText = getDateText();
         var weatherText = getWeatherText(weatherData.weatherCode);
         timeEl.textContent = dateText + " " + weatherText;
       }
       updateBackgroundByTime();
 
-      // 5. 2초 후 카운트다운으로 전환
+      // 5. 3초 후 카운트다운으로 전환
       setTimeout(function () {
         updateSunsetDisplay();
         // 1초마다 카운트다운 업데이트
         setInterval(updateSunsetDisplay, 1000);
-      }, 2000);
+      }, 3000);
 
       // 6. 30초마다 배경 업데이트
       setInterval(updateBackgroundByTime, 30000);
@@ -670,15 +677,15 @@ function showIndex(skipHistory) {
     history.pushState({ view: "index" }, "", "#");
   }
 
-  // 날짜+날씨 다시 표시 후 2초 뒤 카운트다운
+  // 날짜+날씨 다시 표시 후 3초 뒤 카운트다운
   var timeEl = document.getElementById("sunsetTime");
-  if (timeEl && weatherData) {
+  if (timeEl && weatherData && weatherData.loaded) {
     var dateText = getDateText();
     var weatherText = getWeatherText(weatherData.weatherCode);
     timeEl.textContent = dateText + " " + weatherText;
     setTimeout(function () {
       updateSunsetDisplay();
-    }, 2000);
+    }, 3000);
   }
 }
 
