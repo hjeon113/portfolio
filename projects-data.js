@@ -33,8 +33,11 @@ const projectsData = {
       "Social media campaign visuals for Descente Korea, creating engaging content for various digital platforms.",
     descKr:
       "데상트 코리아의 소셜 미디어 캠페인 비주얼, 다양한 디지털 플랫폼을 위한 콘텐츠 제작.",
-    thumbnail: "", // 썸네일 이미지 경로 (예: 'images/파일명.jpg')
-    media: ["full", "placeholder", "placeholder"], // 상세 페이지 이미지들
+    thumbnail: "",
+    media: [
+      "col2:images/decente-social/02-2.jpg",
+      "col2:images/decente-social/02-1.jpg",
+    ],
   },
   "descente-exhibition": {
     category: "work",
@@ -49,7 +52,7 @@ const projectsData = {
     descKr:
       "데상트 코리아 시즌 기획전 디자인, 큐레이션된 제품 쇼케이스와 브랜드 스토리텔링.",
     thumbnail: "",
-    media: ["full", "placeholder", "placeholder"],
+    media: [],
   },
   "collection-renewal": {
     category: "work",
