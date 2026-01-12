@@ -86,8 +86,13 @@ function updateBackgroundByTime() {
   var gradient = result.gradient;
   var bottomBrightness = result.brightness;
 
+  // bg-gradient div가 있으면 그걸 사용, 없으면 html에 직접 적용
   if (bgEl) {
     bgEl.style.background = gradient;
+  } else {
+    document.documentElement.style.transition = "background 1s ease";
+    document.documentElement.style.background = gradient;
+    document.documentElement.style.backgroundAttachment = "fixed";
   }
 
   // 배경 밝기에 따라 회색 텍스트 색상 동적 조절 - 비활성화 (항상 검정)
@@ -482,7 +487,11 @@ function updateSunsetDisplay() {
 document.addEventListener("DOMContentLoaded", function () {
   // 로딩 시 배경 흰색으로 리셋 (캐시된 이전 그라디언트 제거)
   var bgEl = document.getElementById("bg-gradient");
-  if (bgEl) bgEl.style.background = "#ffffff";
+  if (bgEl) {
+    bgEl.style.background = "#ffffff";
+  } else {
+    document.documentElement.style.background = "#ffffff";
+  }
 
   initSunsetCountdown(); // 일몰 카운트다운 초기화 (배경도 여기서 적용)
 
@@ -510,7 +519,11 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("pageshow", function (event) {
   if (event.persisted) {
     var bgEl = document.getElementById("bg-gradient");
-    if (bgEl) bgEl.style.background = "#ffffff";
+    if (bgEl) {
+      bgEl.style.background = "#ffffff";
+    } else {
+      document.documentElement.style.background = "#ffffff";
+    }
     var timeEl = document.getElementById("sunsetTime");
     if (timeEl) timeEl.textContent = "Loading...";
     initSunsetCountdown();
