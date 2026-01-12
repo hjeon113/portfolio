@@ -465,7 +465,6 @@ const projectsData = {
       "full:images/digital-error/03.jpg",
       "col2:images/digital-error/04-1.jpg",
       "col2:images/digital-error/04-2.jpg",
-      "full:images/digital-error/05.jpg",
     ],
   },
 };

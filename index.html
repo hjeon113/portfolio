@@ -28,14 +28,17 @@
         var html = document.documentElement;
         html.removeAttribute("style");
         html.style.background = "#ffffff";
-        html.style.backgroundAttachment = "fixed";
         window.addEventListener("pageshow", function (e) {
           html.removeAttribute("style");
           html.style.background = "#ffffff";
-          html.style.backgroundAttachment = "fixed";
+          var bgEl = document.getElementById("bg-gradient");
+          if (bgEl) bgEl.style.background = "#ffffff";
         });
       })();
     </script>
+    <!-- 배경 그라디언트 (모바일 fixed 지원) -->
+    <div id="bg-gradient"></div>
+
     <header class="mobile-header">
       <span class="mobile-logo" onclick="showIndex()">HYEJIN JEON</span>
       <div class="mobile-header-right">
@@ -115,7 +118,14 @@
           <div class="about-content">
             <div class="about-hero">
               <p class="about-email">
-                <a href="mailto:befsunset@gmail.com">befsunset@gmail.com</a>
+                <a
+                  href="/cdn-cgi/l/email-protection#8ae8efecf9ffe4f9effecaede7ebe3e6a4e9e5e7"
+                  ><span
+                    class="__cf_email__"
+                    data-cfemail="5a383f3c292f34293f2e1a3d373b333674393537"
+                    >[email&#160;protected]</span
+                  ></a
+                >
               </p>
             </div>
             <div class="about-sections">
@@ -286,8 +296,5 @@
         </div>
       </main>
     </div>
-
-    <script src="projects-data.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>

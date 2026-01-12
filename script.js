@@ -75,6 +75,7 @@ function applyWeatherEffect(color, opacity) {
 // 실시간 하늘 그라디언트 계산
 function updateBackgroundByTime() {
   var now = new Date();
+  var bgEl = document.getElementById("bg-gradient");
 
   // 일출/일몰 데이터가 없으면 배경 적용 안 함 (흰색 유지)
   if (!sunsetData.sunset || !sunsetData.sunrise) {
@@ -85,9 +86,9 @@ function updateBackgroundByTime() {
   var gradient = result.gradient;
   var bottomBrightness = result.brightness;
 
-  document.documentElement.style.transition = "background 1s ease";
-  document.documentElement.style.background = gradient;
-  document.documentElement.style.backgroundAttachment = "fixed";
+  if (bgEl) {
+    bgEl.style.background = gradient;
+  }
 
   // 배경 밝기에 따라 회색 텍스트 색상 동적 조절 - 비활성화 (항상 검정)
   document.documentElement.style.setProperty("--text-light", "#000");
@@ -480,7 +481,8 @@ function updateSunsetDisplay() {
 // 페이지 로드 시 초기화
 document.addEventListener("DOMContentLoaded", function () {
   // 로딩 시 배경 흰색으로 리셋 (캐시된 이전 그라디언트 제거)
-  document.documentElement.style.background = "#ffffff";
+  var bgEl = document.getElementById("bg-gradient");
+  if (bgEl) bgEl.style.background = "#ffffff";
 
   initSunsetCountdown(); // 일몰 카운트다운 초기화 (배경도 여기서 적용)
 
@@ -507,7 +509,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // bfcache에서 복원될 때도 흰색으로 리셋 후 다시 초기화
 window.addEventListener("pageshow", function (event) {
   if (event.persisted) {
-    document.documentElement.style.background = "#ffffff";
+    var bgEl = document.getElementById("bg-gradient");
+    if (bgEl) bgEl.style.background = "#ffffff";
     var timeEl = document.getElementById("sunsetTime");
     if (timeEl) timeEl.textContent = "Loading...";
     initSunsetCountdown();
