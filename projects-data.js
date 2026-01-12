@@ -23,16 +23,16 @@ const projectsData = {
   // ========== Work Experience ==========
   "descente-social": {
     category: "work", // work, self, exp 중 선택
-    titleEn: "Descente Social Campaign",
-    titleKr: "데상트 소셜 캠페인",
-    date: "2025.03",
+    titleEn: "Descente SNS Promotion Design",
+    titleKr: "데상트 SNS 프로모션 디자인",
+    date: "2025.03-08",
     area: "Social Media, Visual Design",
-    advisor: "",
+    advisor: "Soojung Kim (김수정)",
     collaborator: "",
     descEn:
-      "Social media campaign visuals for Descente Korea, creating engaging content for various digital platforms.",
+      "Visuals were created for Descente Korea’s social media, along with content for various digital platforms. The images were adapted from the key visuals of an existing promotional exhibition.",
     descKr:
-      "데상트 코리아의 소셜 미디어 캠페인 비주얼, 다양한 디지털 플랫폼을 위한 콘텐츠 제작.",
+      "데상트 코리아의 소셜 미디어를 위한 비주얼을 제작하고, 다양한 디지털 플랫폼에 활용되는 콘텐츠를 제작하였다. 기존 기획전의 키 비주얼을 기반으로 SNS 환경에 맞는 이미지를 전개하였다.",
     thumbnail: "images/decente-social/thumb.jpg",
     media: [
       "col2:images/decente-social/02-2.jpg",
