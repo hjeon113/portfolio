@@ -33,12 +33,22 @@ const projectsData = {
       "Social media campaign visuals for Descente Korea, creating engaging content for various digital platforms.",
     descKr:
       "데상트 코리아의 소셜 미디어 캠페인 비주얼, 다양한 디지털 플랫폼을 위한 콘텐츠 제작.",
-    thumbnail: "",
+    thumbnail: "images/decente-social/thumb.jpg",
     media: [
       "col2:images/decente-social/02-2.jpg",
       "col2:images/decente-social/02-1.jpg",
+      "full:images/decente-social/03-4.jpg",
+      "col3:images/decente-social/03-1.jpg",
+      "col3:images/decente-social/03-2.jpg",
+      "col3:images/decente-social/03-3.jpg",
+      "gif:col2:images/decente-social/05-1.mp4",
+      "gif:col2:images/decente-social/05-2.mp4",
+      "full:images/decente-social/06.jpg",
+      "col2:images/decente-social/04-1.gif",
+      "col2:images/decente-social/04-2.gif",
     ],
   },
+  /*
   "descente-exhibition": {
     category: "work",
     titleEn: "Descente Seasonal Exhibition",
@@ -54,6 +64,7 @@ const projectsData = {
     thumbnail: "",
     media: [],
   },
+  */
   "collection-renewal": {
     category: "work",
     titleEn: "The Collection Renewal",
@@ -252,6 +263,7 @@ const projectsData = {
     thumbnail: "images/language-contagion/thumb.jpg",
     media: [
       "full:images/language-contagion/01.gif",
+      "full:images/language-contagion/07.jpg",
       "full:images/language-contagion/02.jpg",
       "col2:images/language-contagion/04.png",
       "col2:images/language-contagion/05.png",
@@ -271,7 +283,7 @@ const projectsData = {
       "A palindrome is a linguistic system that reads the same forward and backward, extending across words, phrases, sentences, and even paragraphs. Depending on the direction of reading, different elements are perceived as identical structures, producing distinct visual forms and unique auditory experiences. A key characteristic of palindromes is their symmetry and simultaneity: centered around a middle letter or a space, the forward and backward directions mirror and overlap at the same time. The way identical letters are slightly rearranged and read as different sounds evokes the sense of polyphonic music. Based on these qualities, this project visualizes the alphabet as musical notes and proposes a method of forming symmetrical structures through movement. By analyzing palindromes through six classification systems, the project explores possibilities beyond linguistic expression, including expansion from 2D to 3D, layers of sound, and the recontextualization of visual elements. These explorations are documented and expressed through an archive of texts, videos, and printed media.",
     descKr:
       "회문은 앞뒤로 동일하게 읽히는 언어 체계로, 단어·구·문장·문단 등 다양한 단위로 확장되며, 읽는 방향에 따라 서로 다른 요소가 같은 구조로 인식되는 시각적 형상과 독특한 청각적 현상을 만들어낸다. 특히 중심의 글자나 공백을 기준으로 형성되는 대칭성과 동시성은 회문의 핵심 특징으로, 동일한 글자들이 조금씩 다른 배열과 발음으로 중첩되며 다성음악과 유사한 감각을 형성한다. 이 프로젝트는 이러한 회문의 구조를 바탕으로 알파벳을 음악적 음표처럼 시각화하고, 움직임을 통해 대칭적인 구조를 형성하는 방식을 제안한다. 또한 회문을 6가지 분류 체계로 나누어 분석하며, 언어적 표현을 넘어 2D에서 3D로의 확장, 음향적 중첩, 시각적 요소의 새로운 맥락화 가능성을 탐구하고, 이를 문서·영상·프린트 매체로 아카이빙한다.",
-    thumbnail: "images/palindrome/thumb.jpg",
+    thumbnail: "images/palindrome/thumb1.jpg",
     media: [
       "col2:images/palindrome/01-1.png",
       "col2:images/palindrome/01-2.png",

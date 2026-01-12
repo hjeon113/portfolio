@@ -238,6 +238,7 @@ a {
   height: 100%;
   object-fit: cover;
   display: block;
+  border: 0.5px solid #ccc;
 }
 
 .project-info {
@@ -376,6 +377,7 @@ a {
   width: 100%;
   height: auto;
   display: block;
+  border: 0.5px solid #ccc;
 }
 
 .detail-nav {
