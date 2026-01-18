@@ -194,7 +194,7 @@ const projectsData = {
     category: "self",
     titleEn: "Other islands Book Fair",
     titleKr: "아더 아일랜즈 북페어",
-    date: "2025",
+    date: "2025.11",
     area: "Visual Identity, Graphic Design, Typography",
     advisor: "",
     collaborator: "Seulgi Choei, Chiho Ye",
