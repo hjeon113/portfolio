@@ -198,8 +198,10 @@ const projectsData = {
     area: "Visual Identity, Graphic Design, Typography",
     advisor: "",
     collaborator: "Seulgi Choei, Chiho Ye",
-    descEn: "Visual identity design for Other islands Book Fair.",
-    descKr: "아더 아일랜즈 북페어를 위한 비주얼 아이덴티티 디자인.",
+    descEn:
+      "Other Islands Book Fair 2026 is a project that visualizes the book fair as a temporary gathering and exchange, using *Bird Migration* as a metaphor for movement, connection, and return. Inspired by the routes and traces of migratory birds, the visual system is built from modular dot forms that express both individuality and collectivity through repetition, variation, and motion. A nature-derived color palette and a flexible logo structure reinforce this concept, while the identity is applied across posters, signage, motion graphics, social media, and merchandise to convey the rhythm of convergence and dispersal that defines the book fair experience.",
+    descKr:
+      "Other Islands Book Fair 2026은 ‘Bird Migration’을 이동과 모임, 교류의 은유로 삼아, 서로 다른 장소에서 출발한 창작자와 관람자가 한 시점에 모여 경험을 나누고 다시 각자의 공동체로 돌아가는 북페어의 성격을 시각화한 프로젝트이다. 철새의 이동 경로와 흔적에서 착안한 도트 형태의 그래픽 시스템은 개별성과 집단성을 동시에 드러내며, 반복과 변주, 움직임을 통해 연결과 교환의 과정을 표현한다. 자연에서 가져온 컬러 팔레트와 유연한 로고 구조는 이러한 개념을 강화하며, 포스터, 사인, 모션, 소셜 미디어, 머천다이즈 등 다양한 매체 전반에 적용되어 일시적으로 형성되는 집합과 다시 흩어지는 북페어의 리듬을 하나의 일관된 비주얼 언어로 전달한다.",
     thumbnail: "images/other-island/thumb.jpg",
     media: [
       //"gif:full:images/other-island/01-2.mp4",
