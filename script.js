@@ -24,7 +24,7 @@ async function fetchWeather(lat, lon) {
         lat +
         "&longitude=" +
         lon +
-        "&current=cloud_cover,precipitation,weather_code"
+        "&current=cloud_cover,precipitation,weather_code",
     );
     var data = await response.json();
     if (data.current) {
@@ -357,7 +357,7 @@ async function initSunsetCountdown() {
         lat +
         "&lng=" +
         lon +
-        "&formatted=0"
+        "&formatted=0",
     );
     var sunData = await sunResponse.json();
 
@@ -377,7 +377,7 @@ async function initSunsetCountdown() {
           lon +
           "&date=" +
           tomorrowStr +
-          "&formatted=0"
+          "&formatted=0",
       );
       var tomorrowData = await tomorrowResponse.json();
 
@@ -978,4 +978,230 @@ document.addEventListener("mousemove", function (e) {
   setTimeout(function () {
     trail.remove();
   }, 800);
+});
+
+// ============================================
+// Lightbox 기능 (이미지/비디오 네비게이션 포함)
+// ============================================
+
+var lightboxItems = []; // {src, type: 'img' | 'video'}
+var currentLightboxIndex = 0;
+var touchStartX = 0;
+var touchEndX = 0;
+
+function openLightbox(src, type) {
+  var lightbox = document.getElementById("lightbox");
+
+  // 현재 상세 페이지의 모든 이미지와 비디오 수집
+  lightboxItems = [];
+  var mediaElements = document.querySelectorAll(
+    "#project-detail .media-item img, #project-detail .media-item video",
+  );
+  mediaElements.forEach(function (item) {
+    if (item.tagName === "IMG") {
+      lightboxItems.push({ src: item.src, type: "img" });
+    } else if (item.tagName === "VIDEO") {
+      lightboxItems.push({ src: item.src, type: "video" });
+    }
+  });
+
+  // 클릭한 미디어의 인덱스 찾기
+  currentLightboxIndex = lightboxItems.findIndex(function (item) {
+    return item.src === src;
+  });
+  if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+
+  if (lightbox) {
+    createDots();
+    showCurrentMedia();
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+    updateArrowVisibility();
+    updateDots();
+  }
+}
+
+function createDots() {
+  var dotsContainer = document.getElementById("lightbox-dots");
+  if (!dotsContainer) return;
+
+  dotsContainer.innerHTML = "";
+  for (var i = 0; i < lightboxItems.length; i++) {
+    var dot = document.createElement("span");
+    dot.className = "lightbox-dot";
+    dot.setAttribute("data-index", i);
+    dot.onclick = function (e) {
+      e.stopPropagation();
+      var index = parseInt(this.getAttribute("data-index"));
+      currentLightboxIndex = index;
+      showCurrentMedia();
+      updateArrowVisibility();
+      updateDots();
+    };
+    dotsContainer.appendChild(dot);
+  }
+}
+
+function updateDots() {
+  var dots = document.querySelectorAll(".lightbox-dot");
+  dots.forEach(function (dot, index) {
+    if (index === currentLightboxIndex) {
+      dot.classList.add("active");
+    } else {
+      dot.classList.remove("active");
+    }
+  });
+}
+
+function showCurrentMedia() {
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxVideo = document.getElementById("lightbox-video");
+  var current = lightboxItems[currentLightboxIndex];
+
+  if (!current) return;
+
+  if (current.type === "img") {
+    lightboxImg.src = current.src;
+    lightboxImg.style.display = "block";
+    if (lightboxVideo) {
+      lightboxVideo.style.display = "none";
+      lightboxVideo.pause();
+    }
+  } else {
+    if (lightboxVideo) {
+      lightboxVideo.src = current.src;
+      lightboxVideo.style.display = "block";
+      lightboxVideo.play();
+    }
+    lightboxImg.style.display = "none";
+  }
+}
+
+function closeLightbox(e) {
+  // 이미지, 비디오, 화살표, dots 클릭 시에는 닫지 않음
+  if (
+    e &&
+    (e.target.tagName === "IMG" ||
+      e.target.tagName === "VIDEO" ||
+      e.target.classList.contains("lightbox-prev") ||
+      e.target.classList.contains("lightbox-next") ||
+      e.target.classList.contains("lightbox-dot"))
+  ) {
+    return;
+  }
+
+  var lightbox = document.getElementById("lightbox");
+  var lightboxVideo = document.getElementById("lightbox-video");
+  if (lightbox) {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+    if (lightboxVideo) {
+      lightboxVideo.pause();
+    }
+  }
+}
+
+function prevLightboxImage(e) {
+  if (e) e.stopPropagation();
+  if (currentLightboxIndex > 0) {
+    currentLightboxIndex--;
+    showCurrentMedia();
+    updateArrowVisibility();
+    updateDots();
+  }
+}
+
+function nextLightboxImage(e) {
+  if (e) e.stopPropagation();
+  if (currentLightboxIndex < lightboxItems.length - 1) {
+    currentLightboxIndex++;
+    showCurrentMedia();
+    updateArrowVisibility();
+    updateDots();
+  }
+}
+
+function updateArrowVisibility() {
+  var prevBtn = document.querySelector(".lightbox-prev");
+  var nextBtn = document.querySelector(".lightbox-next");
+
+  if (prevBtn) {
+    prevBtn.style.display = currentLightboxIndex > 0 ? "block" : "none";
+  }
+  if (nextBtn) {
+    nextBtn.style.display =
+      currentLightboxIndex < lightboxItems.length - 1 ? "block" : "none";
+  }
+}
+
+// ESC 키로 라이트박스 닫기, 화살표 키로 이미지 이동
+document.addEventListener("keydown", function (e) {
+  var lightbox = document.getElementById("lightbox");
+  if (!lightbox || !lightbox.classList.contains("active")) return;
+
+  if (e.key === "Escape") {
+    closeLightbox();
+  } else if (e.key === "ArrowLeft") {
+    prevLightboxImage(e);
+  } else if (e.key === "ArrowRight") {
+    nextLightboxImage(e);
+  }
+});
+
+// 모바일 스와이프 지원
+document.addEventListener(
+  "touchstart",
+  function (e) {
+    var lightbox = document.getElementById("lightbox");
+    if (!lightbox || !lightbox.classList.contains("active")) return;
+    touchStartX = e.changedTouches[0].screenX;
+  },
+  { passive: true },
+);
+
+document.addEventListener(
+  "touchend",
+  function (e) {
+    var lightbox = document.getElementById("lightbox");
+    if (!lightbox || !lightbox.classList.contains("active")) return;
+
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  },
+  { passive: true },
+);
+
+function handleSwipe() {
+  var swipeThreshold = 50;
+  var diff = touchStartX - touchEndX;
+
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      // 왼쪽으로 스와이프 → 다음 이미지
+      nextLightboxImage();
+    } else {
+      // 오른쪽으로 스와이프 → 이전 이미지
+      prevLightboxImage();
+    }
+  }
+}
+
+// 상세 페이지 이미지/비디오 클릭 이벤트 (이벤트 위임)
+document.addEventListener("click", function (e) {
+  var mediaItem = e.target.closest(".media-item");
+  if (!mediaItem) return;
+
+  if (e.target.tagName === "IMG") {
+    openLightbox(e.target.src, "img");
+  } else if (e.target.tagName === "VIDEO") {
+    openLightbox(e.target.src, "video");
+  }
+});
+
+// 이미지 우클릭 방지
+document.addEventListener("contextmenu", function (e) {
+  if (e.target.tagName === "IMG" || e.target.tagName === "VIDEO") {
+    e.preventDefault();
+    return false;
+  }
 });

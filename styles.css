@@ -30,7 +30,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8' fill='%23fe0032'/%3E%3C/svg%3E")
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8' fill='%23fe0032'/%3E%3C/svg%3E")
       10 10,
     auto;
 }
@@ -64,7 +65,10 @@ html {
 }
 
 body {
-  font-family: "ABC Monument Grotesk", -apple-system, BlinkMacSystemFont,
+  font-family:
+    "ABC Monument Grotesk",
+    -apple-system,
+    BlinkMacSystemFont,
     sans-serif;
   background: transparent;
   color: var(--text);
@@ -131,14 +135,14 @@ a {
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  cursor: pointer;
+
   transition: color 0.15s ease;
 }
 
 .about-btn {
   font-size: 0.9rem;
   font-weight: 400;
-  cursor: pointer;
+
   transition: color 0.15s ease;
 }
 
@@ -188,7 +192,7 @@ a {
   font-size: 0.95rem;
   font-weight: 400;
   padding: 5px 0;
-  cursor: pointer;
+
   transition: color 0.15s ease;
   line-height: 1.35;
 }
@@ -209,7 +213,7 @@ a {
   font-size: 0.85rem;
   color: #000;
   padding: 5px 0;
-  cursor: pointer;
+
   transition: color 0.15s ease;
 }
 
@@ -234,7 +238,6 @@ a {
 .project-card {
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .project-thumbnail {
@@ -264,7 +267,9 @@ a {
   color: #fff;
   background: rgba(0, 0, 0, 0);
   opacity: 0;
-  transition: opacity 0.2s ease, background 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    background 0.2s ease;
 }
 
 .project-card:hover .project-info {
@@ -405,7 +410,6 @@ a {
 }
 
 .detail-nav a {
-  cursor: pointer;
   transition: color 0.15s ease;
 }
 
@@ -513,7 +517,6 @@ a {
   font-size: 0.85rem;
   font-weight: 600;
   transition: color 0.15s ease;
-  cursor: pointer;
 }
 
 .mobile-logo:hover {
@@ -522,7 +525,7 @@ a {
 
 .menu-btn {
   font-size: 0.85rem;
-  cursor: pointer;
+
   transition: color 0.15s ease;
 }
 
@@ -537,7 +540,7 @@ a {
 
 .mobile-about {
   font-size: 0.85rem;
-  cursor: pointer;
+
   transition: color 0.15s ease;
 }
 
@@ -847,3 +850,167 @@ html {
   ) !important;
 }
   */
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9000;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img,
+.lightbox video {
+  max-width: 85%;
+  max-height: 85%;
+  object-fit: contain;
+  border: none;
+  display: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 200;
+  z-index: 9001;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-close:hover {
+  opacity: 0.7;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  z-index: 9001;
+  transition: opacity 0.2s ease;
+  background: none;
+  border: none;
+}
+
+.lightbox-prev {
+  left: 40px;
+}
+
+.lightbox-next {
+  right: 40px;
+}
+
+/* 왼쪽 화살표 < */
+.lightbox-prev::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: translate(-25%, -50%) rotate(45deg);
+}
+
+/* 오른쪽 화살표 > */
+.lightbox-next::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-right: 1px solid #fff;
+  border-top: 1px solid #fff;
+  transform: translate(-75%, -50%) rotate(45deg);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  opacity: 0.7;
+}
+
+/* 이미지 개수 인디케이터 */
+.lightbox-dots {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 9001;
+}
+
+.lightbox-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.2s ease;
+}
+
+.lightbox-dot.active {
+  background: #fff;
+}
+
+/* 모바일 라이트박스 */
+@media (max-width: 768px) {
+  .lightbox-prev,
+  .lightbox-next {
+    display: none !important;
+  }
+
+  .lightbox img,
+  .lightbox video {
+    max-width: 95%;
+    max-height: 80%;
+    pointer-events: auto;
+  }
+
+  .lightbox-dots {
+    bottom: 40px;
+  }
+
+  .lightbox-dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+.media-item img,
+.media-item video {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='8' fill='%23fe0032'/%3E%3C/svg%3E")
+      10 10,
+    zoom-in;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 이미지 우클릭/드래그 방지 */
+.media-item img,
+.project-thumbnail img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}

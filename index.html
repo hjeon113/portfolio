@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -273,21 +273,28 @@
                   </div>
                 </div>
               </div>
-
-              <!-- 
-<div class="about-section">
-  <h2>Online Features</h2>
-  <div class="about-item">
-    <div class="about-detail">
-      <p class="sub">—</p>
-    </div>
-  </div>
-</div>
--->
             </div>
           </div>
         </div>
       </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+      <span class="lightbox-close">&times;</span>
+      <span class="lightbox-prev" onclick="prevLightboxImage(event)"></span>
+      <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+      <video
+        id="lightbox-video"
+        src=""
+        autoplay
+        loop
+        muted
+        playsinline
+        onclick="event.stopPropagation()"
+      ></video>
+      <span class="lightbox-next" onclick="nextLightboxImage(event)"></span>
+      <div class="lightbox-dots" id="lightbox-dots"></div>
     </div>
 
     <script src="projects-data.js"></script>
