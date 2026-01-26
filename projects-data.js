@@ -192,8 +192,8 @@ const projectsData = {
   // ========== Self-Initiative Project ==========
   "other-islands": {
     category: "self",
-    titleEn: "Other islands Book Fair",
-    titleKr: "아더 아일랜즈 북페어",
+    titleEn: "Other islands Book Fair 2026 (Proposal)",
+    titleKr: "아더 아일랜즈 북페어 2026 (시안)",
     date: "2025.11",
     area: "Visual Identity, Graphic Design, Typography",
     advisor: "",
