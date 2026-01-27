@@ -753,18 +753,18 @@ function showProject(id, skipHistory) {
         if (src.match(/\.(mp4|webm|mov)$/i)) {
           if (asGif) {
             return (
-              '<video data-src="' +
+              '<video src="' +
               src +
-              '" autoplay loop muted playsinline preload="none" class="lazy-video"></video>'
+              '" autoplay loop muted playsinline preload="metadata"></video>'
             );
           }
           return (
-            '<video data-src="' +
+            '<video src="' +
             src +
-            '" controls playsinline webkit-playsinline preload="none" class="lazy-video"></video>'
+            '" controls playsinline webkit-playsinline preload="metadata"></video>'
           );
         }
-        return '<img src="' + src + '" alt="" loading="lazy">';
+        return '<img src="' + src + '" alt="">';
       }
 
       // full width
@@ -1003,8 +1003,7 @@ function openLightbox(src, type) {
     if (item.tagName === "IMG") {
       lightboxItems.push({ src: item.src, type: "img" });
     } else if (item.tagName === "VIDEO") {
-      var videoSrc = item.src || item.dataset.src;
-      lightboxItems.push({ src: videoSrc, type: "video" });
+      lightboxItems.push({ src: item.src, type: "video" });
     }
   });
 
@@ -1197,8 +1196,7 @@ document.addEventListener("click", function (e) {
   if (e.target.tagName === "IMG") {
     openLightbox(e.target.src, "img");
   } else if (e.target.tagName === "VIDEO") {
-    var videoSrc = e.target.src || e.target.dataset.src;
-    openLightbox(videoSrc, "video");
+    openLightbox(e.target.src, "video");
   }
 });
 
@@ -1209,47 +1207,3 @@ document.addEventListener("contextmenu", function (e) {
     return false;
   }
 });
-
-// 비디오 Lazy Loading
-function initLazyVideos() {
-  var lazyVideos = document.querySelectorAll(".lazy-video");
-
-  if ("IntersectionObserver" in window) {
-    var videoObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var video = entry.target;
-            if (video.dataset.src && !video.src) {
-              video.src = video.dataset.src;
-              video.load();
-              if (video.hasAttribute("autoplay")) {
-                video.play();
-              }
-            }
-            videoObserver.unobserve(video);
-          }
-        });
-      },
-      { rootMargin: "100px" },
-    );
-
-    lazyVideos.forEach(function (video) {
-      videoObserver.observe(video);
-    });
-  } else {
-    // IntersectionObserver 미지원 브라우저
-    lazyVideos.forEach(function (video) {
-      if (video.dataset.src) {
-        video.src = video.dataset.src;
-      }
-    });
-  }
-}
-
-// 프로젝트 상세 열릴 때 lazy loading 초기화
-var originalShowProject = showProject;
-showProject = function (id, skipHistory) {
-  originalShowProject(id, skipHistory);
-  setTimeout(initLazyVideos, 100);
-};
