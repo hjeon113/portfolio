@@ -450,6 +450,18 @@ a {
   color: var(--text-hover);
 }
 
+.about-hero .about-intro {
+  font-size: 0.95rem;
+  color: #000;
+  margin-top: 10px;
+}
+
+.about-hero .about-tools {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 6px;
+}
+
 .about-sections {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
