@@ -321,15 +321,13 @@ async function initSunsetCountdown() {
     // 1. IP 기반 위치 가져오기
     var lat, lon;
     try {
-      var locationResponse = await fetch(
-        "https://ip-api.com/json/?fields=city,countryCode,lat,lon",
-      );
+      var locationResponse = await fetch("https://ipapi.co/json/");
       var locationData = await locationResponse.json();
 
       sunsetData.city = locationData.city || "New York";
-      sunsetData.country = locationData.countryCode || "US";
-      lat = locationData.lat || 40.7128;
-      lon = locationData.lon || -74.006;
+      sunsetData.country = locationData.country_code || "US";
+      lat = locationData.latitude || 40.7128;
+      lon = locationData.longitude || -74.006;
     } catch (e) {
       // IP API 실패 시 NYC 기본값
       console.log("IP API failed, using NYC default");
