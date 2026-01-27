@@ -193,11 +193,11 @@ const projectsData = {
   "other-islands": {
     category: "self",
     titleEn: "Other islands Book Fair 2026 (Proposal)",
-    titleKr: "아더 아일랜즈 북페어 2026 (시안)",
+    titleKr: "아더 아일랜즈 북페어 2026 (제안안)",
     date: "2025.11",
     area: "Visual Identity, Graphic Design, Typography",
     advisor: "",
-    collaborator: "Seulgi Choei, Chiho Ye",
+    collaborator: "Seulgi Choei (최슬기) , Chiho Ye",
     descEn:
       "Other Islands Book Fair 2026 is a project that visualizes the book fair as a temporary gathering and exchange, using *Bird Migration* as a metaphor for movement, connection, and return. Inspired by the routes and traces of migratory birds, the visual system is built from modular dot forms that express both individuality and collectivity through repetition, variation, and motion. A nature-derived color palette and a flexible logo structure reinforce this concept, while the identity is applied across posters, signage, motion graphics, social media, and merchandise to convey the rhythm of convergence and dispersal that defines the book fair experience.",
     descKr:
@@ -345,8 +345,8 @@ const projectsData = {
   },
   ilmin: {
     category: "self",
-    titleEn: "Ilmin Museum of Art Rebranding",
-    titleKr: "일민미술관 리브랜딩",
+    titleEn: "Ilmin Museum of Art Rebranding (Proposal)",
+    titleKr: "일민미술관 리브랜딩 (제안안)",
     date: "2020.06",
     area: "Motion Graphics, Video, Branding, Editorial Design",
     spec: "Printed matter, 297 × 210 mm (11.7 × 8.3 in), 110p, Pur binding",
