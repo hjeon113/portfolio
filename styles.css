@@ -329,6 +329,16 @@ a {
   margin-bottom: 6px;
 }
 
+.detail-title h1 a {
+  color: inherit;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.detail-title h1 a:hover {
+  color: var(--text-hover);
+}
+
 .detail-title .kr {
   font-size: 0.9rem;
   font-weight: 400;
@@ -342,6 +352,16 @@ a {
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 12px;
+}
+
+.detail-desc a {
+  color: inherit;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.detail-desc a:hover {
+  color: var(--text-hover);
 }
 
 .detail-meta {
@@ -374,6 +394,11 @@ a {
 .media-item {
   background: #000;
   grid-column: span 3; /* 기본 2단 */
+  position: relative;
+}
+
+.media-item video[controls] {
+  cursor: pointer;
 }
 
 .media-item.full {

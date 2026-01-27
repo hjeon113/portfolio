@@ -416,8 +416,10 @@ const projectsData = {
     advisor:
       '<a href="https://www.mattiacasalegno.net/" target="_blank">Mattia Casalegno</a>',
     collaborator: "",
-    descEn: "",
-    descKr: "",
+    descEn:
+      "Gesture Archive is a web-based drawing system that translates hand movements into lines, dots, and visual traces through real-time tracking. Participants perform gestures with the intention of forming specific shapes, yet the system does not interpret meaning—it records only movement data such as speed, direction, and tremor. As a result, the marks that appear on the screen diverge from the intended image, revealing how digital systems perceive and process human expression differently. Gesture Archive treats this mismatch not as an error but as a generative condition, exploring how gestures transform through computational processes to produce new visual forms beyond original intention.",
+    descKr:
+      "Gesture Archive는 손의 움직임을 실시간으로 추적해 선과 점, 흔적으로 변환하는 웹 기반 드로잉 시스템이다. 사용자는 특정 형태를 그리려는 의도를 가지고 제스처를 수행하지만, 시스템은 그 의미를 해석하지 않고 오직 속도, 방향, 떨림 같은 움직임의 데이터만을 기록한다. 그 결과 화면에 남는 흔적은 의도한 이미지와 어긋나며, 이 간극은 디지털 시스템이 인간의 표현을 어떻게 다르게 인식하고 처리하는지를 드러낸다. Gesture Archive는 이러한 어긋남을 오류가 아닌 생성적 조건으로 바라보며, 제스처가 시스템의 계산 과정을 거치며 변형되는 과정에서, 기존의 의도와는 다른 새로운 시각적 형태가 만들어질 가능성을 탐구한다.",
     thumbnail: "images/gesture-archive/thumb.png",
     media: [
       "full:images/gesture-archive/01.mp4",
@@ -437,8 +439,10 @@ const projectsData = {
     medium: "p5.js",
     advisor: "Anna Fangan Xu",
     collaborator: "",
-    descEn: "",
-    descKr: "",
+    descEn:
+      'City of Frames is an interactive web-based project that reframes scrolling as a unit of time rather than a neutral interface gesture. Set in a speculative city where time progresses in frames instead of seconds, the project translates users’ scrolling speed and rhythm into shifts in temporal flow and visual state. As users read and navigate the interactive book through scrolling, their gestures are continuously captured as data and transformed into visual traces. The project consists of two connected websites: an interactive book and a scroll-data visualization. When both sites are opened simultaneously, the scrolling actions performed in the interactive book are reflected in real time on the visualization page, making the act of reading inseparable from its data footprint. By linking interaction and representation, City of Frames examines how attention, speed, and continuous movement are structured and normalized within digital environments.<br><a href="https://city-of-frames.onrender.com/" target="_blank">→ Interactive Book</a><br><a href="https://city-of-frames.onrender.com/timestamp.html" target="_blank">→ Visualization of Interaction</a>',
+    descKr:
+      'City of Frames는 스크롤이라는 일상적인 디지털 제스처를 ‘시간을 구성하는 단위’로 전환하는 인터랙티브 웹 기반 프로젝트다. 시간은 초나 분이 아닌 프레임 단위로 흐르는 가상의 도시를 배경으로, 사용자의 스크롤 속도와 리듬이 도시의 시간 진행과 시각적 상태를 직접적으로 변화시킨다. 관객은 스크롤을 통해 서사를 읽는 동시에, 자신의 인터랙션이 데이터로 기록되고 시각적 흔적으로 변환되는 과정을 경험하게 된다. 이 프로젝트는 인터랙티브 북과 스크롤 데이터 시각화를 각각 다른 웹페이지로 구성하였으며, 두 사이트를 동시에 열어 인터랙티브 북을 탐색할 경우 사용자의 스크롤 행위가 데이터 시각화 페이지에 실시간으로 반영된다. 이를 통해 읽기 행위와 그에 수반되는 제스처가 분리되지 않고 하나의 시간적 시스템으로 작동함을 드러내며, 디지털 환경에서 주의(attention), 속도, 지속적인 움직임이 어떻게 구조화되는지를 탐구한다.<br><a href="https://city-of-frames.onrender.com/" target="_blank">→ Interactive Book</a><br><a href="https://city-of-frames.onrender.com/timestamp.html" target="_blank">→ Visualization of Interaction</a>',
     thumbnail: "images/scroll/thumb.jpg",
     media: [
       "full:images/scroll/01.jpg",

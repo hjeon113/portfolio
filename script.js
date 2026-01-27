@@ -753,13 +753,13 @@ function showProject(id, skipHistory) {
             return (
               '<video src="' +
               src +
-              '" autoplay loop muted playsinline></video>'
+              '" autoplay loop muted playsinline preload="metadata"></video>'
             );
           }
           return (
             '<video src="' +
             src +
-            '" controls playsinline webkit-playsinline onloadeddata="var v=this;setTimeout(function(){v.play()},3000)"></video>'
+            '" controls playsinline webkit-playsinline preload="metadata"></video>'
           );
         }
         return '<img src="' + src + '" alt="">';
