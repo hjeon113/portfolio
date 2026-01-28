@@ -992,6 +992,14 @@ var touchEndX = 0;
 function openLightbox(src, type) {
   var lightbox = document.getElementById("lightbox");
 
+  // 배경 비디오 모두 일시정지
+  var backgroundVideos = document.querySelectorAll(
+    "#project-detail .media-item video",
+  );
+  backgroundVideos.forEach(function (video) {
+    video.pause();
+  });
+
   // 현재 상세 페이지의 모든 이미지와 비디오 수집
   lightboxItems = [];
   var mediaElements = document.querySelectorAll(
@@ -1071,7 +1079,7 @@ function showCurrentMedia() {
     if (lightboxVideo) {
       lightboxVideo.src = current.src;
       lightboxVideo.style.display = "block";
-      lightboxVideo.play();
+      // 자동재생 안 함 - 사용자가 플레이 버튼 누르도록
     }
     lightboxImg.style.display = "none";
   }
@@ -1098,6 +1106,14 @@ function closeLightbox(e) {
     if (lightboxVideo) {
       lightboxVideo.pause();
     }
+
+    // autoplay 비디오들 다시 재생
+    var backgroundVideos = document.querySelectorAll(
+      "#project-detail .media-item video[autoplay]",
+    );
+    backgroundVideos.forEach(function (video) {
+      video.play();
+    });
   }
 }
 
@@ -1194,6 +1210,8 @@ document.addEventListener("click", function (e) {
   if (e.target.tagName === "IMG") {
     openLightbox(e.target.src, "img");
   } else if (e.target.tagName === "VIDEO") {
+    e.preventDefault();
+    e.target.pause();
     openLightbox(e.target.src, "video");
   }
 });
