@@ -432,9 +432,9 @@ const projectsData = {
   },
   scroll: {
     category: "exp",
-    titleEn: "Scroll",
+    titleEn: "City of frames",
     titleLink: "",
-    titleKr: "스크롤",
+    titleKr: "프레임의 세계",
     date: "2025.12",
     medium: "p5.js",
     advisor: "Anna Fangan Xu",
