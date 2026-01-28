@@ -917,7 +917,14 @@ html {
   display: none;
   -webkit-user-select: none;
   user-select: none;
+}
+
+.lightbox img {
   pointer-events: none;
+}
+
+.lightbox video {
+  pointer-events: auto;
 }
 
 .lightbox-close {
