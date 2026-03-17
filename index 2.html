@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>HYEJIN JEON</title>
+    <style>
+      html {
+        background: #ffffff;
+      }
+    </style>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23fe0032'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <script>
+      (function () {
+        var html = document.documentElement;
+        html.removeAttribute("style");
+        html.style.background = "#ffffff";
+        window.addEventListener("pageshow", function (e) {
+          html.removeAttribute("style");
+          html.style.background = "#ffffff";
+          var bgEl = document.getElementById("bg-gradient");
+          if (bgEl) bgEl.style.background = "#ffffff";
+        });
+      })();
+    </script>
+    <!-- 배경 그라디언트 (모바일 fixed 지원) -->
+    <div id="bg-gradient"></div>
+
+    <header class="mobile-header">
+      <span class="mobile-logo" onclick="showIndex()">HYEJIN JEON</span>
+      <div class="mobile-header-right">
+        <span class="mobile-about" onclick="showAbout()">About</span>
+        <span class="menu-btn" id="menuBtn" onclick="toggleMenu()">Menu</span>
+      </div>
+    </header>
+
+    <!-- Sunset Info - 좌측 하단 -->
+    <div class="sunset-info" id="sunsetInfo">
+      <span class="sunset-time" id="sunsetTime">Loading...</span>
+      <span class="sunset-location" id="sunsetLocation"></span>
+    </div>
+
+    <div class="container">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <a class="logo" onclick="showIndex()">HYEJIN JEON</a>
+          <a class="about-btn" onclick="showAbout()">About</a>
+        </div>
+
+        <div class="header-links">
+          <a
+            class="header-link"
+            href="https://www.linkedin.com/in/befsunset"
+            target="_blank"
+            >Linkedin</a
+          >
+          <a
+            class="header-link"
+            href="https://instagram.com/_bef_sunsetting_"
+            target="_blank"
+            >Instagram</a
+          >
+          <a
+            class="header-link"
+            href="https://www.youtube.com/@HyejinJeon-s4y"
+            target="_blank"
+            >Youtube</a
+          >
+        </div>
+
+        <nav>
+          <div class="nav-section" id="section-pro">
+            <div class="nav-title">Work Experience</div>
+            <ul class="nav-list"></ul>
+            <div class="toggle-btn" onclick="toggleSection('pro')">
+              + Show More
+            </div>
+          </div>
+          <div class="nav-section" id="section-self">
+            <div class="nav-title">Self-Initiative Project</div>
+            <ul class="nav-list"></ul>
+            <div class="toggle-btn" onclick="toggleSection('self')">
+              + Show More
+            </div>
+          </div>
+          <div class="nav-section" id="section-exp">
+            <div class="nav-title">Creative Exploration</div>
+            <ul class="nav-list"></ul>
+            <div class="toggle-btn" onclick="toggleSection('exp')">
+              + Show More
+            </div>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="main" id="main">
+        <div id="index-view">
+          <div class="project-grid"></div>
+          <footer class="main-footer">
+            ©2025 Hyejin Jeon. All rights reserved.
+          </footer>
+        </div>
+        <div id="project-detail" class="project-detail"></div>
+        <div id="about-view" class="about-view">
+          <div class="about-content">
+            <div class="about-hero">
+              <p class="about-email">
+                <a href="mailto:befsunset@gmail.com">befsunset@gmail.com</a>
+              </p>
+              <p class="about-intro">
+                A designer exploring relationships between systems, images, and
+                media across digital and physical environments, shaping
+                narratives through visual systems.
+              </p>
+              <p class="about-tools">
+                Tools & Skills: Adobe Creative Cloud (Illustrator, Photoshop,
+                InDesign, After Effects), Figma, p5.js, Web Development, Cinema
+                4D, 3D Printing (Bambu Lab)
+              </p>
+            </div>
+            <div class="about-sections">
+              <div class="about-section">
+                <h2>Education</h2>
+                <div class="about-item">
+                  <span class="about-date">2025 — 2027</span>
+                  <div class="about-detail">
+                    <p>Pratt Institute (MFA)</p>
+                    <p class="sub">Communication Design</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">2018 — 2022</span>
+                  <div class="about-detail">
+                    <p>Hankyong National University (BFA)</p>
+                    <p class="sub">Communication Design</p>
+                  </div>
+                </div>
+              </div>
+              <div class="about-section">
+                <h2>Work Experience</h2>
+                <div class="about-item">
+                  <span class="about-date">Mar. 2025 — Aug. 2025</span>
+                  <div class="about-detail">
+                    <p>
+                      <a href="https://dk-on.com/" target="_blank"
+                        >Descente Korea</a
+                      >
+                    </p>
+                    <p class="sub">Web Designer</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">May. 2024 — Jan. 2025</span>
+                  <div class="about-detail">
+                    <p>THE COLLECTION</p>
+                    <p class="sub">Graphic & Web Designer</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">Nov. 2023 — Mar. 2024</span>
+                  <div class="about-detail">
+                    <p>
+                      <a href="https://studiokio.com/" target="_blank"
+                        >Studio KIO</a
+                      >
+                    </p>
+                    <p class="sub">Graphic Designer</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">May. 2023 — Sep. 2023</span>
+                  <div class="about-detail">
+                    <p>
+                      <a
+                        href="https://www.hanwhagalleria.co.kr/en/index.html"
+                        target="_blank"
+                        >Galleria (Luxury Hall)</a
+                      >
+                    </p>
+                    <p class="sub">Graphic Designer</p>
+                  </div>
+                </div>
+              </div>
+              <div class="about-section">
+                <h2>Additional Experience</h2>
+                <div class="about-item">
+                  <span class="about-date">Feb. 2026 — May. 2026</span>
+                  <div class="about-detail">
+                    <p>
+                      <a
+                        href="https://www.pratt.edu/architecture/graduate-architecture/"
+                        target="_blank"
+                        >Pratt Institute
+                      </a>
+                    </p>
+                    <p class="sub">
+                      Graduate Assistant in Graduate Architecture, Landscape
+                      Architecture, and Urban Design
+                    </p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">Jul. 2024 — Mar. 2026</span>
+                  <div class="about-detail">
+                    <p>
+                      <a href="https://www.feedbluetiger.co.kr/" target="_blank"
+                        >Bluetiger</a
+                      >
+                    </p>
+                    <p class="sub">Portfolio Mentor</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">Jul. 2022 — Mar. 2023</span>
+                  <div class="about-detail">
+                    <p>
+                      <a href="https://spine-press.com/" target="_blank"
+                        >SPINE PRESS</a
+                      >
+                    </p>
+                    <p class="sub">Graphic Design Assistant</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">2020</span>
+                  <div class="about-detail">
+                    <p>Ulsan Museum of Art</p>
+                    <p class="sub">Opening Symposium, Motion poster</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="about-sections" style="margin-top: 30px">
+              <div class="about-section">
+                <h2>Award</h2>
+                <div class="about-item">
+                  <span class="about-date">2022</span>
+                  <div class="about-detail">
+                    <p>Creative Quarterly Issue 67</p>
+                    <p class="sub">Graphic Design, Finalist</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">2021</span>
+                  <div class="about-detail">
+                    <p>Hankyong National University</p>
+                    <p class="sub">Design Major, President's Award</p>
+                  </div>
+                </div>
+              </div>
+              <div class="about-section">
+                <h2>Exhibition</h2>
+                <div class="about-item">
+                  <span class="about-date">2023</span>
+                  <div class="about-detail">
+                    <p>Circulation Gap "Adventure"</p>
+                    <p class="sub">〈PALINDROME S EMORDNILAP〉</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">2022</span>
+                  <div class="about-detail">
+                    <p>Outstanding Graduation Works</p>
+                    <p class="sub">〈META-FOCUS IN PALIMPSEST〉</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">2020</span>
+                  <div class="about-detail">
+                    <p>Name Parade 2020</p>
+                    <p class="sub">〈before sunset〉</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">2020</span>
+                  <div class="about-detail">
+                    <p>Infinite Network: Ambiguous Exhibition</p>
+                    <p class="sub">〈RUNNING BACK AGAIN〉</p>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <span class="about-date">2019</span>
+                  <div class="about-detail">
+                    <p>LIFESTYLE EXPO TOKYO</p>
+                    <p class="sub">〈MUMA Catcher〉</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+      <span class="lightbox-close">&times;</span>
+      <span class="lightbox-prev" onclick="prevLightboxImage(event)"></span>
+      <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+      <video
+        id="lightbox-video"
+        src=""
+        controls
+        playsinline
+        onclick="event.stopPropagation()"
+      ></video>
+      <span class="lightbox-next" onclick="nextLightboxImage(event)"></span>
+      <div class="lightbox-dots" id="lightbox-dots"></div>
+    </div>
+
+    <script src="projects-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
