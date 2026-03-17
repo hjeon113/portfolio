@@ -406,6 +406,31 @@ const projectsData = {
   },
 
   // ========== Experiment ==========
+  "hype-slider": {
+    category: "exp",
+    titleEn: "Hype Slider",
+    titleLink: "https://hjeon113.github.io/HypeSlider/",
+    titleKr: "하입 슬라이더",
+    date: "2026.02",
+    medium: "",
+    advisor: "Diego Kolsky",
+    collaborator: "",
+    descEn:
+      "The text <i>Rise Above the Hype</i> examines how emerging technologies such as AI are shaped by cycles of hype—an amplified state of expectation driven by repetition, speed, and collective attention. In these cycles, anticipation accelerates faster than our ability to critically engage, reducing the distance needed for reflection and judgment. The text suggests that the issue lies not in the technology itself, but in how we perceive, adopt, and respond to it. From this text, I selected seven sentences that capture this condition. Hype Slider is an interactive work built on these fragments. As the slider moves, the text becomes compressed and intensified until it begins to collapse. This process translates the mechanics of hype into a visual experience, where repetition and acceleration overwhelm meaning and erode interpretive distance.",
+    descKr:
+      "〈Rise Above the Hype〉는 AI와 같은 새로운 기술이 하이프의 흐름 속에서 형성되는 방식을 다룬다. 여기서 하이프는 반복, 속도, 그리고 집단적 관심에 의해 기대가 과도하게 증폭되는 상태를 의미한다. 이러한 흐름 속에서 우리는 비판적으로 사고할 시간보다 더 빠르게 반응하게 되고, 해석과 판단을 위한 거리를 점점 잃게 된다. 이 글은 문제를 기술 자체가 아니라, 그것을 인식하고 받아들이는 우리의 태도에서 찾는다. 이 텍스트에서 이러한 상태를 드러내는 7개의 문장을 선별했다. Hype Slider는 이 문장들을 기반으로 한 인터랙티브 작업이다. 슬라이더를 움직일수록 텍스트는 점점 압축되고 증폭되다가 결국 형태가 붕괴된다. 이 과정은 하이프의 작동 방식이 어떻게 의미를 압도하고 해석의 거리를 사라지게 만드는지를 시각적으로 드러낸다.",
+    thumbnail: "images/hypeslider/thumb.png",
+    media: [
+      "iframe:https://hjeon113.github.io/HypeSlider/::Move the hype slider to interact",
+      "full:images/hypeslider/02.png",
+      "full:images/hypeslider/03.png",
+      "full:images/hypeslider/04.png",
+      "full:images/hypeslider/05.png",
+      "full:images/hypeslider/06.png",
+      "full:images/hypeslider/07.png",
+      "full:images/hypeslider/08.png",
+    ],
+  },
   "gesture-archive": {
     category: "exp",
     titleEn: "Gesture Archive",

@@ -765,6 +765,20 @@ function showProject(id, skipHistory) {
         return '<img src="' + src + '" alt="">';
       }
 
+      // iframe embed (format: iframe:URL or iframe:URL:힌트문구)
+      if (m.indexOf("iframe:") === 0) {
+        var parts = m.replace("iframe:", "").split("::");
+        var src = parts[0];
+        var hint = parts[1] || "↑ Interact with the project above";
+        return (
+          '<div class="media-item full media-iframe"><iframe src="' +
+          src +
+          '" frameborder="0" allowfullscreen></iframe><p class="iframe-hint"><span>' +
+          hint +
+          "</span></p></div>"
+        );
+      }
+
       // full width
       if (m.indexOf("full:") === 0) {
         var src = m.replace("full:", "");

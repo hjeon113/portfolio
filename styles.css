@@ -413,6 +413,40 @@ a {
   grid-column: span 2; /* 3단 */
 }
 
+.media-item.media-iframe {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 비율 */
+  height: 0;
+  overflow: visible;
+  margin-bottom: 40px;
+}
+
+.media-item.media-iframe iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.iframe-hint {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.iframe-hint span {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
 .media-item img,
 .media-item video {
   width: 100%;
