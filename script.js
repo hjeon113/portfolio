@@ -614,28 +614,136 @@ function generateProjectGrid() {
 
   grid.innerHTML = "";
 
-  for (var id in projectsData) {
+  var categoryTags = {
+    "descente-social": [
+      ["Graphic", "tag-graphic"],
+      ["Motion", "tag-motion"],
+    ],
+    "descente-exhibition": [
+      ["Graphic", "tag-graphic"],
+      ["Identity", "tag-identity"],
+    ],
+    "collection-renewal": [
+      ["Graphic", "tag-graphic"],
+      ["Identity", "tag-identity"],
+      ["Motion", "tag-motion"],
+    ],
+    "galleria-2023": [
+      ["Graphic", "tag-graphic"],
+      ["Identity", "tag-identity"],
+      ["Motion", "tag-motion"],
+    ],
+    "iap-residency": [
+      ["Graphic", "tag-graphic"],
+      ["Motion", "tag-motion"],
+    ],
+    "jade-sujin-lee": [
+      ["Graphic", "tag-graphic"],
+      ["Motion", "tag-motion"],
+    ],
+    "other-islands": [
+      ["Graphic", "tag-graphic"],
+      ["Identity", "tag-identity"],
+      ["Motion", "tag-motion"],
+    ],
+    "digital-religion": [["Graphic", "tag-graphic"]],
+    "language-contagion": [
+      ["Graphic", "tag-graphic"],
+      ["Experiment", "tag-exp"],
+    ],
+    palindrome: [
+      ["Graphic", "tag-graphic"],
+      ["Motion", "tag-motion"],
+    ],
+    imoa: [
+      ["Graphic", "tag-graphic"],
+      ["Identity", "tag-identity"],
+      ["Motion", "tag-motion"],
+    ],
+    ilmin: [
+      ["Graphic", "tag-graphic"],
+      ["Identity", "tag-identity"],
+      ["Motion", "tag-motion"],
+    ],
+    "running-back": [["Graphic", "tag-graphic"]],
+    "hype-slider": [["Experiment", "tag-exp"]],
+    "gesture-archive": [["Experiment", "tag-exp"]],
+    scroll: [["Experiment", "tag-exp"]],
+    "digital-error": [["Experiment", "tag-exp"]],
+  };
+  var catAttrMap = {
+    work: "graphic",
+    self: "graphic",
+    exp: "exp",
+    graphic: "graphic",
+    product: "product",
+  };
+
+  // 썸네일 비디오 IntersectionObserver
+  if ("IntersectionObserver" in window) {
+    window._thumbObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target;
+          if (entry.isIntersecting) {
+            v.play().catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+  }
+
+  // 랜덤 셔플
+  var ids = Object.keys(projectsData);
+  for (var i = ids.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = ids[i];
+    ids[i] = ids[j];
+    ids[j] = tmp;
+  }
+
+  for (var k = 0; k < ids.length; k++) {
+    var id = ids[k];
     var p = projectsData[id];
     var article = document.createElement("article");
     article.className = "project-card";
     article.setAttribute("data-project", id);
+    article.setAttribute("data-category", catAttrMap[p.category] || p.category);
 
     var thumbnailHtml = "";
     if (p.thumbnail) {
-      thumbnailHtml = '<img src="' + p.thumbnail + '" alt="' + p.titleEn + '">';
+      if (p.thumbnail.match(/\.mp4$/i)) {
+        thumbnailHtml =
+          '<video src="' +
+          p.thumbnail +
+          '" autoplay loop muted playsinline></video>';
+      } else {
+        thumbnailHtml =
+          '<img src="' + p.thumbnail + '" alt="' + p.titleEn + '">';
+      }
     }
+
+    var tags = categoryTags[id] || [];
+    var tagsHtml = tags
+      .map(function (t) {
+        return '<span class="tag ' + t[1] + '">' + t[0] + "</span>";
+      })
+      .join("");
 
     article.innerHTML =
       '<div class="project-thumbnail">' +
       thumbnailHtml +
       "</div>" +
-      '<div class="project-info">' +
+      '<div class="project-card-info">' +
       '<span class="project-title-en">' +
       p.titleEn +
       "</span>" +
-      '<span class="project-title-kr">' +
-      p.titleKr +
-      "</span>" +
+      '<div class="project-tags">' +
+      tagsHtml +
+      "</div>" +
       "</div>";
 
     article.addEventListener("click", function () {
@@ -643,6 +751,17 @@ function generateProjectGrid() {
     });
 
     grid.appendChild(article);
+
+    var thumbVideo = article.querySelector(".project-thumbnail video");
+    if (thumbVideo) {
+      thumbVideo.muted = true;
+      thumbVideo.load();
+      if (window._thumbObserver) {
+        window._thumbObserver.observe(thumbVideo);
+      } else {
+        thumbVideo.play().catch(function () {});
+      }
+    }
   }
 }
 
@@ -684,14 +803,67 @@ function stopAllVideos() {
 // 인덱스 보기
 function showIndex(skipHistory) {
   stopAllVideos();
-  document.getElementById("index-view").style.display = "block";
-  document.getElementById("project-detail").classList.remove("active");
-  document.getElementById("about-view").classList.remove("active");
+  var iv = document.getElementById("index-view");
+  if (iv) iv.style.display = "block";
+  var pd = document.getElementById("project-detail");
+  if (pd) {
+    pd.classList.remove("active");
+    pd.style.display = "none";
+  }
+  var av = document.getElementById("about-view");
+  if (av) av.classList.remove("active");
+
+  // 패널 레이아웃 복원
+  var wrap = document.getElementById("paneLeft");
+  if (wrap) wrap.style.width = "75%";
+
+  // 왼쪽 패널 스크롤 맨 위로
+  var paneLeftScroll = document.getElementById("paneLeftScroll");
+  if (paneLeftScroll) paneLeftScroll.scrollTop = 0;
+  // 모바일: project-detail visible 제거
+  var pd2 = document.getElementById("project-detail");
+  if (pd2) pd2.classList.remove("visible");
+
+  // col 클래스 리셋
+  if (paneLeftScroll) {
+    paneLeftScroll.classList.remove("col1", "col2");
+  }
+
+  // 캔버스 잔상 클리어
+  if (typeof clearTrailCanvas === "function") clearTrailCanvas();
+  document.querySelectorAll(".cursor-trail").forEach(function (el) {
+    el.remove();
+  });
+  var rd = document.getElementById("rightDefault");
+  if (rd) rd.style.display = "flex";
+  var bv = document.getElementById("blog-view");
+  if (bv) bv.style.display = "none";
+
+  // 오버레이 닫기
+  var ao = document.getElementById("about-overlay");
+  if (ao) ao.classList.remove("visible");
+  var bgEl = document.getElementById("bg-gradient");
+  if (bgEl) bgEl.style.zIndex = "0";
+  var bo = document.getElementById("blog-overlay");
+  if (bo) bo.classList.remove("visible");
+  // splitLayout visibility 복원 (openOverlay에서 숨긴 것 되돌리기)
+  var sl = document.getElementById("splitLayout");
+  if (sl) sl.style.visibility = "";
+  var ff = document.getElementById("fp-fixed-footer");
+  if (ff) ff.classList.remove("visible");
+  var obg = document.getElementById("overlay-bg");
+  if (obg) obg.classList.remove("visible");
+  var bar = document.getElementById("fp-grad-bar");
+  if (bar) bar.classList.remove("visible");
+
   closeMobileMenu();
   window.scrollTo(0, 0);
   if (!skipHistory) {
     history.pushState({ view: "index" }, "", "#");
   }
+
+  // 프로젝트 카드 셔플
+  shuffleProjectCards();
 
   // 날짜+날씨 다시 표시 후 3초 뒤 카운트다운
   var timeEl = document.getElementById("sunsetTime");
@@ -708,11 +880,18 @@ function showIndex(skipHistory) {
 // About 보기
 function showAbout(skipHistory) {
   stopAllVideos();
-  document.getElementById("index-view").style.display = "none";
-  document.getElementById("project-detail").classList.remove("active");
-  document.getElementById("about-view").classList.add("active");
+  var ao = document.getElementById("about-overlay");
+  if (ao) {
+    ao.scrollTop = 0;
+    ao.classList.add("visible");
+  }
+  var bg = document.getElementById("bg-gradient");
+  if (bg) bg.style.zIndex = "9499";
+  // split-layout 숨기기
+  var sl = document.getElementById("splitLayout");
+  if (sl) sl.style.visibility = "hidden";
+  if (typeof syncFooterGradient === "function") syncFooterGradient();
   closeMobileMenu();
-  window.scrollTo(0, 0);
   if (!skipHistory) {
     history.pushState({ view: "about" }, "", "#about");
   }
@@ -724,144 +903,111 @@ function showProject(id, skipHistory) {
   var p = projectsData[id];
   if (!p) return;
 
-  var idx = keys.indexOf(id);
-  var next = idx < keys.length - 1 ? keys[idx + 1] : keys[0];
+  var allKeys = Object.keys(projectsData);
+  var idx = allKeys.indexOf(id);
+  var next = allKeys[idx < allKeys.length - 1 ? idx + 1 : 0];
 
-  var mediaHtml = p.media
+  // media HTML
+  var mediaHtml = (p.media || [])
     .map(function (m) {
-      // placeholders
-      if (m === "full")
-        return '<div class="media-item full placeholder"></div>';
-      if (m === "placeholder")
-        return '<div class="media-item placeholder"></div>';
-      if (m === "col2")
-        return '<div class="media-item col2 placeholder"></div>';
-      if (m === "col3")
-        return '<div class="media-item col3 placeholder"></div>';
-      if (m === "col4")
-        return '<div class="media-item col4 placeholder"></div>';
-
-      // gif: 접두어 체크
       var isGif = m.indexOf("gif:") === 0;
-      if (isGif) {
-        m = m.replace("gif:", "");
-      }
+      if (isGif) m = m.replace("gif:", "");
 
-      function getMediaTag(src, asGif) {
+      function mediaTag(src, asGif) {
         if (src.match(/\.(mp4|webm|mov)$/i)) {
-          if (asGif) {
-            return (
-              '<video src="' +
-              src +
-              '" autoplay loop muted playsinline preload="metadata"></video>'
-            );
-          }
-          return (
-            '<video src="' +
-            src +
-            '" controls playsinline webkit-playsinline preload="metadata"></video>'
-          );
+          return asGif
+            ? '<video src="' +
+                src +
+                '" autoplay loop muted playsinline preload="metadata"></video>'
+            : '<video src="' +
+                src +
+                '" controls playsinline preload="metadata"></video>';
         }
         return '<img src="' + src + '" alt="">';
       }
 
-      // iframe embed (format: iframe:URL or iframe:URL:힌트문구)
+      if (
+        m === "full" ||
+        m === "placeholder" ||
+        m === "col2" ||
+        m === "col3" ||
+        m === "col4"
+      )
+        return '<div class="media-item ' + m + ' placeholder"></div>';
       if (m.indexOf("iframe:") === 0) {
         var parts = m.replace("iframe:", "").split("::");
-        var src = parts[0];
-        var hint = parts[1] || "↑ Interact with the project above";
         return (
           '<div class="media-item full media-iframe"><iframe src="' +
-          src +
+          parts[0] +
           '" frameborder="0" allowfullscreen></iframe><p class="iframe-hint"><span>' +
-          hint +
+          (parts[1] || "↑ Interact with the project above") +
           "</span></p></div>"
         );
       }
-
-      // full width
-      if (m.indexOf("full:") === 0) {
-        var src = m.replace("full:", "");
+      if (m.indexOf("full:") === 0)
         return (
-          '<div class="media-item full">' + getMediaTag(src, isGif) + "</div>"
+          '<div class="media-item full">' +
+          mediaTag(m.replace("full:", ""), isGif) +
+          "</div>"
         );
-      }
-      // 2단 (세로형 등)
-      if (m.indexOf("col2:") === 0) {
-        var src = m.replace("col2:", "");
+      if (m.indexOf("col2:") === 0)
         return (
-          '<div class="media-item col2">' + getMediaTag(src, isGif) + "</div>"
+          '<div class="media-item col2">' +
+          mediaTag(m.replace("col2:", ""), isGif) +
+          "</div>"
         );
-      }
-      // 3단
-      if (m.indexOf("col3:") === 0) {
-        var src = m.replace("col3:", "");
+      if (m.indexOf("col3:") === 0)
         return (
-          '<div class="media-item col3">' + getMediaTag(src, isGif) + "</div>"
+          '<div class="media-item col3">' +
+          mediaTag(m.replace("col3:", ""), isGif) +
+          "</div>"
         );
-      }
-      // 4단
-      if (m.indexOf("col4:") === 0) {
-        var src = m.replace("col4:", "");
+      if (m.indexOf("col4:") === 0)
         return (
-          '<div class="media-item col4">' + getMediaTag(src, isGif) + "</div>"
+          '<div class="media-item col4">' +
+          mediaTag(m.replace("col4:", ""), isGif) +
+          "</div>"
         );
-      }
-      // 기본 2단
-      return '<div class="media-item">' + getMediaTag(m, isGif) + "</div>";
+      return '<div class="media-item">' + mediaTag(m, isGif) + "</div>";
     })
     .join("");
-
-  var clientHtml = p.client
-    ? '<div class="meta-row"><div class="meta-label">Client</div><div>' +
-      p.client +
-      "</div></div>"
-    : "";
-  var advisorHtml = p.advisor
-    ? '<div class="meta-row"><div class="meta-label">' +
-      (p.category === "work" ? "Art Direction" : "Advisor") +
-      "</div><div>" +
-      p.advisor +
-      "</div></div>"
-    : "";
-  var collaboratorHtml = p.collaborator
-    ? '<div class="meta-row"><div class="meta-label">Collaborator</div><div>' +
-      p.collaborator +
-      "</div></div>"
-    : "";
 
   var titleHtml = p.titleLink
     ? '<a href="' + p.titleLink + '" target="_blank">' + p.titleEn + "</a>"
     : p.titleEn;
 
-  document.getElementById("project-detail").innerHTML =
+  var detail = document.getElementById("project-detail");
+  if (!detail) return;
+
+  detail.innerHTML =
     '<div class="detail-content">' +
     mediaHtml +
     "</div>" +
-    '<div class="detail-header">' +
-    '<div class="detail-title">' +
-    "<h1>" +
+    '<div class="detail-drawer" id="detailDrawer">' +
+    '<div class="detail-drawer-toggle" onclick="toggleDrawer()">' +
+    '<div class="drawer-title-row">' +
+    "<div>" +
+    '<h1 class="drawer-title">' +
     titleHtml +
     "</h1>" +
-    '<div class="kr">' +
+    '<div class="drawer-title-kr kr">' +
     p.titleKr +
     "</div>" +
     "</div>" +
-    '<div class="detail-desc-wrap">' +
-    '<p class="detail-desc">' +
+    '<span class="drawer-btn">↑</span>' +
+    "</div>" +
+    "</div>" +
+    '<div class="detail-drawer-body">' +
+    '<p class="detail-desc desc-en">' +
     p.descEn +
     "</p>" +
-    '<p class="detail-desc">' +
+    '<p class="detail-desc desc-kr">' +
     p.descKr +
     "</p>" +
-    "</div>" +
     '<div class="detail-meta">' +
-    '<div class="meta-row">' +
-    '<div class="meta-label">Date</div>' +
-    "<div>" +
+    '<div class="meta-row"><div class="meta-label">Date</div><div>' +
     p.date +
-    "</div>" +
-    "</div>" +
+    "</div></div>" +
     (p.area
       ? '<div class="meta-row"><div class="meta-label">Work Area</div><div>' +
         p.area +
@@ -877,28 +1023,82 @@ function showProject(id, skipHistory) {
         p.spec +
         "</div></div>"
       : "") +
-    clientHtml +
-    advisorHtml +
-    collaboratorHtml +
+    (p.client
+      ? '<div class="meta-row"><div class="meta-label">Client</div><div>' +
+        p.client +
+        "</div></div>"
+      : "") +
+    (p.advisor
+      ? '<div class="meta-row"><div class="meta-label">' +
+        (p.category === "work" ? "Art Direction" : "Advisor") +
+        "</div><div>" +
+        p.advisor +
+        "</div></div>"
+      : "") +
+    (p.collaborator
+      ? '<div class="meta-row"><div class="meta-label">Collaborator</div><div>' +
+        p.collaborator +
+        "</div></div>"
+      : "") +
     (p.award
       ? '<div class="meta-row"><div class="meta-label">Award</div><div>' +
         p.award +
         "</div></div>"
       : "") +
     "</div>" +
-    "</div>" +
     '<nav class="detail-nav">' +
-    '<a onclick="showIndex()">Index</a>' +
+    '<a onclick="showIndex()" style="cursor:pointer">← Index</a>' +
     "<a onclick=\"showProject('" +
     next +
-    "')\">Next →</a>" +
-    "</nav>";
+    '\')" style="cursor:pointer">Next →</a>' +
+    "</nav>" +
+    "</div>" +
+    "</div>";
 
-  document.getElementById("index-view").style.display = "none";
-  document.getElementById("project-detail").classList.add("active");
-  document.getElementById("about-view").classList.remove("active");
+  // 패널 레이아웃 전환
+  var wrap = document.getElementById("paneLeft");
+  var leftScroll = document.getElementById("paneLeftScroll");
+  if (leftScroll) {
+    leftScroll.classList.remove("col1", "col2", "col3");
+    leftScroll.classList.add("col1");
+  }
+  if (wrap) {
+    wrap.style.width = "25%";
+    wrap.addEventListener("transitionend", function onEnd() {
+      wrap.removeEventListener("transitionend", onEnd);
+      if (typeof checkPaneWidths === "function") checkPaneWidths();
+    });
+  }
+
+  // 캔버스 잔상 클리어
+  if (typeof clearTrailCanvas === "function") clearTrailCanvas();
+  // div 트레일도 제거
+  document.querySelectorAll(".cursor-trail").forEach(function (el) {
+    el.remove();
+  });
+
+  // 오른쪽 패널 뷰 전환
+  var rd = document.getElementById("rightDefault");
+  if (rd) rd.style.display = "none";
+  detail.style.display = "block";
+  detail.classList.add("active");
+  // 모바일: 풀스크린 오버레이
+  if (window.innerWidth <= 768) {
+    detail.classList.add("visible");
+    detail.scrollTop = 0;
+  }
+  var bv = document.getElementById("blog-view");
+  if (bv) bv.style.display = "none";
+  var av = document.getElementById("about-view");
+  if (av) av.classList.remove("active");
+
+  var pr = document.getElementById("paneRight");
+  if (pr) pr.scrollTop = 0;
+
+  // 언어 상태 적용
+  if (typeof updateLang === "function") updateLang();
+
   closeMobileMenu();
-  window.scrollTo(0, 0);
   if (!skipHistory) {
     history.pushState({ view: "project", id: id }, "", "#project/" + id);
   }
@@ -983,6 +1183,10 @@ document.addEventListener("mousemove", function (e) {
   if (now - lastTrailTime < trailInterval) return;
   lastTrailTime = now;
 
+  // 최대 30개 초과 시 가장 오래된 것 제거
+  var existing = document.querySelectorAll(".cursor-trail");
+  if (existing.length >= 30) existing[0].remove();
+
   var trail = document.createElement("div");
   trail.className = "cursor-trail " + getTrailStyle();
   trail.style.left = e.clientX - 8 + "px";
@@ -1004,6 +1208,7 @@ var touchStartX = 0;
 var touchEndX = 0;
 
 function openLightbox(src, type) {
+  if (window.innerWidth <= 768) return; // 모바일에서 라이트박스 비활성화
   var lightbox = document.getElementById("lightbox");
 
   // 배경 비디오 모두 일시정지
@@ -1237,3 +1442,132 @@ document.addEventListener("contextmenu", function (e) {
     return false;
   }
 });
+
+// ============================================
+// 우측 패널 캔버스 trail (안지워지고 쌓임)
+// ============================================
+(function () {
+  var canvas, ctx, paneRight;
+  var lastDrawTime = 0;
+
+  window.clearTrailCanvas = function () {
+    if (canvas && ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
+  function initCanvas() {
+    canvas = document.getElementById("trailCanvas");
+    paneRight = document.getElementById("paneRight");
+    if (!canvas || !paneRight) return;
+    ctx = canvas.getContext("2d");
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+    fadeTick();
+  }
+
+  function resizeCanvas() {
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  // 마우스가 멈춘 후 2초부터 서서히 페이드
+  function fadeTick() {
+    if (canvas && ctx) {
+      var rd = document.getElementById("rightDefault");
+      var ao = document.getElementById("about-overlay");
+      var bo = document.getElementById("blog-overlay");
+      var overlayOpen =
+        (ao && ao.classList.contains("visible")) ||
+        (bo && bo.classList.contains("visible"));
+      var projectOpen = rd && rd.style.display === "none" && !overlayOpen;
+
+      if (projectOpen || overlayOpen) {
+        // 프로젝트 상세 또는 오버레이일 때 클리어
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      } else {
+        // 메인 또는 오버레이: 2초 후 서서히 페이드
+        var idle = Date.now() - lastDrawTime;
+        if (idle > 2000) {
+          ctx.globalCompositeOperation = "destination-out";
+          ctx.fillStyle = "rgba(0,0,0,0.012)";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.globalCompositeOperation = "source-over";
+        }
+      }
+    }
+    requestAnimationFrame(fadeTick);
+  }
+
+  function drawOnCanvas(e) {
+    if (window.innerWidth <= 768) return;
+    if (!canvas || !ctx) return;
+
+    var ao = document.getElementById("about-overlay");
+    var bo = document.getElementById("blog-overlay");
+    var overlayOpen =
+      (ao && ao.classList.contains("visible")) ||
+      (bo && bo.classList.contains("visible"));
+    var rd = document.getElementById("rightDefault");
+
+    if (overlayOpen) return;
+
+    if (rd && rd.style.display === "none") return;
+    if (!paneRight) return;
+    var rect = paneRight.getBoundingClientRect();
+    if (e.clientX < rect.left || e.clientX > rect.right) return;
+    if (e.clientY < rect.top || e.clientY > rect.bottom) return;
+
+    lastDrawTime = Date.now();
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(rect.left, rect.top, rect.width, rect.height);
+    ctx.clip();
+    drawDot(e.clientX, e.clientY);
+    ctx.restore();
+  }
+
+  function drawDot(x, y) {
+    var style = getTrailStyle();
+    var ao = document.getElementById("about-overlay");
+    var bo = document.getElementById("blog-overlay");
+    var onOverlay =
+      (ao && ao.classList.contains("visible")) ||
+      (bo && bo.classList.contains("visible"));
+
+    if (style === "sunny") {
+      var g = ctx.createRadialGradient(x, y, 0, x, y, 10);
+      g.addColorStop(0, "rgba(255,200,80,0.8)");
+      g.addColorStop(1, "rgba(255,200,80,0)");
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(x, y, 10, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (style === "rain") {
+      ctx.fillStyle = "rgba(100,160,220,0.75)";
+      ctx.beginPath();
+      ctx.ellipse(x, y, 3, 6, 0, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (style === "snow") {
+      ctx.fillStyle = "rgba(180,210,240,0.85)";
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      // cloudy — 오버레이(흰 배경)에서는 더 진하게
+      var alpha = onOverlay ? 0.25 : 0.45;
+      var g2 = ctx.createRadialGradient(x, y, 0, x, y, 12);
+      g2.addColorStop(0, "rgba(100,100,110," + alpha + ")");
+      g2.addColorStop(1, "rgba(100,100,110,0)");
+      ctx.fillStyle = g2;
+      ctx.beginPath();
+      ctx.arc(x, y, 12, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  document.addEventListener("mousemove", drawOnCanvas);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(initCanvas, 300);
+  });
+})();

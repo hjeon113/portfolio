@@ -77,7 +77,7 @@ const projectsData = {
       "THE COLLECTION is a Seoul-based fashion brand that breaks down the boundaries between art and everyday life, proposing new fashion experiences through experimental design and the creative works of emerging designers. Starting with the brand identity renewal, we planned and designed interview pages capturing the philosophies and design processes of emerging designers, structured detailed pages introducing curated collections, and managed the visual consistency and user experience of the entire website.",
     descKr:
       "THE COLLECTION은 예술과 일상의 경계를 허물고, 실험적인 디자인과 신진 디자이너들의 창의적인 작품을 통해 새로운 패션 경험을 제안하는 서울 기반의 패션 브랜드이다. 브랜드 아이덴티티 리뉴얼을 시작으로, 신진 디자이너들의 철학과 디자인 과정을 담은 인터뷰 페이지를 기획·디자인하며, 큐레이션된 컬렉션을 소개하는 상세 페이지를 구성하고, 전체 웹사이트의 시각적 일관성과 사용자 경험을 관리하고 있다.",
-    thumbnail: "images/collection-renewal/thumb.jpg",
+    thumbnail: "images/collection-renewal/thumb.mp4",
     media: [
       "col2:images/collection-renewal/04-1.gif",
       "col2:images/collection-renewal/04-2.gif",
@@ -108,7 +108,7 @@ const projectsData = {
       "《Just arrived》 is an exclusive day event for VIP and MASS audiences, presenting Galleria Department Store’s exclusive new arrivals for the second half of 2023 as a new season begins. To visualize the luxurious and richly diverse character of the event, the visual identity employs lettering inspired by prisms and gemstones, along with four distinct colors as its main graphic elements.",
     descKr:
       "《Just arrived》는 2023년 하반기, 새로운 시즌이 시작됨에 따라 갤러리아 백화점만의 독점 신상품들을 선보이는 VIP 및 MASS 대상의 exclusive day 행사이다. 럭셔리하고, 다채로운 상품이 가득한 행사의 특성을 시각화하기 위해 프리즘과 보석을 연상시키는 레터링과 4가지의 컬러를 메인 그래픽 아이덴티티 요소로 활용한다.",
-    thumbnail: "images/galleria/thumb.jpg",
+    thumbnail: "images/galleria/thumb.mp4",
     media: [
       "col3:images/galleria/02-1.jpg",
       "col3:images/galleria/02-2.jpg",
@@ -123,7 +123,7 @@ const projectsData = {
       "full:images/galleria/06.jpg",
       "col2:images/galleria/07-1.jpeg",
       "col2:images/galleria/07-2.jpeg",
-      //"full:images/galleria/09.jpeg",
+      "full:images/galleria/09.jpeg",
       "full:images/galleria/05.jpeg",
       "col2:images/galleria/10-1.jpeg",
       "col2:images/galleria/10-3.jpeg",
@@ -148,7 +148,7 @@ const projectsData = {
       "《VITA NOVA_New Life》 begins with the awareness that, as a result of the pandemic, we are now living—and must continue to live—a life fundamentally different from before. It proposes a pause from familiar ways of being, inviting us to look back, observe, and gently engage with our surroundings while questioning what had long been taken for granted. The work expresses the mutable state between before and after creating differently through transformations in title lettering that spreads like liquid, and through the vitality of newly growing vines emerging within it.",
     descKr:
       "《VITA NOVA_New Life》은 현재 우리가 팬데믹으로 인해 이전과 달라진 새로운 삶을 살게 되었고, 살아내야 한다는 사실을 자각하는 것에서 시작한다. 그러므로 더욱이 여태까지의 방식을 멈추어 뒤돌아보고, 주변을 살피고 어루만지면서 당연시했던 것들을 의심해 보자고 제안하는 것이다. 다르게 창작하는 전과 후의 가변적인 상태를 액체가 번지는 듯한 타이틀 레터링의 변화와 그 안에서 새롭게 자라나는 덩쿨의 생동감을 통해 표현한다.",
-    thumbnail: "images/vita-nova/thumb.jpg",
+    thumbnail: "images/vita-nova/thumb.mp4",
     media: [
       "full:images/vita-nova/01.mp4",
       "gif:col2:images/vita-nova/03-1.mp4",
@@ -179,7 +179,7 @@ const projectsData = {
       "《CHANGE OR TRANS-HIKING》 generates sound and resonance through the creation of objects that embody flowing liquids, urban byproducts, moss, plants, and forms with geometric or repetitive rhythms. The work presents a totality of sensory experiences emerging from both solid and fragile textures and concepts, aiming to realize a soundscape as a transcendent habitat that passes through fluid, contemporary ideas flowing between the temporalities of past, present, and future. These fluid concepts between solidity and fragility are expressed through typography composed of expanding lines, along with overlapping glass beads and circular elements that move through and between them.",
     descKr:
       "《돌과 유리 하이킹》은 유동하는 액체와 도시를 떠도는 부산물, 이끼, 식물, 그리고 기하학적이거나 반복적인 율동감을 가진 오브제들을 만들어, 소리와 울림을 파생시킨다. 본 작품은 단단하거나 연약한 질감과 개념을 통해 발생하는 감각의 총체로서, '과거-현재-미래의 시간성 사이에 흐르는 동시대의 유동하는 개념들을 경유하는 초월적인 서식지로서의 소리공간을 구현'하고자 한다. 단단하고 연약한 질감 사이의 유동하는 개념을 늘어나는 라인으로 구성된 타이포와 그 사이를 지나가는 유리 구슬과 원 개체들의 겹침을 통해 표현한다.",
-    thumbnail: "images/jade-sujin-lee/thumb2.jpg",
+    thumbnail: "images/jade-sujin-lee/thumb.jpg",
     media: [
       "col2:images/jade-sujin-lee/01.jpg",
       "col2:images/jade-sujin-lee/02.gif",
@@ -202,7 +202,7 @@ const projectsData = {
       "Other Islands Book Fair 2026 is a project that visualizes the book fair as a temporary gathering and exchange, using *Bird Migration* as a metaphor for movement, connection, and return. Inspired by the routes and traces of migratory birds, the visual system is built from modular dot forms that express both individuality and collectivity through repetition, variation, and motion. A nature-derived color palette and a flexible logo structure reinforce this concept, while the identity is applied across posters, signage, motion graphics, social media, and merchandise to convey the rhythm of convergence and dispersal that defines the book fair experience.",
     descKr:
       "Other Islands Book Fair 2026은 ‘Bird Migration’을 이동과 모임, 교류의 은유로 삼아, 서로 다른 장소에서 출발한 창작자와 관람자가 한 시점에 모여 경험을 나누고 다시 각자의 공동체로 돌아가는 북페어의 성격을 시각화한 프로젝트이다. 철새의 이동 경로와 흔적에서 착안한 도트 형태의 그래픽 시스템은 개별성과 집단성을 동시에 드러내며, 반복과 변주, 움직임을 통해 연결과 교환의 과정을 표현한다. 자연에서 가져온 컬러 팔레트와 유연한 로고 구조는 이러한 개념을 강화하며, 포스터, 사인, 모션, 소셜 미디어, 머천다이즈 등 다양한 매체 전반에 적용되어 일시적으로 형성되는 집합과 다시 흩어지는 북페어의 리듬을 하나의 일관된 비주얼 언어로 전달한다.",
-    thumbnail: "images/other-island/thumb.jpg",
+    thumbnail: "images/other-island/thumb.gif",
     media: [
       //"gif:full:images/other-island/01-2.mp4",
       "full:images/other-island/01-1.gif",
@@ -242,8 +242,8 @@ const projectsData = {
       "col2:images/digital-religion/01.jpg",
       "col2:images/digital-religion/02.jpg",
       "full:images/digital-religion/06.jpg",
-      "images/digital-religion/03.jpg",
-      "images/digital-religion/04.jpg",
+      "col2:images/digital-religion/03.jpg",
+      "col2:images/digital-religion/04.jpg",
       "full:images/digital-religion/05.mp4",
       "images/digital-religion/08.jpg",
       "images/digital-religion/07.jpg",
@@ -285,7 +285,7 @@ const projectsData = {
       "A palindrome is a linguistic system that reads the same forward and backward, extending across words, phrases, sentences, and even paragraphs. Depending on the direction of reading, different elements are perceived as identical structures, producing distinct visual forms and unique auditory experiences. A key characteristic of palindromes is their symmetry and simultaneity: centered around a middle letter or a space, the forward and backward directions mirror and overlap at the same time. The way identical letters are slightly rearranged and read as different sounds evokes the sense of polyphonic music. Based on these qualities, this project visualizes the alphabet as musical notes and proposes a method of forming symmetrical structures through movement. By analyzing palindromes through six classification systems, the project explores possibilities beyond linguistic expression, including expansion from 2D to 3D, layers of sound, and the recontextualization of visual elements. These explorations are documented and expressed through an archive of texts, videos, and printed media.",
     descKr:
       "회문은 앞뒤로 동일하게 읽히는 언어 체계로, 단어·구·문장·문단 등 다양한 단위로 확장되며, 읽는 방향에 따라 서로 다른 요소가 같은 구조로 인식되는 시각적 형상과 독특한 청각적 현상을 만들어낸다. 특히 중심의 글자나 공백을 기준으로 형성되는 대칭성과 동시성은 회문의 핵심 특징으로, 동일한 글자들이 조금씩 다른 배열과 발음으로 중첩되며 다성음악과 유사한 감각을 형성한다. 이 프로젝트는 이러한 회문의 구조를 바탕으로 알파벳을 음악적 음표처럼 시각화하고, 움직임을 통해 대칭적인 구조를 형성하는 방식을 제안한다. 또한 회문을 6가지 분류 체계로 나누어 분석하며, 언어적 표현을 넘어 2D에서 3D로의 확장, 음향적 중첩, 시각적 요소의 새로운 맥락화 가능성을 탐구하고, 이를 문서·영상·프린트 매체로 아카이빙한다.",
-    thumbnail: "images/palindrome/thumb1.jpg",
+    thumbnail: "images/palindrome/thumb.mp4",
     media: [
       "col2:images/palindrome/01-1.png",
       "col2:images/palindrome/01-2.png",
@@ -325,7 +325,7 @@ const projectsData = {
       "I-MOA is a virtual museum where imaginative individuals exchange breaths of inspiration with one another. Its core artworks exist only in the digital realm, and the platform itself operates exclusively online, based on a concept that merges NFT technology with the structure of a museum. The three pillars of I-MOA—viewers, creators, and buyers—actively engage within the museum, accumulating data through their interactions. This data becomes a form of “digital pigment,” feeding back into the system and serving as inspiration for the creation of new artworks.",
     descKr:
       "I-MOA(아이모아)는 상상하는 사람들이 영감의 호흡을 주고받는 가상의 미술관이다. 주 작품은 디지털 세계에만 존재하는 아트워크이고, 플랫폼은 온라인 상에만 존재하며, NFT 기술과 미술관을 합성한 개념을 기반으로 한다. I-MOA(아이모아)의 3가지 축인 관람자, 창작자, 구매자는 미술관에서 활발히 활동하며 데이터를 쌓고, 그것은 일종의 데이터 안료가 되어 새로운 창작물의 영감을 제공한다.",
-    thumbnail: "images/imoa/thumb.jpg",
+    thumbnail: "images/imoa/thumb.mp4",
     media: [
       "full:images/imoa/01.gif",
       "full:images/imoa/04.jpg",

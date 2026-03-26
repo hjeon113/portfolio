@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,6 +21,7 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23fe0032'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="blog-overlay.css" />
   </head>
   <body>
     <script>
@@ -36,100 +37,161 @@
         });
       })();
     </script>
-    <!-- 배경 그라디언트 (모바일 fixed 지원) -->
+
     <div id="bg-gradient"></div>
 
-    <header class="mobile-header">
-      <span class="mobile-logo" onclick="showIndex()">HYEJIN JEON</span>
-      <div class="mobile-header-right">
-        <span class="mobile-about" onclick="showAbout()">About</span>
-        <span class="menu-btn" id="menuBtn" onclick="toggleMenu()">Menu</span>
+    <!-- TOP NAV — 전체 width -->
+    <header class="top-nav">
+      <span class="nav-logo" onclick="showIndex()">HYEJIN JEON</span>
+      <div class="nav-right">
+        <span class="nav-link" onclick="showBlog()">Blog</span>
+        <span class="nav-link" onclick="showAbout()">About</span>
+        <span class="nav-lang" id="langToggle" onclick="toggleLang()">EN</span>
       </div>
     </header>
 
-    <!-- Sunset Info - 좌측 하단 -->
-    <div class="sunset-info" id="sunsetInfo">
-      <span class="sunset-time" id="sunsetTime">Loading...</span>
-      <span class="sunset-location" id="sunsetLocation"></span>
-    </div>
-
-    <div class="container">
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-          <a class="logo" onclick="showIndex()">HYEJIN JEON</a>
-          <a class="about-btn" onclick="showAbout()">About</a>
+    <!-- SPLIT LAYOUT -->
+    <div class="split-layout" id="splitLayout">
+      <!-- 왼쪽 패널 -->
+      <div class="pane-left-wrap" id="paneLeft">
+        <div class="filter-wrap">
+          <div class="filter-bar" id="filterBar">
+            <span class="f-tab active" onclick="filterProjects(this, 'all')"
+              >All</span
+            >
+            <span class="f-tab" onclick="filterProjects(this, 'graphic')"
+              >Graphic</span
+            >
+            <span class="f-tab" onclick="filterProjects(this, 'identity')"
+              >Identity</span
+            >
+            <span class="f-tab" onclick="filterProjects(this, 'exp')"
+              >Experiment</span
+            >
+            <span class="f-tab" onclick="filterProjects(this, 'product')"
+              >Product</span
+            >
+            <span class="f-tab" onclick="filterProjects(this, 'motion')"
+              >Motion</span
+            >
+          </div>
         </div>
-
-        <div class="header-links">
-          <a
-            class="header-link"
-            href="https://www.linkedin.com/in/befsunset"
-            target="_blank"
-            >Linkedin</a
-          >
-          <a
-            class="header-link"
-            href="https://instagram.com/_bef_sunsetting_"
-            target="_blank"
-            >Instagram</a
-          >
-          <a
-            class="header-link"
-            href="https://www.youtube.com/@HyejinJeon-s4y"
-            target="_blank"
-            >Youtube</a
-          >
-        </div>
-
-        <nav>
-          <div class="nav-section" id="section-pro">
-            <div class="nav-title">Work Experience</div>
-            <ul class="nav-list"></ul>
-            <div class="toggle-btn" onclick="toggleSection('pro')">
-              + Show More
-            </div>
-          </div>
-          <div class="nav-section" id="section-self">
-            <div class="nav-title">Self-Initiative Project</div>
-            <ul class="nav-list"></ul>
-            <div class="toggle-btn" onclick="toggleSection('self')">
-              + Show More
-            </div>
-          </div>
-          <div class="nav-section" id="section-exp">
-            <div class="nav-title">Creative Exploration</div>
-            <ul class="nav-list"></ul>
-            <div class="toggle-btn" onclick="toggleSection('exp')">
-              + Show More
-            </div>
-          </div>
-        </nav>
-      </aside>
-
-      <main class="main" id="main">
-        <div id="index-view">
+        <div class="pane pane-left" id="paneLeftScroll">
           <div class="project-grid"></div>
-          <footer class="main-footer">
-            ©2025 Hyejin Jeon. All rights reserved.
-          </footer>
         </div>
-        <div id="project-detail" class="project-detail"></div>
+      </div>
+
+      <!-- 드래그 핸들 -->
+      <div class="divider" id="divider"></div>
+
+      <!-- 오른쪽 패널 -->
+      <div class="pane pane-right" id="paneRight">
+        <!-- 기본 상태: 선셋 카운트다운 -->
+        <div class="right-default" id="rightDefault">
+          <!-- 배경 그라디언트 영역 (flex: 1로 늘어남) -->
+          <div class="right-grad-area"></div>
+          <!-- 하단 흰 박스 -->
+          <div class="right-footer-bar">
+            <div class="sunset-count" id="rightCountdown">Loading...</div>
+            <div class="sunset-loc" id="rightLocation"></div>
+          </div>
+        </div>
+        <!-- script.js용 hidden 원본 -->
+        <div id="sunsetTime" style="display: none"></div>
+        <div id="sunsetLocation" style="display: none"></div>
+
+        <!-- 블로그 (구버전 — script_patch_additions.js가 오버레이로 대체) -->
+        <div id="blog-view" class="blog-view" style="display: none">
+          <div class="blog-list" id="blogList"></div>
+        </div>
+
+        <!-- About (구버전 — script_patch_additions.js가 오버레이로 대체) -->
         <div id="about-view" class="about-view">
           <div class="about-content">
             <div class="about-hero">
               <p class="about-email">
                 <a href="mailto:befsunset@gmail.com">befsunset@gmail.com</a>
               </p>
+              <p class="about-links">
+                <a href="https://www.linkedin.com/in/befsunset" target="_blank"
+                  >LinkedIn</a
+                >
+                <a
+                  href="https://www.instagram.com/_bef_sunsetting_"
+                  target="_blank"
+                  >Instagram</a
+                >
+              </p>
               <p class="about-intro">
                 A designer exploring relationships between systems, images, and
                 media across digital and physical environments, shaping
                 narratives through visual systems.
               </p>
-              <p class="about-tools">
-                Tools & Skills: Adobe Creative Cloud (Illustrator, Photoshop,
-                InDesign, After Effects), Figma, p5.js, Web Development, Cinema
-                4D, 3D Printing (Bambu Lab)
-              </p>
+            </div>
+            <div class="about-tags-section">
+              <!-- Skills -->
+              <div class="about-tags-row">
+                <p class="about-tags-label">Skills</p>
+                <div class="about-tags-list">
+                  <span class="about-tag">Brand Identity</span>
+                  <span class="about-tag">Print & Editorial</span>
+                  <span class="about-tag">Creative Coding</span>
+                  <span class="about-tag">Interaction design</span>
+                  <span class="about-tag">Motion Graphics</span>
+                </div>
+              </div>
+              <!-- Tools group -->
+              <div class="about-tags-group">
+                <div class="about-tags-group-label">Tools</div>
+                <div class="about-tags-group-rows">
+                  <div class="about-tags-row about-tags-row--sub">
+                    <p class="about-tags-label about-tags-label--sub">
+                      Adobe CC
+                    </p>
+                    <div class="about-tags-list">
+                      <span class="about-tag">Illustrator</span>
+                      <span class="about-tag">Photoshop</span>
+                      <span class="about-tag">InDesign</span>
+                      <span class="about-tag">After Effects</span>
+                    </div>
+                  </div>
+                  <div class="about-tags-row about-tags-row--sub">
+                    <p class="about-tags-label about-tags-label--sub">Coding</p>
+                    <div class="about-tags-list">
+                      <span class="about-tag">HTML</span>
+                      <span class="about-tag">CSS</span>
+                      <span class="about-tag">JavaScript</span>
+                      <span class="about-tag">p5.js</span>
+                    </div>
+                  </div>
+                  <div class="about-tags-row about-tags-row--sub">
+                    <p class="about-tags-label about-tags-label--sub">AI</p>
+                    <div class="about-tags-list">
+                      <span class="about-tag">Midjourney</span>
+                      <span class="about-tag">Nanobanana</span>
+                      <span class="about-tag">Claude Code</span>
+                      <span class="about-tag">Voiceflow</span>
+                    </div>
+                  </div>
+                  <div class="about-tags-row about-tags-row--sub">
+                    <p class="about-tags-label about-tags-label--sub">Other</p>
+                    <div class="about-tags-list">
+                      <span class="about-tag">Figma</span>
+                      <span class="about-tag">Cinema 4D</span>
+                      <span class="about-tag">Bambu Lab</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Interests -->
+              <div class="about-tags-row">
+                <p class="about-tags-label">Interests</p>
+                <div class="about-tags-list">
+                  <span class="about-tag">Systems Thinking</span>
+                  <span class="about-tag">Typography</span>
+                  <span class="about-tag">Generative Art</span>
+                </div>
+              </div>
             </div>
             <div class="about-sections">
               <div class="about-section">
@@ -203,13 +265,10 @@
                       <a
                         href="https://www.pratt.edu/architecture/graduate-architecture/"
                         target="_blank"
-                        >Pratt Institute
-                      </a>
+                        >Pratt Institute</a
+                      >
                     </p>
-                    <p class="sub">
-                      Graduate Assistant in Graduate Architecture, Landscape
-                      Architecture, and Urban Design
-                    </p>
+                    <p class="sub">Graduate Assistant, Architecture</p>
                   </div>
                 </div>
                 <div class="about-item">
@@ -232,13 +291,6 @@
                       >
                     </p>
                     <p class="sub">Graphic Design Assistant</p>
-                  </div>
-                </div>
-                <div class="about-item">
-                  <span class="about-date">2020</span>
-                  <div class="about-detail">
-                    <p>Ulsan Museum of Art</p>
-                    <p class="sub">Opening Symposium, Motion poster</p>
                   </div>
                 </div>
               </div>
@@ -302,7 +354,28 @@
             </div>
           </div>
         </div>
-      </main>
+        <div id="project-detail" class="project-detail"></div>
+      </div>
+    </div>
+
+    <canvas
+      id="trailCanvas"
+      style="
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+      "
+    ></canvas>
+
+    <!-- 모바일 메인 푸터 (시간 + 위치) -->
+    <div class="mobile-main-footer">
+      <div class="fp-footer-info">
+        <span class="overlay-countdown"></span>
+        <span class="fp-footer-location overlay-location"></span>
+      </div>
     </div>
 
     <!-- Lightbox -->
@@ -321,7 +394,66 @@
       <div class="lightbox-dots" id="lightbox-dots"></div>
     </div>
 
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
     <script src="projects-data.js"></script>
+    <script src="blog-data.js"></script>
     <script src="script.js"></script>
+    <script src="script_patch.js"></script>
+    <script>
+      var blogPosts = [];
+      function generateBlogList() {
+        var list = document.getElementById("blogList");
+        if (!list) return;
+        list.innerHTML = blogPosts.length
+          ? blogPosts
+              .map(function (p) {
+                return (
+                  '<div class="blog-row"><span class="blog-date">' +
+                  p.date +
+                  '</span><span class="blog-title">' +
+                  p.title +
+                  '</span><span class="blog-arrow">→</span></div>'
+                );
+              })
+              .join("")
+          : '<p class="blog-empty">Coming soon.</p>';
+      }
+
+      // ---- DIVIDER DRAG ----
+      (function () {
+        var divider = document.getElementById("divider");
+        var wrap = document.getElementById("paneLeft");
+        var layout = document.getElementById("splitLayout");
+        var dragging = false;
+
+        divider.addEventListener("mousedown", function (e) {
+          e.preventDefault();
+          dragging = true;
+          document.body.style.userSelect = "none";
+          document.body.style.cursor = "col-resize";
+        });
+
+        document.addEventListener("mousemove", function (e) {
+          if (!dragging) return;
+          var rect = layout.getBoundingClientRect();
+          var pct = ((e.clientX - rect.left) / rect.width) * 100;
+          pct = Math.max(25, Math.min(75, pct));
+          wrap.style.width = pct + "%";
+          if (typeof checkPaneWidths === "function") checkPaneWidths();
+        });
+
+        document.addEventListener("mouseup", function () {
+          if (!dragging) return;
+          dragging = false;
+          document.body.style.userSelect = "";
+          document.body.style.cursor = "";
+          if (typeof checkPaneWidths === "function") checkPaneWidths();
+          if (typeof clearTrailCanvas === "function") clearTrailCanvas();
+        });
+      })();
+    </script>
   </body>
 </html>
