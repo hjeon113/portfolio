@@ -32,7 +32,7 @@
 :root {
   --text: #000;
   --text-hover: #fe0032;
-  --gap: 6px;
+  --gap: 10px;
   --nav-h: 44px;
 }
 
@@ -503,6 +503,18 @@ a {
   background: #000;
   grid-column: span 12;
   position: relative;
+  overflow: hidden;
+}
+.media-item img,
+.media-item > video {
+  filter: blur(12px);
+  transform: scale(1.03);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+.media-item.loaded img,
+.media-item.loaded > video {
+  filter: none;
+  transform: none;
 }
 .media-item.full {
   grid-column: 1/-1;

@@ -5,7 +5,6 @@
 // ============================================
 
 var keys = [];
-var sectionStates = { self: false, pro: false, exp: false };
 
 // 시간대별 배경색 설정 - 실시간 하늘 색상
 var weatherData = {
@@ -497,7 +496,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (typeof projectsData !== "undefined") {
     keys = Object.keys(projectsData);
-    generateSidebar();
     generateProjectGrid();
     shuffleProjectCards();
     handleUrl(); // 초기 URL 처리
@@ -552,60 +550,6 @@ window.addEventListener("popstate", function () {
   handleUrl();
 });
 
-// 사이드바 자동 생성
-function generateSidebar() {
-  var categories = {
-    work: { id: "section-pro", stateKey: "pro" },
-    self: { id: "section-self", stateKey: "self" },
-    exp: { id: "section-exp", stateKey: "exp" },
-  };
-
-  for (var cat in categories) {
-    var config = sidebarConfig[cat];
-    var section = document.getElementById(categories[cat].id);
-    if (!section) continue;
-
-    var navList = section.querySelector(".nav-list");
-    var toggleBtn = section.querySelector(".toggle-btn");
-
-    // 해당 카테고리 프로젝트 필터링
-    var projects = [];
-    for (var id in projectsData) {
-      if (projectsData[id].category === cat) {
-        projects.push({ id: id, data: projectsData[id] });
-      }
-    }
-
-    // 네비게이션 아이템 생성
-    navList.innerHTML = "";
-    projects.forEach(function (p, index) {
-      var li = document.createElement("li");
-      li.className = "nav-item";
-      li.setAttribute("data-index", index);
-      li.setAttribute("data-project", p.id);
-
-      if (index >= config.showCount) {
-        li.classList.add("hidden");
-      }
-
-      li.innerHTML =
-        p.data.titleEn + '<span class="kr">' + p.data.titleKr + "</span>";
-
-      li.addEventListener("click", function () {
-        showProject(this.getAttribute("data-project"));
-      });
-
-      navList.appendChild(li);
-    });
-
-    // 토글 버튼 표시/숨김
-    if (projects.length > config.showCount) {
-      toggleBtn.style.display = "block";
-    } else {
-      toggleBtn.style.display = "none";
-    }
-  }
-}
 
 // 프로젝트 그리드 자동 생성
 function generateProjectGrid() {
@@ -758,31 +702,6 @@ function generateProjectGrid() {
   }
 }
 
-// 토글 섹션
-function toggleSection(section) {
-  var sectionMap = {
-    pro: "section-pro",
-    self: "section-self",
-    exp: "section-exp",
-  };
-  var sectionEl = document.getElementById(sectionMap[section]);
-  if (!sectionEl) return;
-
-  var items = sectionEl.querySelectorAll(".nav-item[data-index]");
-  var btn = sectionEl.querySelector(".toggle-btn");
-  var catMap = { pro: "work", self: "self", exp: "exp" };
-  var showCount = sidebarConfig[catMap[section]].showCount;
-
-  sectionStates[section] = !sectionStates[section];
-
-  items.forEach(function (item, i) {
-    if (i >= showCount) {
-      item.classList.toggle("hidden", !sectionStates[section]);
-    }
-  });
-
-  btn.textContent = sectionStates[section] ? "− Show Less" : "+ Show More";
-}
 
 // 모든 비디오 정지
 function stopAllVideos() {
@@ -907,16 +826,19 @@ function showProject(id, skipHistory) {
       if (isGif) m = m.replace("gif:", "");
 
       function mediaTag(src, asGif) {
+        var onload = "this.closest('.media-item').classList.add('loaded')";
         if (src.match(/\.(mp4|webm|mov)$/i)) {
           return asGif
             ? '<video src="' +
                 src +
-                '" autoplay loop muted playsinline preload="metadata"></video>'
+                '" autoplay loop muted playsinline preload="auto" onloadeddata="' + onload + '"></video>'
             : '<video src="' +
                 src +
-                '" controls playsinline preload="metadata"></video>';
+                '" controls playsinline preload="auto" onloadeddata="' + onload + '"></video>';
         }
-        return '<img src="' + src + '" alt="">';
+        var dim = (typeof imageDims !== "undefined") && imageDims[src];
+        var wh = dim ? ' width="' + dim[0] + '" height="' + dim[1] + '"' : '';
+        return '<img src="' + src + '" alt=""' + wh + ' onload="' + onload + '">';
       }
 
       if (
