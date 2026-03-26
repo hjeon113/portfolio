@@ -16,13 +16,14 @@
 // └── ...
 //
 // * 이미지는 원본 비율 그대로 표시됩니다
+// * category: graphic / identity / exp / product / motion
 //
 // ============================================
 
 const projectsData = {
   // ========== Work Experience ==========
   "descente-social": {
-    category: "work", // work, self, exp 중 선택
+    category: "graphic",
     titleEn: "Descente SNS Promotion Design",
     titleKr: "데상트 SNS 프로모션 디자인",
     date: "2025.03-08",
@@ -50,7 +51,7 @@ const projectsData = {
   },
   /*
   "descente-exhibition": {
-    category: "work",
+    category: "graphic",
     titleEn: "Descente Seasonal Exhibition",
     titleKr: "데상트 시즌 기획전",
     date: "2025.05",
@@ -66,7 +67,7 @@ const projectsData = {
   },
   */
   "collection-renewal": {
-    category: "work",
+    category: "graphic",
     titleEn: "The Collection Renewal",
     titleKr: "더 컬렉션 리뉴얼",
     date: "2024.05",
@@ -97,7 +98,7 @@ const projectsData = {
     ],
   },
   "galleria-2023": {
-    category: "work",
+    category: "graphic",
     titleEn: "Galleria 2023 E-Day",
     titleKr: "갤러리아 2023 하반기 E-DAY",
     date: "2023.08",
@@ -134,7 +135,7 @@ const projectsData = {
     ],
   },
   "iap-residency": {
-    category: "work",
+    category: "graphic",
     titleEn: "IAP Residency 《VITA NOVA_New Life》",
     titleKr: "IAP 레지던시 《비타 노바_새로운 삶》",
     date: "2022",
@@ -165,7 +166,7 @@ const projectsData = {
     ],
   },
   "jade-sujin-lee": {
-    category: "work",
+    category: "graphic",
     titleEn: "Jade Sujin Lee 《CHANGE OR TRANS-HIKING》",
     titleKr: "이수진 《돌과 유리 하이킹》",
     date: "2022",
@@ -191,7 +192,7 @@ const projectsData = {
 
   // ========== Self-Initiative Project ==========
   "other-islands": {
-    category: "self",
+    category: "graphic",
     titleEn: "Other islands Book Fair 2026 (Proposal)",
     titleKr: "아더 아일랜즈 북페어 2026 (제안안)",
     date: "2025.11",
@@ -225,7 +226,7 @@ const projectsData = {
     ],
   },
   "digital-religion": {
-    category: "self",
+    category: "graphic",
     titleEn: "Digital Religion Bible",
     titleKr: "디지털 종교 교리서",
     date: "2022.02",
@@ -250,7 +251,7 @@ const projectsData = {
     ],
   },
   "language-contagion": {
-    category: "self",
+    category: "graphic",
     titleEn: "Language Contagion",
     titleKr: "언어전염",
     date: "2022.02",
@@ -273,7 +274,7 @@ const projectsData = {
     ],
   },
   palindrome: {
-    category: "self",
+    category: "graphic",
     titleEn: "Palindrome s emordnilaP",
     titleKr: "회문-문회",
     date: "2024.11",
@@ -312,7 +313,7 @@ const projectsData = {
     ],
   },
   imoa: {
-    category: "self",
+    category: "graphic",
     titleEn: "Intangible Museum Of Art (I-MOA)",
     titleKr: "아이모아",
     date: "2022.02",
@@ -344,7 +345,7 @@ const projectsData = {
     ],
   },
   ilmin: {
-    category: "self",
+    category: "graphic",
     titleEn: "Ilmin Museum of Art Rebranding (Proposal)",
     titleKr: "일민미술관 리브랜딩 (제안안)",
     date: "2020.06",
@@ -376,7 +377,7 @@ const projectsData = {
     ],
   },
   "running-back": {
-    category: "self",
+    category: "graphic",
     titleEn: "Running Back Again",
     titleKr: "회문 사전",
     date: "2020.01",
@@ -419,7 +420,7 @@ const projectsData = {
       "The text <i>Rise Above the Hype</i> examines how emerging technologies such as AI are shaped by cycles of hype—an amplified state of expectation driven by repetition, speed, and collective attention. In these cycles, anticipation accelerates faster than our ability to critically engage, reducing the distance needed for reflection and judgment. The text suggests that the issue lies not in the technology itself, but in how we perceive, adopt, and respond to it. From this text, I selected seven sentences that capture this condition. Hype Slider is an interactive work built on these fragments. As the slider moves, the text becomes compressed and intensified until it begins to collapse. This process translates the mechanics of hype into a visual experience, where repetition and acceleration overwhelm meaning and erode interpretive distance.",
     descKr:
       "〈Rise Above the Hype〉는 AI와 같은 새로운 기술이 하이프의 흐름 속에서 형성되는 방식을 다룬다. 여기서 하이프는 반복, 속도, 그리고 집단적 관심에 의해 기대가 과도하게 증폭되는 상태를 의미한다. 이러한 흐름 속에서 우리는 비판적으로 사고할 시간보다 더 빠르게 반응하게 되고, 해석과 판단을 위한 거리를 점점 잃게 된다. 이 글은 문제를 기술 자체가 아니라, 그것을 인식하고 받아들이는 우리의 태도에서 찾는다. 이 텍스트에서 이러한 상태를 드러내는 7개의 문장을 선별했다. Hype Slider는 이 문장들을 기반으로 한 인터랙티브 작업이다. 슬라이더를 움직일수록 텍스트는 점점 압축되고 증폭되다가 결국 형태가 붕괴된다. 이 과정은 하이프의 작동 방식이 어떻게 의미를 압도하고 해석의 거리를 사라지게 만드는지를 시각적으로 드러낸다.",
-    thumbnail: "images/hypeslider/thumb.png",
+    thumbnail: "images/hypeslider/thumb.mov",
     media: [
       "iframe:https://hjeon113.github.io/HypeSlider/::Move the hype slider to interact",
       "full:images/hypeslider/02.png",

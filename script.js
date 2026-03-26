@@ -671,13 +671,6 @@ function generateProjectGrid() {
     scroll: [["Experiment", "tag-exp"]],
     "digital-error": [["Experiment", "tag-exp"]],
   };
-  var catAttrMap = {
-    work: "graphic",
-    self: "graphic",
-    exp: "exp",
-    graphic: "graphic",
-    product: "product",
-  };
 
   // 썸네일 비디오 IntersectionObserver
   if ("IntersectionObserver" in window) {
@@ -711,11 +704,11 @@ function generateProjectGrid() {
     var article = document.createElement("article");
     article.className = "project-card";
     article.setAttribute("data-project", id);
-    article.setAttribute("data-category", catAttrMap[p.category] || p.category);
+    article.setAttribute("data-category", p.category);
 
     var thumbnailHtml = "";
     if (p.thumbnail) {
-      if (p.thumbnail.match(/\.mp4$/i)) {
+      if (p.thumbnail.match(/\.(mp4|mov)$/i)) {
         thumbnailHtml =
           '<video src="' +
           p.thumbnail +
