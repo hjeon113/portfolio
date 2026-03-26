@@ -888,7 +888,7 @@ function showProject(id, skipHistory) {
     .join("");
 
   var titleHtml = p.titleLink
-    ? '<a href="' + p.titleLink + '" target="_blank">' + p.titleEn + "</a>"
+    ? '<a href="' + p.titleLink + '" target="_blank" rel="noopener">' + p.titleEn + "</a>"
     : p.titleEn;
 
   var detail = document.getElementById("project-detail");
