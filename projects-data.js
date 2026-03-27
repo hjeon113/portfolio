@@ -16,14 +16,13 @@
 // └── ...
 //
 // * 이미지는 원본 비율 그대로 표시됩니다
-// * category: graphic / identity / exp / product / motion
+// * 태그는 script.js의 categoryTags에서 관리
 //
 // ============================================
 
 const projectsData = {
   // ========== Work Experience ==========
   "descente-social": {
-    category: "graphic",
     titleEn: "Descente SNS Promotion Design",
     titleKr: "데상트 SNS 프로모션 디자인",
     date: "2025.03-08",
@@ -51,7 +50,7 @@ const projectsData = {
   },
   /*
   "descente-exhibition": {
-    category: "graphic",
+
     titleEn: "Descente Seasonal Exhibition",
     titleKr: "데상트 시즌 기획전",
     date: "2025.05",
@@ -67,7 +66,6 @@ const projectsData = {
   },
   */
   "collection-renewal": {
-    category: "graphic",
     titleEn: "The Collection Renewal",
     titleKr: "더 컬렉션 리뉴얼",
     date: "2024.05",
@@ -98,7 +96,6 @@ const projectsData = {
     ],
   },
   "galleria-2023": {
-    category: "graphic",
     titleEn: "Galleria 2023 E-Day",
     titleKr: "갤러리아 2023 하반기 E-DAY",
     date: "2023.08",
@@ -135,7 +132,6 @@ const projectsData = {
     ],
   },
   "iap-residency": {
-    category: "graphic",
     titleEn: "IAP Residency 《VITA NOVA_New Life》",
     titleKr: "IAP 레지던시 《비타 노바_새로운 삶》",
     date: "2022",
@@ -166,7 +162,6 @@ const projectsData = {
     ],
   },
   "jade-sujin-lee": {
-    category: "graphic",
     titleEn: "Jade Sujin Lee 《CHANGE OR TRANS-HIKING》",
     titleKr: "이수진 《돌과 유리 하이킹》",
     date: "2022",
@@ -192,7 +187,6 @@ const projectsData = {
 
   // ========== Self-Initiative Project ==========
   "other-islands": {
-    category: "graphic",
     titleEn: "Other islands Book Fair 2026 (Proposal)",
     titleKr: "아더 아일랜즈 북페어 2026 (제안안)",
     date: "2025.11",
@@ -226,7 +220,6 @@ const projectsData = {
     ],
   },
   "digital-religion": {
-    category: "graphic",
     titleEn: "Digital Religion Bible",
     titleKr: "디지털 종교 교리서",
     date: "2022.02",
@@ -251,7 +244,6 @@ const projectsData = {
     ],
   },
   "language-contagion": {
-    category: "graphic",
     titleEn: "Language Contagion",
     titleKr: "언어전염",
     date: "2022.02",
@@ -274,7 +266,6 @@ const projectsData = {
     ],
   },
   palindrome: {
-    category: "graphic",
     titleEn: "Palindrome s emordnilaP",
     titleKr: "회문-문회",
     date: "2024.11",
@@ -313,7 +304,6 @@ const projectsData = {
     ],
   },
   imoa: {
-    category: "graphic",
     titleEn: "Intangible Museum Of Art (I-MOA)",
     titleKr: "아이모아",
     date: "2022.02",
@@ -321,7 +311,7 @@ const projectsData = {
     advisor: "SeonA Kim (임선아)",
     collaborator: "Hyuntaek Oh (오현택)",
     award:
-      '<a href="https://www.cqjournal.com/gallery/67/gallery/oh-hyeon-taek-83511-01" target="_blank">Creative Quarterly Issue 67</a>, Graphic design, Finalist',
+      '<a href="https://www.cqjournal.com/gallery/67/gallery/oh-hyeon-taek-83511-01" target="_blank">Creative quarterly Issue 67</a>, Graphic design, Finalist',
     descEn:
       "I-MOA is a virtual museum where imaginative individuals exchange breaths of inspiration with one another. Its core artworks exist only in the digital realm, and the platform itself operates exclusively online, based on a concept that merges NFT technology with the structure of a museum. The three pillars of I-MOA—viewers, creators, and buyers—actively engage within the museum, accumulating data through their interactions. This data becomes a form of “digital pigment,” feeding back into the system and serving as inspiration for the creation of new artworks.",
     descKr:
@@ -345,7 +335,6 @@ const projectsData = {
     ],
   },
   ilmin: {
-    category: "graphic",
     titleEn: "Ilmin Museum of Art Rebranding (Proposal)",
     titleKr: "일민미술관 리브랜딩 (제안안)",
     date: "2020.06",
@@ -377,7 +366,6 @@ const projectsData = {
     ],
   },
   "running-back": {
-    category: "graphic",
     titleEn: "Running Back Again",
     titleKr: "회문 사전",
     date: "2020.01",
@@ -408,7 +396,6 @@ const projectsData = {
 
   // ========== Experiment ==========
   "hype-slider": {
-    category: "exp",
     titleEn: "Hype Slider",
     titleLink: "https://hjeon113.github.io/HypeSlider/",
     titleKr: "하입 슬라이더",
@@ -420,9 +407,12 @@ const projectsData = {
       "The text <i>Rise Above the Hype</i> examines how emerging technologies such as AI are shaped by cycles of hype—an amplified state of expectation driven by repetition, speed, and collective attention. In these cycles, anticipation accelerates faster than our ability to critically engage, reducing the distance needed for reflection and judgment. The text suggests that the issue lies not in the technology itself, but in how we perceive, adopt, and respond to it. From this text, I selected seven sentences that capture this condition. Hype Slider is an interactive work built on these fragments. As the slider moves, the text becomes compressed and intensified until it begins to collapse. This process translates the mechanics of hype into a visual experience, where repetition and acceleration overwhelm meaning and erode interpretive distance.",
     descKr:
       "〈Rise Above the Hype〉는 AI와 같은 새로운 기술이 하이프의 흐름 속에서 형성되는 방식을 다룬다. 여기서 하이프는 반복, 속도, 그리고 집단적 관심에 의해 기대가 과도하게 증폭되는 상태를 의미한다. 이러한 흐름 속에서 우리는 비판적으로 사고할 시간보다 더 빠르게 반응하게 되고, 해석과 판단을 위한 거리를 점점 잃게 된다. 이 글은 문제를 기술 자체가 아니라, 그것을 인식하고 받아들이는 우리의 태도에서 찾는다. 이 텍스트에서 이러한 상태를 드러내는 7개의 문장을 선별했다. Hype Slider는 이 문장들을 기반으로 한 인터랙티브 작업이다. 슬라이더를 움직일수록 텍스트는 점점 압축되고 증폭되다가 결국 형태가 붕괴된다. 이 과정은 하이프의 작동 방식이 어떻게 의미를 압도하고 해석의 거리를 사라지게 만드는지를 시각적으로 드러낸다.",
-    thumbnail: "images/hypeslider/thumb.mov",
+    thumbnail: "images/hypeslider/thumb.mp4",
     media: [
       "iframe:https://hjeon113.github.io/HypeSlider/::Move the hype slider to interact",
+      "col3:images/hypeslider/01-1.png",
+      "col3:images/hypeslider/01-2.png",
+      "col3:images/hypeslider/01-3.png",
       "full:images/hypeslider/02.webp",
       "full:images/hypeslider/03.webp",
       "full:images/hypeslider/04.webp",
@@ -433,7 +423,6 @@ const projectsData = {
     ],
   },
   "gesture-archive": {
-    category: "exp",
     titleEn: "Gesture Archive",
     titleLink: "https://hjeon113.github.io/handDrawing/",
     titleKr: "제스쳐 아카이브",
@@ -457,7 +446,6 @@ const projectsData = {
     ],
   },
   scroll: {
-    category: "exp",
     titleEn: "City of frames",
     titleLink: "",
     titleKr: "프레임의 세계",
@@ -477,7 +465,6 @@ const projectsData = {
     ],
   },
   "digital-error": {
-    category: "exp",
     titleEn: "Discrepancy of Red",
     titleKr: "빨간색의 불일치",
     date: "2024.12",
@@ -499,4 +486,19 @@ const projectsData = {
       "col2:images/digital-error/04-2.webp",
     ],
   },
+  /*
+  "question-imagination": {
+    titleEn: "Questions for people with imagination malnutrition",
+    titleKr: "상상력 결핍의 사람들에게 던지는 질문",
+    date: "2023.03",
+    medium: "",
+    area: "",
+    advisor: "",
+    collaborator: "",
+    descEn: "",
+    descKr: "",
+    thumbnail: "images/question-imagination/thumb.mp4",
+    media: ["full:images/question-imagination/01.mp4"],
+  },
+  */
 };

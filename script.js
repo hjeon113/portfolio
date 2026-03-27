@@ -614,6 +614,10 @@ function generateProjectGrid() {
     "gesture-archive": [["Experiment", "tag-exp"]],
     scroll: [["Experiment", "tag-exp"]],
     "digital-error": [["Experiment", "tag-exp"]],
+    "question-imagination": [
+      ["Graphic", "tag-graphic"],
+      ["Motion", "tag-motion"],
+    ],
   };
 
   // 썸네일 비디오 IntersectionObserver
@@ -648,7 +652,7 @@ function generateProjectGrid() {
     var article = document.createElement("article");
     article.className = "project-card";
     article.setAttribute("data-project", id);
-    article.setAttribute("data-category", p.category);
+
 
     var thumbnailHtml = "";
     if (p.thumbnail) {
@@ -890,6 +894,9 @@ function showProject(id, skipHistory) {
   var titleHtml = p.titleLink
     ? '<a href="' + p.titleLink + '" target="_blank" rel="noopener">' + p.titleEn + "</a>"
     : p.titleEn;
+  var titleKrHtml = p.titleLink
+    ? '<a href="' + p.titleLink + '" target="_blank" rel="noopener">' + p.titleKr + "</a>"
+    : p.titleKr;
 
   var detail = document.getElementById("project-detail");
   if (!detail) return;
@@ -906,7 +913,7 @@ function showProject(id, skipHistory) {
     titleHtml +
     "</h1>" +
     '<div class="drawer-title-kr kr">' +
-    p.titleKr +
+    titleKrHtml +
     "</div>" +
     "</div>" +
     '<span class="drawer-btn">↑</span>' +
@@ -945,7 +952,7 @@ function showProject(id, skipHistory) {
       : "") +
     (p.advisor
       ? '<div class="meta-row"><div class="meta-label">' +
-        (p.category === "work" ? "Art Direction" : "Advisor") +
+        "Advisor" +
         "</div><div>" +
         p.advisor +
         "</div></div>"

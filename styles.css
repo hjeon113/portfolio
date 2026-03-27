@@ -413,11 +413,13 @@ a {
   font-weight: 600;
   margin: 0;
 }
-.drawer-title a {
+.drawer-title a,
+.drawer-title-kr a {
   color: inherit;
   text-decoration: underline;
 }
-.drawer-title a:hover {
+.drawer-title a:hover,
+.drawer-title-kr a:hover {
   color: var(--text-hover);
 }
 .drawer-title-kr {
