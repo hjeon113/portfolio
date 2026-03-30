@@ -249,7 +249,6 @@ a {
   background: #e8e8e8;
   overflow: hidden;
   width: 100%;
-  min-height: 80px;
 }
 .project-thumbnail img,
 .project-thumbnail video {
@@ -257,7 +256,14 @@ a {
   height: auto;
   display: block;
   border: 0.5px solid #ccc;
-  transition: opacity 0.35s ease;
+  filter: blur(10px);
+  transform: scale(1.04);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+.project-thumbnail.loaded img,
+.project-thumbnail.loaded video {
+  filter: none;
+  transform: none;
 }
 
 .project-card-info {
@@ -576,6 +582,15 @@ a {
   border: 0.5px solid #ccc;
   box-sizing: border-box;
 }
+.media-item > video {
+  aspect-ratio: 16 / 9;
+}
+.media-item.loaded > video {
+  aspect-ratio: auto;
+}
+.media-item:not(.loaded) > video {
+  border-color: transparent;
+}
 .media-item video[controls] {
   cursor: pointer;
 }
@@ -775,11 +790,6 @@ a {
   gap: 2px 20px;
   padding: 10px 0;
   font-size: 0.9rem;
-}
-.about-item-date {
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 0.85rem;
-  white-space: nowrap;
 }
 .about-date {
   color: rgba(0, 0, 0, 0.5);

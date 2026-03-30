@@ -87,7 +87,16 @@ function updateBackgroundByTime() {
 
   // bg-gradient div가 있으면 그걸 사용, 없으면 html에 직접 적용
   if (bgEl) {
-    bgEl.style.background = gradient;
+    // 첫 적용 시 transition 없이 즉시 적용
+    if (!window._bgFirstApply) {
+      bgEl.style.transition = "none";
+      bgEl.style.background = gradient;
+      bgEl.offsetHeight; // force reflow
+      bgEl.style.transition = "";
+      window._bgFirstApply = true;
+    } else {
+      bgEl.style.background = gradient;
+    }
   } else {
     document.documentElement.style.transition = "background 1s ease";
     document.documentElement.style.background = gradient;
@@ -485,6 +494,7 @@ function updateSunsetDisplay() {
 // 페이지 로드 시 초기화
 document.addEventListener("DOMContentLoaded", function () {
   // 로딩 시 배경 흰색으로 리셋 (캐시된 이전 그라디언트 제거)
+  window._bgFirstApply = false;
   var bgEl = document.getElementById("bg-gradient");
   if (bgEl) {
     bgEl.style.background = "#ffffff";
@@ -524,7 +534,12 @@ window.addEventListener("pageshow", function (event) {
     }
     var timeEl = document.getElementById("sunsetTime");
     if (timeEl) timeEl.textContent = "Loading...";
+    window._bgFirstApply = false;
     initSunsetCountdown();
+    // bfcache 복원 시 autoplay 비디오 재시작
+    document.querySelectorAll("video[autoplay]").forEach(function (v) {
+      v.play().catch(function () {});
+    });
   }
 });
 
@@ -627,7 +642,12 @@ function generateProjectGrid() {
         entries.forEach(function (entry) {
           var v = entry.target;
           if (entry.isIntersecting) {
-            v.play().catch(function () {});
+            v.play().catch(function () {
+              v.addEventListener("canplay", function h() {
+                v.removeEventListener("canplay", h);
+                v.play().catch(function () {});
+              });
+            });
           } else {
             v.pause();
           }
@@ -657,13 +677,23 @@ function generateProjectGrid() {
     var thumbnailHtml = "";
     if (p.thumbnail) {
       if (p.thumbnail.match(/\.(mp4|mov)$/i)) {
+        var posterPath = p.thumbnail.replace(/\.(mp4|mov)$/i, ".webp");
+        var posterDim = (typeof imageDims !== "undefined") && imageDims[posterPath];
+        var thumbWH = posterDim ? ' width="' + posterDim[0] + '" height="' + posterDim[1] + '"' : '';
         thumbnailHtml =
           '<video src="' +
           p.thumbnail +
-          '" autoplay loop muted playsinline></video>';
+          '" poster="' +
+          posterPath +
+          '"' + thumbWH +
+          ' autoplay loop muted playsinline webkit-playsinline preload="auto"' +
+          ' onloadeddata="this.closest(\'.project-thumbnail\').classList.add(\'loaded\')"></video>';
       } else {
+        var thumbDim = (typeof imageDims !== "undefined") && imageDims[p.thumbnail];
+        var thumbWH = thumbDim ? ' width="' + thumbDim[0] + '" height="' + thumbDim[1] + '"' : '';
         thumbnailHtml =
-          '<img src="' + p.thumbnail + '" alt="' + p.titleEn + '">';
+          '<img src="' + p.thumbnail + '" alt="' + p.titleEn + '"' + thumbWH +
+          ' onload="this.closest(\'.project-thumbnail\').classList.add(\'loaded\')">';
       }
     }
 
@@ -696,11 +726,15 @@ function generateProjectGrid() {
     var thumbVideo = article.querySelector(".project-thumbnail video");
     if (thumbVideo) {
       thumbVideo.muted = true;
-      thumbVideo.load();
       if (window._thumbObserver) {
         window._thumbObserver.observe(thumbVideo);
       } else {
-        thumbVideo.play().catch(function () {});
+        thumbVideo.play().catch(function () {
+          thumbVideo.addEventListener("canplay", function h() {
+            thumbVideo.removeEventListener("canplay", h);
+            thumbVideo.play().catch(function () {});
+          });
+        });
       }
     }
   }

@@ -404,25 +404,6 @@
     <script src="script.js"></script>
     <script src="script_patch.js"></script>
     <script>
-      var blogPosts = [];
-      function generateBlogList() {
-        var list = document.getElementById("blogList");
-        if (!list) return;
-        list.innerHTML = blogPosts.length
-          ? blogPosts
-              .map(function (p) {
-                return (
-                  '<div class="blog-row"><span class="blog-date">' +
-                  p.date +
-                  '</span><span class="blog-title">' +
-                  p.title +
-                  '</span><span class="blog-arrow">→</span></div>'
-                );
-              })
-              .join("")
-          : '<p class="blog-empty">Coming soon.</p>';
-      }
-
       // ---- DIVIDER DRAG ----
       (function () {
         var divider = document.getElementById("divider");
