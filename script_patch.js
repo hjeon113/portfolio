@@ -86,6 +86,8 @@
     // split-layout 숨겨서 오버레이 뒤로 비치지 않게
     var sl = document.getElementById("splitLayout");
     if (sl) sl.style.visibility = "hidden";
+    var dw = document.getElementById("detailDrawer");
+    if (dw) dw.style.visibility = "hidden";
   }
 
   function closeOverlayById(id) {
@@ -102,6 +104,8 @@
       // split-layout 복원
       var sl = document.getElementById("splitLayout");
       if (sl) sl.style.visibility = "";
+      var dw = document.getElementById("detailDrawer");
+      if (dw) dw.style.visibility = "";
     }
     if (typeof clearTrailCanvas === "function") clearTrailCanvas();
   }

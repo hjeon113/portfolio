@@ -386,21 +386,24 @@ a {
   background: #fff;
   border-top: 1.2px solid rgba(0, 0, 0, 0.1);
   z-index: 10;
-  overflow: hidden;
-  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 64px;
+  display: grid;
+  grid-template-rows: auto 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .detail-drawer.open {
-  max-height: 100vh;
+  grid-template-rows: auto 1fr;
   overflow-y: auto;
 }
 .detail-drawer-body {
   opacity: 0;
+  overflow: hidden;
   transition: opacity 0.3s ease 0.1s;
-  padding: 0 20px 16px;
+  padding: 0 20px;
+  min-height: 0;
 }
 .detail-drawer.open .detail-drawer-body {
   opacity: 1;
+  padding-bottom: 16px;
 }
 .detail-drawer-toggle {
   cursor: pointer;
@@ -1171,11 +1174,7 @@ a {
   /* 디테일 drawer: footer 바로 위에 붙게 */
   .detail-drawer {
     bottom: 50px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    max-height: 51px;
-  }
-  .detail-drawer.open {
-    max-height: 100vh;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.12);
   }
   .detail-drawer-toggle {
     padding: 14px 20px;
@@ -1263,6 +1262,6 @@ a {
     align-items: stretch;
     z-index: 100;
     pointer-events: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.12);
   }
 }
