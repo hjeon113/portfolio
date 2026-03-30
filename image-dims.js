@@ -72,6 +72,7 @@ const imageDims = {
   "images/hypeslider/08.webp":[3840,1918],
   "images/hypeslider/thumb.webp":[1918,1918],
   "images/ilmin/01.webp":[3357,2238],
+  "images/ilmin/04-1.webp":[1357,1920],
   "images/ilmin/04-2.webp":[1357,1920],
   "images/ilmin/06-1.webp":[1920,1079],
   "images/ilmin/06-2.webp":[1305,1847],
