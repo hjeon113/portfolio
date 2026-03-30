@@ -1140,9 +1140,16 @@ a {
     inset: 0 !important;
     top: var(--nav-h) !important;
     z-index: 500 !important;
-    background: #fff !important;
+    background: transparent !important;
     overflow-y: auto !important;
     display: none;
+    visibility: hidden;
+  }
+
+  /* detail/about/blog 열렸을 때 그리드(카드)만 숨겨서 bg-gradient만 비치게 */
+  body:has(#project-detail.visible) .pane-left-wrap,
+  body:has(#about-overlay.visible) .pane-left-wrap,
+  body:has(#blog-overlay.visible) .pane-left-wrap {
     visibility: hidden;
   }
   #project-detail.visible {
@@ -1159,6 +1166,19 @@ a {
   }
   .project-card {
     margin-bottom: 8px;
+  }
+
+  /* 디테일 drawer: footer 바로 위에 붙게 */
+  .detail-drawer {
+    bottom: 50px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    max-height: 51px;
+  }
+  .detail-drawer.open {
+    max-height: 100vh;
+  }
+  .detail-drawer-toggle {
+    padding: 14px 20px;
   }
 
   /* 상세 컨텐츠 */
@@ -1243,5 +1263,6 @@ a {
     align-items: stretch;
     z-index: 100;
     pointer-events: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 }
