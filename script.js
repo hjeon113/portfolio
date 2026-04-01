@@ -427,6 +427,20 @@ async function initSunsetCountdown() {
     console.error("Sunset data error:", error);
     var locationEl = document.getElementById("sunsetLocation");
     if (locationEl) locationEl.textContent = "";
+
+    // API 실패 시에도 기본 일출/일몰로 그라디언트 적용
+    if (!sunsetData.sunset || !sunsetData.sunrise) {
+      var today = new Date();
+      // NYC 기준 대략적인 일출 6:30, 일몰 19:30
+      sunsetData.sunrise = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 6, 30);
+      sunsetData.sunset = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 19, 30);
+      var tmr = new Date(today);
+      tmr.setDate(tmr.getDate() + 1);
+      sunsetData.tomorrowSunrise = new Date(tmr.getFullYear(), tmr.getMonth(), tmr.getDate(), 6, 30);
+      sunsetData.tomorrowSunset = new Date(tmr.getFullYear(), tmr.getMonth(), tmr.getDate(), 19, 30);
+      updateBackgroundByTime();
+      setInterval(updateBackgroundByTime, 30000);
+    }
   }
 }
 
@@ -542,6 +556,27 @@ window.addEventListener("pageshow", function (event) {
     });
   }
 });
+
+// 인앱 브라우저 autoplay 차단 우회: 첫 터치/스크롤 시 모든 멈춘 비디오 재생
+(function () {
+  function playAllPaused() {
+    document.querySelectorAll("video[autoplay]").forEach(function (v) {
+      if (v.paused) {
+        v.muted = true;
+        v.play().catch(function () {});
+      }
+    });
+    // 한 번만 실행
+    document.removeEventListener("touchstart", playAllPaused, true);
+    document.removeEventListener("touchend", playAllPaused, true);
+    document.removeEventListener("scroll", playAllPaused, true);
+    document.removeEventListener("click", playAllPaused, true);
+  }
+  document.addEventListener("touchstart", playAllPaused, true);
+  document.addEventListener("touchend", playAllPaused, true);
+  document.addEventListener("scroll", playAllPaused, true);
+  document.addEventListener("click", playAllPaused, true);
+})();
 
 // URL 해시 처리
 function handleUrl() {
@@ -735,6 +770,11 @@ function generateProjectGrid() {
             thumbVideo.play().catch(function () {});
           });
         });
+      }
+      // 인앱 브라우저(인스타 등)에서 autoplay 차단 시 터치로 강제 재생
+      if (thumbVideo.paused) {
+        window._pendingVideos = window._pendingVideos || [];
+        window._pendingVideos.push(thumbVideo);
       }
     }
   }

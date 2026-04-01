@@ -1264,4 +1264,8 @@ a {
     pointer-events: none;
     border-top: 0.5px solid rgba(0, 0, 0, 0.12);
   }
+
+  .media-item.media-iframe {
+    padding-bottom: 140%;
+  }
 }
