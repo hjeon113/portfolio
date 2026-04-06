@@ -27,7 +27,7 @@ const projectsData = {
     titleKr: "데상트 SNS 프로모션 디자인",
     date: "2025.03-08",
     area: "Social Media, Visual Design",
-    advisor: "Soojung Kim (김수정)",
+    director: "Soojung Kim (김수정)",
     collaborator: "",
     descEn:
       "Visuals were created for Descente Korea’s social media, along with content for various digital platforms. The images were adapted from the key visuals of an existing promotional exhibition.",
@@ -55,7 +55,7 @@ const projectsData = {
     titleKr: "데상트 시즌 기획전",
     date: "2025.05",
     area: "Exhibition Design, Web Design",
-    advisor: "",
+    director: "",
     collaborator: "",
     descEn:
       "Seasonal exhibition design for Descente Korea, featuring curated product showcases and brand storytelling.",
@@ -70,7 +70,7 @@ const projectsData = {
     titleKr: "더 컬렉션 리뉴얼",
     date: "2024.05",
     area: "Brand Identity, Website, SNS Contents, Fashion Assets",
-    advisor: "",
+    director: "",
     collaborator: "",
     descEn:
       "THE COLLECTION is a Seoul-based fashion brand that breaks down the boundaries between art and everyday life, proposing new fashion experiences through experimental design and the creative works of emerging designers. Starting with the brand identity renewal, we planned and designed interview pages capturing the philosophies and design processes of emerging designers, structured detailed pages introducing curated collections, and managed the visual consistency and user experience of the entire website.",
@@ -100,7 +100,7 @@ const projectsData = {
     titleKr: "갤러리아 2023 하반기 E-DAY",
     date: "2023.08",
     area: "Event Design, Visual Identity, Online & Offline banner, Promotion Video, Leaflet",
-    advisor: "Junhoe Kim (김준회)",
+    director: "Junhoe Kim (김준회)",
     collaborator: "",
     descEn:
       "《Just arrived》 is an exclusive day event for VIP and MASS audiences, presenting Galleria Department Store’s exclusive new arrivals for the second half of 2023 as a new season begins. To visualize the luxurious and richly diverse character of the event, the visual identity employs lettering inspired by prisms and gemstones, along with four distinct colors as its main graphic elements.",
@@ -138,7 +138,7 @@ const projectsData = {
     area: "Motion Poster, Photography",
     client:
       '<a href="https://inartplatform.kr/home/home" target="_blank">Incheon Art Platform</a>',
-    advisor:
+    director:
       'Marvin Kim (<a href="https://spine-press.com/" target="_blank">Spine Press</a>)',
     collaborator: "",
     descEn:
@@ -168,7 +168,7 @@ const projectsData = {
     area: "Motion Poster",
     client:
       '<a href="https://jadesujinlee.net/" target="_blank">Jade Sujin Lee</a>, <a href="https://platform-l.org/" target="_blank">Platform-L</a>',
-    advisor:
+    director:
       'Marvin Kim (<a href="https://spine-press.com/" target="_blank">Spine Press</a>)',
     collaborator: "",
     descEn:

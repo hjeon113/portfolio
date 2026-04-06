@@ -1024,10 +1024,13 @@ function showProject(id, skipHistory) {
         p.client +
         "</div></div>"
       : "") +
+    (p.director
+      ? '<div class="meta-row"><div class="meta-label">Director</div><div>' +
+        p.director +
+        "</div></div>"
+      : "") +
     (p.advisor
-      ? '<div class="meta-row"><div class="meta-label">' +
-        "Advisor" +
-        "</div><div>" +
+      ? '<div class="meta-row"><div class="meta-label">Advisor</div><div>' +
         p.advisor +
         "</div></div>"
       : "") +
