@@ -202,6 +202,7 @@ const projectsData = {
       //"gif:full:images/other-island/01-2.mp4",
       "full:images/other-island/01-1.gif",
       "gif:full:images/other-island/01-3.mp4",
+      "gallery:images/other-island/03-1.webp|images/other-island/03-2.webp|images/other-island/03-3.webp|images/other-island/03-4.webp|images/other-island/03-5.webp|images/other-island/03-6.webp|images/other-island/03-7.webp|images/other-island/03-8.webp|images/other-island/03-9.webp|images/other-island/03-10.webp|images/other-island/03-11.webp|images/other-island/03-12.webp|images/other-island/03-13.webp",
       "col2:images/other-island/04-1.webp",
       "col2:images/other-island/04-2.webp",
       "full:images/other-island/02-1.webp",

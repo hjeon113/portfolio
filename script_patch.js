@@ -359,6 +359,18 @@
     if (btn) btn.textContent = isOpen ? "↓" : "↑";
   };
 
+  // 컨텐츠(이미지) 영역 클릭 시 drawer 닫기
+  document.addEventListener("click", function (e) {
+    var drawer = document.getElementById("detailDrawer");
+    if (!drawer || !drawer.classList.contains("open")) return;
+    if (drawer.contains(e.target)) return;
+    var content = e.target.closest("#project-detail .detail-content");
+    if (!content) return;
+    drawer.classList.remove("open");
+    var btn = drawer.querySelector(".drawer-btn");
+    if (btn) btn.textContent = "↑";
+  });
+
 
   // ---- 초기화 ----
   function init() {
