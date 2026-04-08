@@ -18,8 +18,17 @@ convert_to_webp() {
     return
   fi
 
-  sips -s format webp "$src" --out "$dest" > /dev/null 2>&1
-  if [ $? -eq 0 ]; then
+  if command -v cwebp &>/dev/null; then
+    cwebp -quiet -q 85 "$src" -o "$dest" 2>/dev/null
+  else
+    python3 - "$src" "$dest" <<'PY' 2>/dev/null
+import sys
+from PIL import Image
+src, dest = sys.argv[1], sys.argv[2]
+Image.open(src).save(dest, "WEBP", quality=85)
+PY
+  fi
+  if [ $? -eq 0 ] && [ -f "$dest" ]; then
     echo "  converted: $src → $dest"
   else
     echo "  failed: $src"

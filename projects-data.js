@@ -258,7 +258,9 @@ const projectsData = {
       "언어 전염은 사회의 규칙인 언어의 형태를 해체함으로써, 면역력 있는 일상의 체계 속에서 새로운 의미를 창조하고, 이를 통해 상상력을 자극하는 것을 목표로 한다. 이 작업은 실제 바이러스의 생활사를 차용한 단계별 과정을 기반으로 한 인터랙티브 웹 형식의 작업이다. 언어 전염이 된다는 것은 시스템에 오류가 발생하는 것이다. 외부적 요소가 체계 안으로 침입 됨으로써 공동체는 오염되고 새로운 시각과 언어가 발견된다. 이는 수동적으로 컨텐츠를 받아들이는 것에서 벗어나, 스스로 인지하고 식별할 수 있는 가능성을 열어준다.",
     thumbnail: "images/language-contagion/thumb.webp",
     media: [
-      "full:images/language-contagion/01.gif",
+      "full:images/language-contagion/01-1.gif",
+      "full:images/language-contagion/01-2.webp",
+      "gif:full:images/language-contagion/01-3.mp4",
       "full:images/language-contagion/07.webp",
       "full:images/language-contagion/02.webp",
       "col2:images/language-contagion/04.webp",
