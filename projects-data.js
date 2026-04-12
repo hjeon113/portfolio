@@ -390,6 +390,7 @@ const projectsData = {
       "col4:images/running-back/09-2.webp",
       "col4:images/running-back/09-3.webp",
       "col4:images/running-back/09-4.webp",
+      "full:images/running-back/10.webp",
       "full:images/running-back/08.webp",
       "col2:images/running-back/02.webp",
       "col2:images/running-back/05.webp",
