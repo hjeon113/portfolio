@@ -496,7 +496,7 @@ const projectsData = {
     date: "2023.03",
     medium: "",
     area: "Editorial Design, Motion Graphic",
-    advisor: "",
+    advisor: "Namoo Kim (김나무)",
     collaborator: "",
     descEn:
       "In an era of information overload, we are gradually losing the ability to think for ourselves. Drawing from four books — Metaverse (by Kim Sang-kyun), The Blank Slate (by Steven Pinker), Sapiens (by Yuval Noah Harari), and Imagination and Gaston Bachelard (by Hong Myung-hee) — four team members investigated what qualities remain uniquely human in a world increasingly shaped by technology and automation. The resulting publication takes the form of an editorial experiment: a series of open-ended questions with no right answers and no fixed direction, designed to provoke reflection and reawaken an imagination that has long gone unused.",
