@@ -172,8 +172,7 @@ a {
   z-index: 100;
   background: #fff;
   border-bottom: 1.2px solid rgba(0, 0, 0, 0.08);
-  padding: 0 20px;
-  height: 40px;
+  padding: 8px 20px 0;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -207,7 +206,8 @@ a {
 /* ---- FILTER BAR ---- */
 .filter-bar {
   display: flex;
-  gap: 0;
+  flex-wrap: wrap;
+  row-gap: 8px;
   align-self: stretch;
 }
 .f-tab {
@@ -217,9 +217,10 @@ a {
   margin-right: 16px;
   cursor: pointer;
   white-space: nowrap;
+  padding-bottom: 6px;
+  margin-bottom: -1px;
   border-bottom: 2px solid transparent;
   transition: color 0.15s;
-  align-self: stretch;
   display: flex;
   align-items: center;
 }

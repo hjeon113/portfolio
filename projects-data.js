@@ -473,7 +473,7 @@ const projectsData = {
     titleKr: "빨간색의 불일치",
     date: "2024.12",
     medium: "Resin, Acrylic Plate with Color Sheet, PLA Filament",
-    area: "",
+    area: "Installation, Sculpture",
     advisor: "",
     collaborator: "",
     descEn:
@@ -490,19 +490,25 @@ const projectsData = {
       "col2:images/digital-error/04-2.webp",
     ],
   },
-  /*
   "question-imagination": {
     titleEn: "Questions for people with imagination malnutrition",
     titleKr: "상상력 결핍의 사람들에게 던지는 질문",
     date: "2023.03",
     medium: "",
-    area: "",
+    area: "Editorial Design, Motion Graphic",
     advisor: "",
     collaborator: "",
-    descEn: "",
-    descKr: "",
+    descEn:
+      "In an era of information overload, we are gradually losing the ability to think for ourselves. Drawing from four books — Metaverse (by Kim Sang-kyun), The Blank Slate (by Steven Pinker), Sapiens (by Yuval Noah Harari), and Imagination and Gaston Bachelard (by Hong Myung-hee) — four team members investigated what qualities remain uniquely human in a world increasingly shaped by technology and automation. The resulting publication takes the form of an editorial experiment: a series of open-ended questions with no right answers and no fixed direction, designed to provoke reflection and reawaken an imagination that has long gone unused.",
+    descKr:
+      "정보 과잉의 시대, 우리는 점점 스스로 사고하는 능력을 잃어가고 있다. 4권의 책 — 메타버스(김상균), 빈 서판(스티븐 핑커), 사피엔스(유발 노아 하라리), 상상력과 가스통 바슐라르(홍명희) — 를 바탕으로 4명의 팀원이 기술과 자동화가 지배하는 세계 속에서 인간만이 가질 수 있는 고유한 특성이 무엇인지를 탐구하였다. 그 결과물은 에디토리얼 실험의 형태로, 정답도 정해진 방향도 없는 열린 질문들을 통해 사고를 자극하고 오랫동안 사용되지 않은 상상력을 다시 깨우고자 기획되었다.",
     thumbnail: "images/question-imagination/thumb.gif",
-    media: ["full:images/question-imagination/01.mp4"],
+    media: [
+      "full:images/question-imagination/01.mp4",
+      "full:images/question-imagination/02.webp",
+      "col2:images/question-imagination/03-1.webp",
+      "col2:images/question-imagination/03-2.webp",
+      "full:images/question-imagination/04.webp",
+    ],
   },
-  */
 };
