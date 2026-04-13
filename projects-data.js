@@ -224,7 +224,7 @@ const projectsData = {
     titleEn: "Digital Religion Bible",
     titleKr: "디지털 종교 교리서",
     date: "2022.02",
-    area: "Editorial Design, Typography",
+    area: "Editorial Design",
     spec: 'Printed matter, 170 × 240 mm (6.7 × 9.45 in), 206p, Swiss binding<br><a href="https://youtube.com/watch?v=6_3Rf9nbGs8&feature=youtu.be" target="_blank">Audio book</a>, 00:13:23',
     advisor: "Namoo Kim (김나무)",
     collaborator: "Gyeoryei Lee (이겨례), Minjeong Kim (김민정)",
