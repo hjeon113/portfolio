@@ -234,14 +234,20 @@ a {
 
 /* ---- PROJECT GRID ---- */
 .project-grid {
-  columns: 3;
-  column-gap: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   padding: 16px 20px 0;
+}
+.grid-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .project-card {
-  break-inside: avoid;
-  margin-bottom: 10px;
   position: relative;
   cursor: pointer;
 }
@@ -392,12 +398,12 @@ a {
   transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
 }
-.detail-drawer:not(.open) .drawer-btn {
-  animation: drawerBounce 1.8s ease-in-out infinite;
+.detail-drawer:not(.open) {
+  animation: drawerBreathe 5.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
-@keyframes drawerBounce {
-  0%, 100% { transform: translateY(0); color: var(--text); }
-  50% { transform: translateY(-4px); color: #fe0032; }
+@keyframes drawerBreathe {
+  0%, 100% { grid-template-rows: auto 0px; }
+  50% { grid-template-rows: auto 44px; }
 }
 .detail-drawer.open {
   grid-template-rows: auto 1fr;
@@ -409,6 +415,13 @@ a {
   transition: opacity 0.3s ease 0.1s;
   padding: 0 20px;
   min-height: 0;
+}
+.detail-drawer:not(.open) .detail-drawer-body {
+  animation: drawerBodyBreathe 5.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+@keyframes drawerBodyBreathe {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.55; }
 }
 .detail-drawer.open .detail-drawer-body {
   opacity: 1;
@@ -972,10 +985,13 @@ a {
 
 /* ---- NARROW (JS로 클래스 붙임) ---- */
 .pane-left.col2 .project-grid {
-  columns: 2 !important;
+  flex-wrap: wrap !important;
+}
+.pane-left.col2 .grid-col {
+  flex: 1 1 calc(50% - 5px) !important;
 }
 .pane-left.col1 .project-grid {
-  columns: 1 !important;
+  flex-direction: column !important;
 }
 
 .pane-right.narrow .detail-content {
@@ -1075,12 +1091,12 @@ a {
 
   /* 그리드: 1열, 하단 여백으로 bg-gradient 노출 */
   .project-grid {
-    columns: 1;
-    column-gap: 0;
+    flex-direction: column;
+    gap: 8px;
     padding: 8px 12px 120px;
   }
   .project-card {
-    margin-bottom: 8px;
+    margin-bottom: 0;
   }
 
   /* 디테일 drawer: footer 바로 위에 붙게 */
@@ -1090,6 +1106,15 @@ a {
   }
   .detail-drawer-toggle {
     padding: 14px 20px;
+  }
+  /* 모바일: 열렸을 때 화면 절반 초과 시 내부 스크롤 */
+  .detail-drawer.open {
+    max-height: 50dvh;
+  }
+  .detail-drawer.open .detail-drawer-body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   /* 상세 컨텐츠 */

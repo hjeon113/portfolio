@@ -607,6 +607,14 @@ function generateProjectGrid() {
   if (!grid) return;
 
   grid.innerHTML = "";
+  var gridCols = [];
+  for (var c = 0; c < 3; c++) {
+    var gcol = document.createElement("div");
+    gcol.className = "grid-col";
+    grid.appendChild(gcol);
+    gridCols.push(gcol);
+  }
+  var randomIdx = 0;
 
   var categoryTags = {
     "descente-social": [
@@ -692,14 +700,29 @@ function generateProjectGrid() {
     );
   }
 
-  // 랜덤 셔플
-  var ids = Object.keys(projectsData);
-  for (var i = ids.length - 1; i > 0; i--) {
+  // 고정 프로젝트(상단 순서대로, 2줄 x 3칸) + 나머지 랜덤 셔플
+  var pinnedIds = [
+    "other-islands",
+    "galleria-2023",
+    "iap-residency",
+    "descente-social",
+    "palindrome",
+    "hype-slider",
+  ];
+  var allIds = Object.keys(projectsData);
+  var restIds = allIds.filter(function (id) {
+    return pinnedIds.indexOf(id) === -1;
+  });
+  for (var i = restIds.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
-    var tmp = ids[i];
-    ids[i] = ids[j];
-    ids[j] = tmp;
+    var tmp = restIds[i];
+    restIds[i] = restIds[j];
+    restIds[j] = tmp;
   }
+  var orderedPinned = pinnedIds.filter(function (id) {
+    return projectsData[id];
+  });
+  var ids = orderedPinned.concat(restIds);
 
   for (var k = 0; k < ids.length; k++) {
     var id = ids[k];
@@ -756,7 +779,13 @@ function generateProjectGrid() {
       showProject(this.getAttribute("data-project"));
     });
 
-    grid.appendChild(article);
+    var pinIdx = orderedPinned.indexOf(id);
+    if (pinIdx !== -1) {
+      gridCols[pinIdx % 3].appendChild(article);
+    } else {
+      gridCols[randomIdx % 3].appendChild(article);
+      randomIdx++;
+    }
 
     var thumbVideo = article.querySelector(".project-thumbnail video");
     if (thumbVideo) {
@@ -1018,7 +1047,7 @@ function showProject(id, skipHistory) {
     '<div class="detail-content">' +
     mediaHtml +
     "</div>" +
-    '<div class="detail-drawer' + (window.innerWidth > 768 ? ' open' : '') + '" id="detailDrawer">' +
+    '<div class="detail-drawer" id="detailDrawer">' +
     '<div class="detail-drawer-toggle" onclick="toggleDrawer()">' +
     '<div class="drawer-title-row">' +
     "<div>" +
@@ -1029,7 +1058,7 @@ function showProject(id, skipHistory) {
     titleKrHtml +
     "</div>" +
     "</div>" +
-    '<span class="drawer-btn">' + (window.innerWidth > 768 ? '↓' : '↑') + '</span>' +
+    '<span class="drawer-btn">↑</span>' +
     "</div>" +
     "</div>" +
     '<div class="detail-drawer-body">' +
@@ -1229,22 +1258,54 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// 프로젝트 카드 셔플
+// 프로젝트 카드 셔플 (pinned는 고정, random만 재셔플/재분배)
 function shuffleProjectCards() {
   var grid = document.querySelector(".project-grid");
   if (!grid) return;
 
-  var cards = Array.from(grid.querySelectorAll(".project-card"));
+  var cols = Array.from(grid.querySelectorAll(".grid-col"));
+  if (cols.length !== 3) return;
 
-  for (var i = cards.length - 1; i > 0; i--) {
+  var pinnedIds = [
+    "other-islands",
+    "galleria-2023",
+    "iap-residency",
+    "descente-social",
+    "palindrome",
+    "hype-slider",
+  ];
+
+  var pinnedPerCol = [[], [], []];
+  var randomCards = [];
+  cols.forEach(function (col, idx) {
+    var cards = Array.from(col.querySelectorAll(".project-card"));
+    cards.forEach(function (card) {
+      var id = card.getAttribute("data-project");
+      if (pinnedIds.indexOf(id) !== -1) {
+        pinnedPerCol[idx].push(card);
+      } else {
+        randomCards.push(card);
+      }
+    });
+  });
+
+  // random 셔플
+  for (var i = randomCards.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
-    var temp = cards[i];
-    cards[i] = cards[j];
-    cards[j] = temp;
+    var t = randomCards[i];
+    randomCards[i] = randomCards[j];
+    randomCards[j] = t;
   }
 
-  cards.forEach(function (card) {
-    grid.appendChild(card);
+  // 각 col: pinned 먼저, random은 round-robin
+  cols.forEach(function (col, idx) {
+    col.innerHTML = "";
+    pinnedPerCol[idx].forEach(function (c) {
+      col.appendChild(c);
+    });
+  });
+  randomCards.forEach(function (card, idx) {
+    cols[idx % 3].appendChild(card);
   });
 }
 
