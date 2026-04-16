@@ -501,11 +501,22 @@ a {
 .meta-row {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 .meta-label {
   color: rgba(0, 0, 0, 0.45);
   min-width: 80px;
   flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .meta-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label {
+    min-width: 0;
+    font-size: 0.85rem;
+  }
 }
 .detail-desc {
   font-size: 1rem;
@@ -513,6 +524,9 @@ a {
   margin-bottom: 16px;
 }
 .desc-kr {
+  display: none;
+}
+.lang-kr {
   display: none;
 }
 .detail-desc a {

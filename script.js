@@ -1040,49 +1040,36 @@ function showProject(id, skipHistory) {
     p.descKr +
     "</p>" +
     '<div class="detail-meta">' +
-    '<div class="meta-row"><div class="meta-label">Date</div><div>' +
-    p.date +
-    "</div></div>" +
-    (p.area
-      ? '<div class="meta-row"><div class="meta-label">Work Area</div><div>' +
-        p.area +
-        "</div></div>"
-      : "") +
-    (p.medium
-      ? '<div class="meta-row"><div class="meta-label">Medium</div><div>' +
-        p.medium +
-        "</div></div>"
-      : "") +
-    (p.spec
-      ? '<div class="meta-row"><div class="meta-label">Spec</div><div>' +
-        p.spec +
-        "</div></div>"
-      : "") +
-    (p.client
-      ? '<div class="meta-row"><div class="meta-label">Client</div><div>' +
-        p.client +
-        "</div></div>"
-      : "") +
-    (p.director
-      ? '<div class="meta-row"><div class="meta-label">Director</div><div>' +
-        p.director +
-        "</div></div>"
-      : "") +
-    (p.advisor
-      ? '<div class="meta-row"><div class="meta-label">Advisor</div><div>' +
-        p.advisor +
-        "</div></div>"
-      : "") +
-    (p.collaborator
-      ? '<div class="meta-row"><div class="meta-label">Collaborator</div><div>' +
-        p.collaborator +
-        "</div></div>"
-      : "") +
-    (p.award
-      ? '<div class="meta-row"><div class="meta-label">Award</div><div>' +
-        p.award +
-        "</div></div>"
-      : "") +
+    (function () {
+      function row(labelEn, labelKr, valueEn, valueKr) {
+        if (!valueEn && !valueKr) return "";
+        var vEn = valueEn || valueKr;
+        var vKr = valueKr || valueEn;
+        return (
+          '<div class="meta-row">' +
+          '<div class="meta-label">' +
+          '<span class="lang-en">' + labelEn + "</span>" +
+          '<span class="lang-kr">' + labelKr + "</span>" +
+          "</div>" +
+          "<div>" +
+          '<span class="lang-en">' + vEn + "</span>" +
+          '<span class="lang-kr">' + vKr + "</span>" +
+          "</div>" +
+          "</div>"
+        );
+      }
+      return (
+        row("Date", "날짜", p.date, p.date) +
+        row("Work Area", "작업 분야", p.area, p.areaKr) +
+        row("Medium", "매체", p.medium, p.mediumKr) +
+        row("Spec", "사양", p.spec, p.specKr) +
+        row("Client", "클라이언트", p.client, p.clientKr) +
+        row("Director", "디렉터", p.director, p.directorKr) +
+        row("Advisor", "지도", p.advisor, p.advisorKr) +
+        row("Collaborator", "협업", p.collaborator, p.collaboratorKr) +
+        row("Award", "수상", p.award, p.awardKr)
+      );
+    })() +
     "</div>" +
     '<nav class="detail-nav">' +
     '<a onclick="showIndex()" style="cursor:pointer">← Index</a>' +

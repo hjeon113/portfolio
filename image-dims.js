@@ -185,4 +185,12 @@ const imageDims = {
   "images/vita-nova/08-2.webp":[2000,1333],
   "images/vita-nova/08-3.webp":[2000,3000],
   "images/vita-nova/thumb.webp":[2000,2000],
+  "images/collection-renewal/thumb.gif":[480,270],
+  "images/galleria/thumb.gif":[480,480],
+  "images/hypeslider/thumb.gif":[480,267],
+  "images/imoa/thumb.gif":[480,480],
+  "images/other-island/thumb.gif":[1080,1080],
+  "images/palindrome/thumb.gif":[480,480],
+  "images/question-imagination/thumb.gif":[480,270],
+  "images/vita-nova/thumb.gif":[480,480],
 };

@@ -27,7 +27,9 @@ const projectsData = {
     titleKr: "데상트 SNS 프로모션 디자인",
     date: "2025.03-08",
     area: "Social Media, Visual Design",
-    director: "Soojung Kim (김수정)",
+    areaKr: "소셜 미디어, 비주얼 디자인",
+    director: "Soojung Kim",
+    directorKr: "김수정",
     collaborator: "",
     descEn:
       "Visuals were created for Descente Korea’s social media, along with content for various digital platforms. The images were adapted from the key visuals of an existing promotional exhibition.",
@@ -70,6 +72,7 @@ const projectsData = {
     titleKr: "더 컬렉션 리뉴얼",
     date: "2024.05",
     area: "Brand Identity, Website, SNS Contents, Fashion Assets",
+    areaKr: "브랜드 아이덴티티, 웹사이트, SNS 콘텐츠, 패션 에셋",
     director: "",
     collaborator: "",
     descEn:
@@ -100,7 +103,9 @@ const projectsData = {
     titleKr: "갤러리아 2023 하반기 E-DAY",
     date: "2023.08",
     area: "Event Design, Visual Identity, Online & Offline banner, Promotion Video, Leaflet",
-    director: "Junhoe Kim (김준회)",
+    areaKr: "이벤트 디자인, 비주얼 아이덴티티, 온·오프라인 배너, 프로모션 영상, 리플릿",
+    director: "Junhoe Kim",
+    directorKr: "김준회",
     collaborator: "",
     descEn:
       "《Just arrived》 is an exclusive day event for VIP and MASS audiences, presenting Galleria Department Store’s exclusive new arrivals for the second half of 2023 as a new season begins. To visualize the luxurious and richly diverse character of the event, the visual identity employs lettering inspired by prisms and gemstones, along with four distinct colors as its main graphic elements.",
@@ -136,10 +141,15 @@ const projectsData = {
     titleKr: "IAP 레지던시 《비타 노바_새로운 삶》",
     date: "2022",
     area: "Motion Poster, Photography",
+    areaKr: "모션 포스터, 사진",
     client:
       '<a href="https://inartplatform.kr/home/home" target="_blank">Incheon Art Platform</a>',
+    clientKr:
+      '<a href="https://inartplatform.kr/home/home" target="_blank">인천아트플랫폼</a>',
     director:
       'Marvin Kim (<a href="https://spine-press.com/" target="_blank">Spine Press</a>)',
+    directorKr:
+      '마빈킴 (<a href="https://spine-press.com/" target="_blank">스파인 프레스</a>)',
     collaborator: "",
     descEn:
       "《VITA NOVA_New Life》 begins with the awareness that, as a result of the pandemic, we are now living—and must continue to live—a life fundamentally different from before. It proposes a pause from familiar ways of being, inviting us to look back, observe, and gently engage with our surroundings while questioning what had long been taken for granted. The work expresses the mutable state between before and after creating differently through transformations in title lettering that spreads like liquid, and through the vitality of newly growing vines emerging within it.",
@@ -166,10 +176,15 @@ const projectsData = {
     titleKr: "이수진 《돌과 유리 하이킹》",
     date: "2022",
     area: "Motion Poster",
+    areaKr: "모션 포스터",
     client:
       '<a href="https://jadesujinlee.net/" target="_blank">Jade Sujin Lee</a>, <a href="https://platform-l.org/" target="_blank">Platform-L</a>',
+    clientKr:
+      '<a href="https://jadesujinlee.net/" target="_blank">이수진</a>, <a href="https://platform-l.org/" target="_blank">플랫폼엘</a>',
     director:
       'Marvin Kim (<a href="https://spine-press.com/" target="_blank">Spine Press</a>)',
+    directorKr:
+      '마빈킴 (<a href="https://spine-press.com/" target="_blank">스파인 프레스</a>)',
     collaborator: "",
     descEn:
       "《CHANGE OR TRANS-HIKING》 generates sound and resonance through the creation of objects that embody flowing liquids, urban byproducts, moss, plants, and forms with geometric or repetitive rhythms. The work presents a totality of sensory experiences emerging from both solid and fragile textures and concepts, aiming to realize a soundscape as a transcendent habitat that passes through fluid, contemporary ideas flowing between the temporalities of past, present, and future. These fluid concepts between solidity and fragility are expressed through typography composed of expanding lines, along with overlapping glass beads and circular elements that move through and between them.",
@@ -191,8 +206,10 @@ const projectsData = {
     titleKr: "아더 아일랜즈 북페어 2026 (제안안)",
     date: "2025.11",
     area: "Visual Identity, Graphic Design, Typography",
+    areaKr: "비주얼 아이덴티티, 그래픽 디자인, 타이포그래피",
     advisor: "",
-    collaborator: "Seulgi Choei (최슬기) , Chiho Ye",
+    collaborator: "Seulgi Choi, Chiho Ye",
+    collaboratorKr: "최슬기, 예치호",
     descEn:
       "Other Islands Book Fair 2026 is a project that visualizes the book fair as a temporary gathering and exchange, using *Bird Migration* as a metaphor for movement, connection, and return. Inspired by the routes and traces of migratory birds, the visual system is built from modular dot forms that express both individuality and collectivity through repetition, variation, and motion. A nature-derived color palette and a flexible logo structure reinforce this concept, while the identity is applied across posters, signage, motion graphics, social media, and merchandise to convey the rhythm of convergence and dispersal that defines the book fair experience.",
     descKr:
@@ -225,9 +242,13 @@ const projectsData = {
     titleKr: "디지털 종교 교리서",
     date: "2022.02",
     area: "Editorial Design",
+    areaKr: "에디토리얼 디자인",
     spec: 'Printed matter, 170 × 240 mm (6.7 × 9.45 in), 206p, Swiss binding<br><a href="https://youtube.com/watch?v=6_3Rf9nbGs8&feature=youtu.be" target="_blank">Audio book</a>, 00:13:23',
-    advisor: "Namoo Kim (김나무)",
-    collaborator: "Gyeoryei Lee (이겨례), Minjeong Kim (김민정)",
+    specKr: '인쇄물, 170 × 240 mm (6.7 × 9.45 in), 206p, 스위스 바인딩<br><a href="https://youtube.com/watch?v=6_3Rf9nbGs8&feature=youtu.be" target="_blank">오디오북</a>, 00:13:23',
+    advisor: "Namoo Kim",
+    advisorKr: "김나무",
+    collaborator: "Gyeoryei Lee, Minjeong Kim",
+    collaboratorKr: "이겨례, 김민정",
     descEn:
       "Within the metaverse—a digital panopticon formed by a convergence of desires—humans gradually lose their imagination through image-based control and indoctrination. This work takes the form of a digital religious doctrine that adopts the sequential structure of a book, positioning the reader as a disciple who experiences its images. Based on Maslow’s hierarchy of needs, the imagery is organized into eight stages; as the stages progress, the images increasingly overlap, visualizing a system of control that suppresses critical thinking and enforces the passive consumption of images. In the physical book, captions appear beneath each image, while in the audiobook these captions are replaced by sound. Image and sound correspond on a one-to-one basis, and as visual overlap intensifies, layers of sound also accumulate, reinforcing a state of sensory overload and control.",
     descKr:
@@ -249,9 +270,13 @@ const projectsData = {
     titleKr: "언어전염",
     date: "2022.02",
     area: "Coding, Editorial Design",
+    areaKr: "코딩, 에디토리얼 디자인",
     spec: "Interactive Website<br>Printed matter, 249 × 390 mm (9.8 × 15.3 in), Risograph on paper, Two-sided",
-    advisor: "Namoo Kim (김나무)",
-    collaborator: "Seungkyu Han (한승규)",
+    specKr: "인터랙티브 웹사이트<br>인쇄물, 249 × 390 mm (9.8 × 15.3 in), 종이 리소그래프, 양면",
+    advisor: "Namoo Kim",
+    advisorKr: "김나무",
+    collaborator: "Seungkyu Han",
+    collaboratorKr: "한승규",
     descEn:
       "Language Contagion aims to stimulate imagination by dismantling the form of language as a social rule, creating new meanings within the immune structure of everyday systems. This work takes the form of an interactive web project based on a step-by-step process that borrows from the life cycle of an actual virus. To become infected by language is to introduce an error into the system. As external elements infiltrate an existing structure, the community becomes contaminated, allowing new perspectives and languages to emerge. This process moves participants away from passively consuming content and opens up the possibility of actively perceiving and identifying meaning.",
     descKr:
@@ -273,7 +298,9 @@ const projectsData = {
     titleKr: "회문-문회",
     date: "2024.11",
     area: "Motion Graphic, Typography, Graphic Design",
+    areaKr: "모션 그래픽, 타이포그래피, 그래픽 디자인",
     spec: "Single-channel video, 00:01:45 <br>Printed matter, 160 × 140 mm (6.3 × 5.5 in), 94p, Screw binding <br>Virtual object, 500 × 350 × 500 mm (19.6 × 13.7 × 19.6 in)",
+    specKr: "싱글 채널 비디오, 00:01:45 <br>인쇄물, 160 × 140 mm (6.3 × 5.5 in), 94p, 스크류 바인딩 <br>가상 오브제, 500 × 350 × 500 mm (19.6 × 13.7 × 19.6 in)",
     advisor: "",
     collaborator: "",
     descEn:
@@ -311,10 +338,15 @@ const projectsData = {
     titleKr: "아이모아",
     date: "2022.02",
     area: "Motion Graphics, Video, Branding, Editorial Design",
-    advisor: "SeonA Kim (임선아)",
-    collaborator: "Hyuntaek Oh (오현택)",
+    areaKr: "모션 그래픽, 영상, 브랜딩, 에디토리얼 디자인",
+    advisor: "Seon-A Lim",
+    advisorKr: "임선아",
+    collaborator: "Hyuntaek Oh",
+    collaboratorKr: "오현택",
     award:
       '<a href="https://www.cqjournal.com/gallery/67/gallery/oh-hyeon-taek-83511-01" target="_blank">Creative quarterly Issue 67</a>, Graphic design, Finalist',
+    awardKr:
+      '<a href="https://www.cqjournal.com/gallery/67/gallery/oh-hyeon-taek-83511-01" target="_blank">Creative Quarterly Issue 67</a>, 그래픽 디자인, 파이널리스트',
     descEn:
       "I-MOA is a virtual museum where imaginative individuals exchange breaths of inspiration with one another. Its core artworks exist only in the digital realm, and the platform itself operates exclusively online, based on a concept that merges NFT technology with the structure of a museum. The three pillars of I-MOA—viewers, creators, and buyers—actively engage within the museum, accumulating data through their interactions. This data becomes a form of “digital pigment,” feeding back into the system and serving as inspiration for the creation of new artworks.",
     descKr:
@@ -342,9 +374,13 @@ const projectsData = {
     titleKr: "일민미술관 리브랜딩 (제안안)",
     date: "2020.06",
     area: "Motion Graphics, Video, Branding, Editorial Design",
+    areaKr: "모션 그래픽, 영상, 브랜딩, 에디토리얼 디자인",
     spec: "Printed matter, 297 × 210 mm (11.7 × 8.3 in), 110p, Pur binding",
-    advisor: "Namoo Kim (김나무)",
-    collaborator: "Gyeoryei Lee (이겨례), Seoyoon Byun(변서윤)",
+    specKr: "인쇄물, 297 × 210 mm (11.7 × 8.3 in), 110p, PUR 바인딩",
+    advisor: "Namoo Kim",
+    advisorKr: "김나무",
+    collaborator: "Gyeoryei Lee, Seoyoon Byun",
+    collaboratorKr: "이겨례, 변서윤",
     descEn:
       "This project is a virtual rebranding of Ilmin Museum of Art. Conceived as a space for dialogue where organic communication can unfold, the diverse perspectives within the museum generate multiple interpretations and give rise to new paradigms. To encompass this process, the project adopts the symbolic and visual aspects of parentheses, demonstrating how the questions posed through Ilmin Museum of Art can be understood through multiple interpretations and contexts.",
     descKr:
@@ -373,8 +409,11 @@ const projectsData = {
     titleKr: "회문 사전",
     date: "2020.01",
     area: "Editorial Design",
+    areaKr: "에디토리얼 디자인",
     spec: "Printed matter, 210 × 148 mm (8.3 × 5.8 in), 216p, Hardcover book with Swiss binding",
-    advisor: "Hyunho Choi (최현호)",
+    specKr: "인쇄물, 210 × 148 mm (8.3 × 5.8 in), 216p, 스위스 바인딩 하드커버 북",
+    advisor: "Hyunho Choi",
+    advisorKr: "최현호",
     collaborator: "",
     descEn:
       "A palindrome is a word, sentence, or sequence of characters that reads the same forward and backward. Expanding from words to phrases, sentences, and entire paragraphs, various forms of palindromes create visual structures in which different elements are read as identical depending on the direction of reading, giving rise to intriguing auditory phenomena. This Palindrome Dictionary archives the diversity of the palindromic system.",
@@ -406,6 +445,7 @@ const projectsData = {
     date: "2026.02",
     medium: "",
     advisor: "Diego Kolsky",
+    advisorKr: "디에고 콜스키",
     collaborator: "",
     descEn:
       "The text <i>Rise Above the Hype</i> examines how emerging technologies such as AI are shaped by cycles of hype—an amplified state of expectation driven by repetition, speed, and collective attention. In these cycles, anticipation accelerates faster than our ability to critically engage, reducing the distance needed for reflection and judgment. The text suggests that the issue lies not in the technology itself, but in how we perceive, adopt, and respond to it. From this text, I selected seven sentences that capture this condition. Hype Slider is an interactive work built on these fragments. As the slider moves, the text becomes compressed and intensified until it begins to collapse. This process translates the mechanics of hype into a visual experience, where repetition and acceleration overwhelm meaning and erode interpretive distance.",
@@ -434,6 +474,8 @@ const projectsData = {
     medium: "p5.js, ml5.js",
     advisor:
       '<a href="https://www.mattiacasalegno.net/" target="_blank">Mattia Casalegno</a>',
+    advisorKr:
+      '<a href="https://www.mattiacasalegno.net/" target="_blank">마티아 카살레뇨</a>',
     collaborator: "",
     descEn:
       "Gesture Archive is a web-based drawing system that translates hand movements into lines, dots, and visual traces through real-time tracking. Participants perform gestures with the intention of forming specific shapes, yet the system does not interpret meaning—it records only movement data such as speed, direction, and tremor. As a result, the marks that appear on the screen diverge from the intended image, revealing how digital systems perceive and process human expression differently. Gesture Archive treats this mismatch not as an error but as a generative condition, exploring how gestures transform through computational processes to produce new visual forms beyond original intention.",
@@ -456,6 +498,7 @@ const projectsData = {
     date: "2025.12",
     medium: "p5.js",
     advisor: "Anna Fangan Xu",
+    advisorKr: "안나 팡간 쉬",
     collaborator: "",
     descEn:
       'City of Frames is an interactive web-based project that reframes scrolling as a unit of time rather than a neutral interface gesture. Set in a speculative city where time progresses in frames instead of seconds, the project translates users’ scrolling speed and rhythm into shifts in temporal flow and visual state. As users read and navigate the interactive book through scrolling, their gestures are continuously captured as data and transformed into visual traces. The project consists of two connected websites: an interactive book and a scroll-data visualization. When both sites are opened simultaneously, the scrolling actions performed in the interactive book are reflected in real time on the visualization page, making the act of reading inseparable from its data footprint. By linking interaction and representation, City of Frames examines how attention, speed, and continuous movement are structured and normalized within digital environments.<br><a href="https://city-of-frames.onrender.com/" target="_blank">→ Interactive Book</a><br><a href="https://city-of-frames.onrender.com/timestamp.html" target="_blank">→ Visualization of Interaction</a>',
@@ -473,7 +516,9 @@ const projectsData = {
     titleKr: "빨간색의 불일치",
     date: "2024.12",
     medium: "Resin, Acrylic Plate with Color Sheet, PLA Filament",
+    mediumKr: "레진, 컬러시트 아크릴 플레이트, PLA 필라멘트",
     area: "Installation, Sculpture",
+    areaKr: "설치, 조형",
     advisor: "",
     collaborator: "",
     descEn:
@@ -496,7 +541,9 @@ const projectsData = {
     date: "2023.03",
     medium: "",
     area: "Editorial Design, Motion Graphic",
-    advisor: "Namoo Kim (김나무)",
+    areaKr: "에디토리얼 디자인, 모션 그래픽",
+    advisor: "Namoo Kim",
+    advisorKr: "김나무",
     collaborator: "",
     descEn:
       "In an era of information overload, we are gradually losing the ability to think for ourselves. Drawing from four books — Metaverse (by Sang-kyun Kim), The Blank Slate (by Steven Pinker), Sapiens (by Yuval Noah Harari), and Imagination and Gaston Bachelard (by Myung-hee Hong) — four team members investigated what qualities remain uniquely human in a world increasingly shaped by technology and automation. The resulting publication takes the form of an editorial experiment: a series of open-ended questions with no right answers and no fixed direction, designed to provoke reflection and reawaken an imagination that has long gone unused.",

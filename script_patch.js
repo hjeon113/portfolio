@@ -333,6 +333,12 @@
     document.querySelectorAll(".desc-kr").forEach(function (el) {
       el.style.display = currentLang === "kr" ? "block" : "none";
     });
+    document.querySelectorAll(".lang-en").forEach(function (el) {
+      el.style.display = currentLang === "en" ? "inline" : "none";
+    });
+    document.querySelectorAll(".lang-kr").forEach(function (el) {
+      el.style.display = currentLang === "kr" ? "inline" : "none";
+    });
     document.querySelectorAll(".drawer-title").forEach(function (el) {
       el.style.display = currentLang === "en" ? "block" : "none";
     });
