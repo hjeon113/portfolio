@@ -34,6 +34,7 @@
   --text-hover: #fe0032;
   --gap: 10px;
   --nav-h: 44px;
+  --mobile-footer-h: 50px;
 }
 
 html {
@@ -1019,6 +1020,7 @@ a {
 /* ---- MOBILE ---- */
 @media (max-width: 768px) {
   body {
+    height: 100vh;
     height: 100dvh;
     overflow: hidden;
   }
@@ -1026,6 +1028,7 @@ a {
   /* split-layout: 그리드만 풀스크린 */
   .split-layout {
     flex-direction: column;
+    height: 100vh;
     height: 100dvh;
     overflow: hidden;
   }
@@ -1078,6 +1081,7 @@ a {
   }
 
   /* detail/about/blog 열렸을 때 그리드(카드)만 숨겨서 bg-gradient만 비치게 */
+  body.has-overlay-open .pane-left-wrap,
   body:has(#project-detail.visible) .pane-left-wrap,
   body:has(#about-overlay.visible) .pane-left-wrap,
   body:has(#blog-overlay.visible) .pane-left-wrap {
@@ -1101,7 +1105,7 @@ a {
 
   /* 디테일 drawer: footer 바로 위에 붙게 */
   .detail-drawer {
-    bottom: 50px;
+    bottom: var(--mobile-footer-h);
     border-top: 0.5px solid rgba(0, 0, 0, 0.12);
   }
   .detail-drawer-toggle {
@@ -1183,11 +1187,15 @@ a {
     bottom: 0;
     left: 0;
     right: 0;
+    height: var(--mobile-footer-h);
     background: #fff;
-    align-items: stretch;
+    align-items: center;
     z-index: 100;
     pointer-events: none;
     border-top: 0.5px solid rgba(0, 0, 0, 0.12);
+  }
+  .mobile-main-footer .fp-footer-info {
+    padding: 0 20px;
   }
 
   .media-item.media-iframe {

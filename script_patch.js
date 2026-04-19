@@ -75,6 +75,18 @@
   }
 
   // ---- OVERLAY 열기/닫기 ----
+  function syncOverlayBodyClass() {
+    var pd = document.getElementById("project-detail");
+    var ao = document.getElementById("about-overlay");
+    var bo = document.getElementById("blog-overlay");
+    var anyVisible =
+      (pd && pd.classList.contains("visible")) ||
+      (ao && ao.classList.contains("visible")) ||
+      (bo && bo.classList.contains("visible"));
+    document.body.classList.toggle("has-overlay-open", !!anyVisible);
+  }
+  window.__syncOverlayBodyClass = syncOverlayBodyClass;
+
   function openOverlay(id) {
     var el = document.getElementById(id);
     if (el) {
@@ -88,6 +100,7 @@
     if (sl) sl.style.visibility = "hidden";
     var dw = document.getElementById("detailDrawer");
     if (dw) dw.style.visibility = "hidden";
+    syncOverlayBodyClass();
   }
 
   function closeOverlayById(id) {
@@ -108,6 +121,7 @@
       if (dw) dw.style.visibility = "";
     }
     if (typeof clearTrailCanvas === "function") clearTrailCanvas();
+    syncOverlayBodyClass();
   }
 
   window.closeAboutOverlay = function () {
@@ -378,9 +392,22 @@
   });
 
 
+  // ---- :has() 대체: 관련 요소의 class 변화를 관찰해 body에 상태 반영 ----
+  function installOverlayObserver() {
+    var targets = ["project-detail", "about-overlay", "blog-overlay"];
+    if (!window.MutationObserver) return;
+    var obs = new MutationObserver(syncOverlayBodyClass);
+    targets.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) obs.observe(el, { attributes: true, attributeFilter: ["class"] });
+    });
+    syncOverlayBodyClass();
+  }
+
   // ---- 초기화 ----
   function init() {
     createOverlays();
+    installOverlayObserver();
 
     setInterval(syncCountdown, 1000);
     window.updateLang();
