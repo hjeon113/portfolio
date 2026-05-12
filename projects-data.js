@@ -201,6 +201,30 @@ const projectsData = {
   },
 
   // ========== Self-Initiative Project ==========
+  "against-smoothness": {
+    titleEn: "Against Smoothness",
+    titleKr: "Against Smoothness",
+    date: "2026.05",
+    medium: "Printed matter, 4 × 46.125 in <br>Video, 1920 × 1080 px",
+    advisor: "Diego Kolsky",
+    advisorKr: "Diego Kolsky",
+    collaborator: "",
+    descEn:
+      "Against Smoothness is a thesis research project exploring what happens to perception when the smoothness of algorithmic interfaces is interrupted. Algorithmic interfaces are designed to keep behavioral data extraction invisible to the user. This research asks whether designed friction can restore the awareness that smoothness suppresses.\n\nThe thesis pamphlet is printed on a four-inch wide strip of paper wound around a cylindrical core — a scroll you have to physically unwind to read. Friction As Interface extends the thesis into a physical prototype: a rotary encoder knob replaces finger scrolling on an Instagram feed. As speed increases, the LED shifts from green to red, the content blurs, and the algorithm's reasoning appears as text overlays — making visible what the smooth interface was built to conceal.",
+    descKr:
+      "Against Smoothness는 알고리즘 인터페이스의 smoothness가 중단되었을 때 인식에 어떤 일이 일어나는지를 탐구하는 thesis research 프로젝트입니다. 알고리즘 인터페이스는 행동 데이터 추출을 사용자에게 보이지 않게 만들도록 설계되어 있습니다. 이 연구는 설계된 마찰이 smoothness가 억제하는 인식을 되살릴 수 있는지를 묻습니다.\n\nthesis 팜플렛은 가로 4인치의 종이 띠를 원통형 코어에 감은 두루마리 형태로, 직접 펼쳐야 읽을 수 있습니다. Friction As Interface는 thesis를 물리적 프로토타입으로 구현한 실험입니다. 로터리 엔코더 노브가 인스타그램 피드의 스크롤링을 대체하며, 속도가 빨라질수록 LED가 초록에서 빨간색으로 바뀌고 콘텐츠가 흐려지면서 알고리즘의 논리가 텍스트로 드러납니다.",
+    thumbnail: "images/against-smoothness/thumb.webp",
+    media: [
+       "full:images/against-smoothness/01.webp",
+       "col3:images/against-smoothness/02-1.webp",
+       "col3:images/against-smoothness/02-2.webp",
+       "col3:images/against-smoothness/02-3.webp",
+       "col3:images/against-smoothness/03-1.webp",
+       "col3:images/against-smoothness/03-2.webp",
+       "col3:images/against-smoothness/03-3.webp",
+       "iframe:https://www.youtube.com/embed/0NkJ9Ya6Btk::Experiment Video",
+    ],
+  },
   "other-islands": {
     titleEn: "Other islands Book Fair 2026 (Proposal)",
     titleKr: "아더 아일랜즈 북페어 2026 (제안안)",
@@ -438,6 +462,7 @@ const projectsData = {
   },
 
   // ========== Experiment ==========
+  
   "hype-slider": {
     titleEn: "Hype Slider",
     titleLink: "https://hjeon113.github.io/HypeSlider/",
@@ -445,7 +470,7 @@ const projectsData = {
     date: "2026.02",
     medium: "",
     advisor: "Diego Kolsky",
-    advisorKr: "디에고 콜스키",
+    advisorKr: "Diego Kolsky",
     collaborator: "",
     descEn:
       "The text <i>Rise Above the Hype</i> examines how emerging technologies such as AI are shaped by cycles of hype—an amplified state of expectation driven by repetition, speed, and collective attention. In these cycles, anticipation accelerates faster than our ability to critically engage, reducing the distance needed for reflection and judgment. The text suggests that the issue lies not in the technology itself, but in how we perceive, adopt, and respond to it. From this text, I selected seven sentences that capture this condition. Hype Slider is an interactive work built on these fragments. As the slider moves, the text becomes compressed and intensified until it begins to collapse. This process translates the mechanics of hype into a visual experience, where repetition and acceleration overwhelm meaning and erode interpretive distance.",
@@ -454,9 +479,9 @@ const projectsData = {
     thumbnail: "images/hypeslider/thumb.gif",
     media: [
       "iframe:https://hjeon113.github.io/HypeSlider/::Move the hype slider to interact",
-      "col3:images/hypeslider/01-1.png",
-      "col3:images/hypeslider/01-2.png",
-      "col3:images/hypeslider/01-3.png",
+      "col3:images/hypeslider/01-1.webp",
+      "col3:images/hypeslider/01-2.webp",
+      "col3:images/hypeslider/01-3.webp",
       "full:images/hypeslider/02.webp",
       "full:images/hypeslider/03.webp",
       "full:images/hypeslider/04.webp",
@@ -475,7 +500,7 @@ const projectsData = {
     advisor:
       '<a href="https://www.mattiacasalegno.net/" target="_blank">Mattia Casalegno</a>',
     advisorKr:
-      '<a href="https://www.mattiacasalegno.net/" target="_blank">마티아 카살레뇨</a>',
+      '<a href="https://www.mattiacasalegno.net/" target="_blank">Mattia Casalegno</a>',
     collaborator: "",
     descEn:
       "Gesture Archive is a web-based drawing system that translates hand movements into lines, dots, and visual traces through real-time tracking. Participants perform gestures with the intention of forming specific shapes, yet the system does not interpret meaning—it records only movement data such as speed, direction, and tremor. As a result, the marks that appear on the screen diverge from the intended image, revealing how digital systems perceive and process human expression differently. Gesture Archive treats this mismatch not as an error but as a generative condition, exploring how gestures transform through computational processes to produce new visual forms beyond original intention.",
@@ -498,7 +523,7 @@ const projectsData = {
     date: "2025.12",
     medium: "p5.js",
     advisor: "Anna Fangan Xu",
-    advisorKr: "안나 팡간 쉬",
+    advisorKr: "Anna Fangan Xu",
     collaborator: "",
     descEn:
       'City of Frames is an interactive web-based project that reframes scrolling as a unit of time rather than a neutral interface gesture. Set in a speculative city where time progresses in frames instead of seconds, the project translates users’ scrolling speed and rhythm into shifts in temporal flow and visual state. As users read and navigate the interactive book through scrolling, their gestures are continuously captured as data and transformed into visual traces. The project consists of two connected websites: an interactive book and a scroll-data visualization. When both sites are opened simultaneously, the scrolling actions performed in the interactive book are reflected in real time on the visualization page, making the act of reading inseparable from its data footprint. By linking interaction and representation, City of Frames examines how attention, speed, and continuous movement are structured and normalized within digital environments.<br><a href="https://city-of-frames.onrender.com/" target="_blank">→ Interactive Book</a><br><a href="https://city-of-frames.onrender.com/timestamp.html" target="_blank">→ Visualization of Interaction</a>',

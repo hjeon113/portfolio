@@ -617,6 +617,11 @@ function generateProjectGrid() {
   var randomIdx = 0;
 
   var categoryTags = {
+    "against-smoothness": [
+      ["Graphic", "tag-graphic"],
+      ["Motion", "tag-motion"],
+      ["Experiment", "tag-exp"],
+    ],
     "descente-social": [
       ["Graphic", "tag-graphic"],
       ["Motion", "tag-motion"],
@@ -702,6 +707,7 @@ function generateProjectGrid() {
 
   // 고정 프로젝트(상단 순서대로, 2줄 x 3칸) + 나머지 랜덤 셔플
   var pinnedIds = [
+    "against-smoothness",
     "other-islands",
     "galleria-2023",
     "iap-residency",
@@ -1094,7 +1100,7 @@ function showProject(id, skipHistory) {
         row("Spec", "사양", p.spec, p.specKr) +
         row("Client", "클라이언트", p.client, p.clientKr) +
         row("Director", "디렉터", p.director, p.directorKr) +
-        row("Advisor", "지도", p.advisor, p.advisorKr) +
+        row("Advisor", "지도교수", p.advisor, p.advisorKr) +
         row("Collaborator", "협업", p.collaborator, p.collaboratorKr) +
         row("Award", "수상", p.award, p.awardKr)
       );
@@ -1267,6 +1273,7 @@ function shuffleProjectCards() {
   if (cols.length !== 3) return;
 
   var pinnedIds = [
+    "against-smoothness",
     "other-islands",
     "galleria-2023",
     "iap-residency",
