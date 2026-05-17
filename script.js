@@ -432,12 +432,36 @@ async function initSunsetCountdown() {
     if (!sunsetData.sunset || !sunsetData.sunrise) {
       var today = new Date();
       // NYC 기준 대략적인 일출 6:30, 일몰 19:30
-      sunsetData.sunrise = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 6, 30);
-      sunsetData.sunset = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 19, 30);
+      sunsetData.sunrise = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate(),
+        6,
+        30,
+      );
+      sunsetData.sunset = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate(),
+        19,
+        30,
+      );
       var tmr = new Date(today);
       tmr.setDate(tmr.getDate() + 1);
-      sunsetData.tomorrowSunrise = new Date(tmr.getFullYear(), tmr.getMonth(), tmr.getDate(), 6, 30);
-      sunsetData.tomorrowSunset = new Date(tmr.getFullYear(), tmr.getMonth(), tmr.getDate(), 19, 30);
+      sunsetData.tomorrowSunrise = new Date(
+        tmr.getFullYear(),
+        tmr.getMonth(),
+        tmr.getDate(),
+        6,
+        30,
+      );
+      sunsetData.tomorrowSunset = new Date(
+        tmr.getFullYear(),
+        tmr.getMonth(),
+        tmr.getDate(),
+        19,
+        30,
+      );
       updateBackgroundByTime();
       setInterval(updateBackgroundByTime, 30000);
     }
@@ -600,7 +624,6 @@ window.addEventListener("popstate", function () {
   handleUrl();
 });
 
-
 // 프로젝트 그리드 자동 생성
 function generateProjectGrid() {
   var grid = document.querySelector(".project-grid");
@@ -622,13 +645,20 @@ function generateProjectGrid() {
       ["Motion", "tag-motion"],
       ["Experiment", "tag-exp"],
     ],
+    "we-refuse-to-be-comfortable": [["Graphic", "tag-graphic"]],
+    "by-meesh": [
+      ["Product", "tag-product"],
+      ["Identity", "tag-identity"],
+      ["Graphic", "tag-graphic"],
+    ],
+    "coral-layered-memory": [["Experiment", "tag-exp"]],
     "descente-social": [
       ["Graphic", "tag-graphic"],
       ["Motion", "tag-motion"],
     ],
     "descente-exhibition": [
+      ["Product", "tag-product"],
       ["Graphic", "tag-graphic"],
-      ["Identity", "tag-identity"],
     ],
     "collection-renewal": [
       ["Graphic", "tag-graphic"],
@@ -636,9 +666,8 @@ function generateProjectGrid() {
       ["Motion", "tag-motion"],
     ],
     "galleria-2023": [
-      ["Graphic", "tag-graphic"],
       ["Identity", "tag-identity"],
-      ["Motion", "tag-motion"],
+      ["Graphic", "tag-graphic"],
     ],
     "iap-residency": [
       ["Graphic", "tag-graphic"],
@@ -649,27 +678,27 @@ function generateProjectGrid() {
       ["Motion", "tag-motion"],
     ],
     "other-islands": [
-      ["Graphic", "tag-graphic"],
       ["Identity", "tag-identity"],
       ["Motion", "tag-motion"],
+      ["Graphic", "tag-graphic"],
     ],
     "digital-religion": [["Graphic", "tag-graphic"]],
     "language-contagion": [
-      ["Graphic", "tag-graphic"],
       ["Experiment", "tag-exp"],
+      ["Graphic", "tag-graphic"],
     ],
     palindrome: [
       ["Graphic", "tag-graphic"],
       ["Motion", "tag-motion"],
     ],
     imoa: [
-      ["Graphic", "tag-graphic"],
       ["Identity", "tag-identity"],
+      ["Graphic", "tag-graphic"],
       ["Motion", "tag-motion"],
     ],
     ilmin: [
-      ["Graphic", "tag-graphic"],
       ["Identity", "tag-identity"],
+      ["Graphic", "tag-graphic"],
       ["Motion", "tag-motion"],
     ],
     "running-back": [["Graphic", "tag-graphic"]],
@@ -678,8 +707,8 @@ function generateProjectGrid() {
     scroll: [["Experiment", "tag-exp"]],
     "digital-error": [["Experiment", "tag-exp"]],
     "question-imagination": [
-      ["Graphic", "tag-graphic"],
       ["Motion", "tag-motion"],
+      ["Graphic", "tag-graphic"],
     ],
   };
 
@@ -708,12 +737,12 @@ function generateProjectGrid() {
   // 고정 프로젝트(상단 순서대로, 2줄 x 3칸) + 나머지 랜덤 셔플
   var pinnedIds = [
     "against-smoothness",
+    "by-meesh",
+    "we-refuse-to-be-comfortable",
     "other-islands",
     "galleria-2023",
     "iap-residency",
     "descente-social",
-    "palindrome",
-    "hype-slider",
   ];
   var allIds = Object.keys(projectsData);
   var restIds = allIds.filter(function (id) {
@@ -737,27 +766,38 @@ function generateProjectGrid() {
     article.className = "project-card";
     article.setAttribute("data-project", id);
 
-
     var thumbnailHtml = "";
     if (p.thumbnail) {
       if (p.thumbnail.match(/\.(mp4|mov)$/i)) {
         var posterPath = p.thumbnail.replace(/\.(mp4|mov)$/i, ".webp");
-        var posterDim = (typeof imageDims !== "undefined") && imageDims[posterPath];
-        var thumbWH = posterDim ? ' width="' + posterDim[0] + '" height="' + posterDim[1] + '"' : '';
+        var posterDim =
+          typeof imageDims !== "undefined" && imageDims[posterPath];
+        var thumbWH = posterDim
+          ? ' width="' + posterDim[0] + '" height="' + posterDim[1] + '"'
+          : "";
         thumbnailHtml =
           '<video src="' +
           p.thumbnail +
           '" poster="' +
           posterPath +
-          '"' + thumbWH +
+          '"' +
+          thumbWH +
           ' autoplay loop muted playsinline webkit-playsinline preload="auto"' +
-          ' onloadeddata="this.closest(\'.project-thumbnail\').classList.add(\'loaded\')"></video>';
+          " onloadeddata=\"this.closest('.project-thumbnail').classList.add('loaded')\"></video>";
       } else {
-        var thumbDim = (typeof imageDims !== "undefined") && imageDims[p.thumbnail];
-        var thumbWH = thumbDim ? ' width="' + thumbDim[0] + '" height="' + thumbDim[1] + '"' : '';
+        var thumbDim =
+          typeof imageDims !== "undefined" && imageDims[p.thumbnail];
+        var thumbWH = thumbDim
+          ? ' width="' + thumbDim[0] + '" height="' + thumbDim[1] + '"'
+          : "";
         thumbnailHtml =
-          '<img src="' + p.thumbnail + '" alt="' + p.titleEn + '"' + thumbWH +
-          ' onload="this.closest(\'.project-thumbnail\').classList.add(\'loaded\')">';
+          '<img src="' +
+          p.thumbnail +
+          '" alt="' +
+          p.title +
+          '"' +
+          thumbWH +
+          " onload=\"this.closest('.project-thumbnail').classList.add('loaded')\">";
       }
     }
 
@@ -774,7 +814,7 @@ function generateProjectGrid() {
       "</div>" +
       '<div class="project-card-info">' +
       '<span class="project-title-en">' +
-      p.titleEn +
+      p.title +
       "</span>" +
       '<div class="project-tags">' +
       tagsHtml +
@@ -814,7 +854,6 @@ function generateProjectGrid() {
     }
   }
 }
-
 
 // 모든 비디오 정지
 function stopAllVideos() {
@@ -887,8 +926,7 @@ function showIndex(skipHistory) {
     history.pushState({ view: "index" }, "", "#");
   }
 
-  // 프로젝트 카드 셔플
-  shuffleProjectCards();
+  // 메인으로 돌아올 때 재셔플하지 않음 — 첫 로드에서만 셔플
 
   // 날짜+날씨 다시 표시 후 3초 뒤 카운트다운
   var timeEl = document.getElementById("sunsetTime");
@@ -944,14 +982,20 @@ function showProject(id, skipHistory) {
           return asGif
             ? '<video src="' +
                 src +
-                '" autoplay loop muted playsinline preload="auto" onloadeddata="' + onload + '"></video>'
+                '" autoplay loop muted playsinline preload="auto" onloadeddata="' +
+                onload +
+                '"></video>'
             : '<video src="' +
                 src +
-                '" controls playsinline preload="auto" onloadeddata="' + onload + '"></video>';
+                '" controls playsinline preload="auto" onloadeddata="' +
+                onload +
+                '"></video>';
         }
-        var dim = (typeof imageDims !== "undefined") && imageDims[src];
-        var wh = dim ? ' width="' + dim[0] + '" height="' + dim[1] + '"' : '';
-        return '<img src="' + src + '" alt=""' + wh + ' onload="' + onload + '">';
+        var dim = typeof imageDims !== "undefined" && imageDims[src];
+        var wh = dim ? ' width="' + dim[0] + '" height="' + dim[1] + '"' : "";
+        return (
+          '<img src="' + src + '" alt=""' + wh + ' onload="' + onload + '">'
+        );
       }
 
       if (
@@ -964,8 +1008,11 @@ function showProject(id, skipHistory) {
         return '<div class="media-item ' + m + ' placeholder"></div>';
       if (m.indexOf("iframe:") === 0) {
         var parts = m.replace("iframe:", "").split("::");
+        var isVideo = /youtube\.com|youtu\.be|vimeo\.com/.test(parts[0]);
         return (
-          '<div class="media-item full media-iframe"><iframe src="' +
+          '<div class="media-item full media-iframe' +
+          (isVideo ? " media-iframe-video" : "") +
+          '"><iframe src="' +
           parts[0] +
           '" frameborder="0" allowfullscreen></iframe><p class="iframe-hint"><span>' +
           (parts[1] || "↑ Interact with the project above") +
@@ -976,7 +1023,9 @@ function showProject(id, skipHistory) {
         var gsrcs = m.replace("gallery:", "").split("|");
         var slides = gsrcs
           .map(function (s) {
-            return '<div class="gallery-slide">' + mediaTag(s, isGif) + "</div>";
+            return (
+              '<div class="gallery-slide">' + mediaTag(s, isGif) + "</div>"
+            );
           })
           .join("");
         var dots = gsrcs
@@ -1003,47 +1052,82 @@ function showProject(id, skipHistory) {
           slides +
           "</div>" +
           "</div>" +
-          '<button class="gallery-arrow prev" aria-label="Previous">' + chevL + "</button>" +
-          '<button class="gallery-arrow next" aria-label="Next">' + chevR + "</button>" +
+          '<button class="gallery-arrow prev" aria-label="Previous">' +
+          chevL +
+          "</button>" +
+          '<button class="gallery-arrow next" aria-label="Next">' +
+          chevR +
+          "</button>" +
           '<div class="gallery-dots">' +
           dots +
           "</div>" +
           "</div>"
         );
       }
-      if (m.indexOf("full:") === 0)
-        return (
+      function withCaption(html, captionParts) {
+        if (captionParts && captionParts.length > 1 && captionParts[1]) {
+          return html.replace(
+            /<\/div>$/,
+            '<p class="media-caption"><span>' +
+              captionParts[1] +
+              "</span></p></div>",
+          );
+        }
+        return html;
+      }
+      if (m.indexOf("full:") === 0) {
+        var fullParts = m.replace("full:", "").split("::");
+        return withCaption(
           '<div class="media-item full">' +
-          mediaTag(m.replace("full:", ""), isGif) +
-          "</div>"
+            mediaTag(fullParts[0], isGif) +
+            "</div>",
+          fullParts,
         );
-      if (m.indexOf("col2:") === 0)
-        return (
+      }
+      if (m.indexOf("col2:") === 0) {
+        var c2Parts = m.replace("col2:", "").split("::");
+        return withCaption(
           '<div class="media-item col2">' +
-          mediaTag(m.replace("col2:", ""), isGif) +
-          "</div>"
+            mediaTag(c2Parts[0], isGif) +
+            "</div>",
+          c2Parts,
         );
-      if (m.indexOf("col3:") === 0)
-        return (
+      }
+      if (m.indexOf("col3:") === 0) {
+        var c3Parts = m.replace("col3:", "").split("::");
+        return withCaption(
           '<div class="media-item col3">' +
-          mediaTag(m.replace("col3:", ""), isGif) +
-          "</div>"
+            mediaTag(c3Parts[0], isGif) +
+            "</div>",
+          c3Parts,
         );
-      if (m.indexOf("col4:") === 0)
-        return (
+      }
+      if (m.indexOf("col4:") === 0) {
+        var c4Parts = m.replace("col4:", "").split("::");
+        return withCaption(
           '<div class="media-item col4">' +
-          mediaTag(m.replace("col4:", ""), isGif) +
-          "</div>"
+            mediaTag(c4Parts[0], isGif) +
+            "</div>",
+          c4Parts,
         );
+      }
       return '<div class="media-item">' + mediaTag(m, isGif) + "</div>";
     })
     .join("");
 
   var titleHtml = p.titleLink
-    ? '<a href="' + p.titleLink + '" target="_blank" rel="noopener">' + p.titleEn + "</a>"
-    : p.titleEn;
+    ? '<a href="' +
+      p.titleLink +
+      '" target="_blank" rel="noopener">' +
+      p.title +
+      "</a>"
+    : p.title;
   var titleKrHtml = p.titleLink
-    ? '<a href="' + p.titleLink + '" target="_blank" rel="noopener">' + p.titleKr + "</a>"
+    ? '<a href="' +
+      p.titleLink +
+      '" target="_blank" rel="noopener">' +
+      p.titleKr +
+      "</a>"
     : p.titleKr;
 
   var detail = document.getElementById("project-detail");
@@ -1069,7 +1153,7 @@ function showProject(id, skipHistory) {
     "</div>" +
     '<div class="detail-drawer-body">' +
     '<p class="detail-desc desc-en">' +
-    p.descEn +
+    p.desc +
     "</p>" +
     '<p class="detail-desc desc-kr">' +
     p.descKr +
@@ -1083,21 +1167,27 @@ function showProject(id, skipHistory) {
         return (
           '<div class="meta-row">' +
           '<div class="meta-label">' +
-          '<span class="lang-en">' + labelEn + "</span>" +
-          '<span class="lang-kr">' + labelKr + "</span>" +
+          '<span class="lang-en">' +
+          labelEn +
+          "</span>" +
+          '<span class="lang-kr">' +
+          labelKr +
+          "</span>" +
           "</div>" +
           "<div>" +
-          '<span class="lang-en">' + vEn + "</span>" +
-          '<span class="lang-kr">' + vKr + "</span>" +
+          '<span class="lang-en">' +
+          vEn +
+          "</span>" +
+          '<span class="lang-kr">' +
+          vKr +
+          "</span>" +
           "</div>" +
           "</div>"
         );
       }
       return (
         row("Date", "날짜", p.date, p.date) +
-        row("Work Area", "작업 분야", p.area, p.areaKr) +
         row("Medium", "매체", p.medium, p.mediumKr) +
-        row("Spec", "사양", p.spec, p.specKr) +
         row("Client", "클라이언트", p.client, p.clientKr) +
         row("Director", "디렉터", p.director, p.directorKr) +
         row("Advisor", "지도교수", p.advisor, p.advisorKr) +
@@ -1176,7 +1266,9 @@ function initGalleries() {
     var count = slides.length;
     if (count <= 1) {
       var arrows = g.querySelectorAll(".gallery-arrow");
-      arrows.forEach(function (a) { a.style.display = "none"; });
+      arrows.forEach(function (a) {
+        a.style.display = "none";
+      });
       return;
     }
     var idx = 0;
@@ -1185,49 +1277,100 @@ function initGalleries() {
 
     function go(i) {
       idx = (i + count) % count;
-      if (track) track.style.transform = "translateX(" + (-idx * 100) + "%)";
-      dots.forEach(function (d, n) { d.classList.toggle("active", n === idx); });
+      if (track) track.style.transform = "translateX(" + -idx * 100 + "%)";
+      dots.forEach(function (d, n) {
+        d.classList.toggle("active", n === idx);
+      });
     }
-    function next() { go(idx + 1); }
-    function prev() { go(idx - 1); }
-    function start() { stop(); timer = setInterval(next, INTERVAL); }
-    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function next() {
+      go(idx + 1);
+    }
+    function prev() {
+      go(idx - 1);
+    }
+    function start() {
+      stop();
+      timer = setInterval(next, INTERVAL);
+    }
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
 
-    g.querySelector(".gallery-arrow.next").addEventListener("click", function () { next(); start(); });
-    g.querySelector(".gallery-arrow.prev").addEventListener("click", function () { prev(); start(); });
+    g.querySelector(".gallery-arrow.next").addEventListener(
+      "click",
+      function () {
+        next();
+        start();
+      },
+    );
+    g.querySelector(".gallery-arrow.prev").addEventListener(
+      "click",
+      function () {
+        prev();
+        start();
+      },
+    );
     dots.forEach(function (d) {
-      d.addEventListener("click", function () { go(parseInt(d.dataset.i, 10)); start(); });
+      d.addEventListener("click", function () {
+        go(parseInt(d.dataset.i, 10));
+        start();
+      });
     });
 
     // 터치 스와이프 (모바일)
-    var tx = 0, ty = 0, tracking = false;
-    g.addEventListener("touchstart", function (e) {
-      var t = e.touches[0]; tx = t.clientX; ty = t.clientY; tracking = true; stop();
-    }, { passive: true });
-    g.addEventListener("touchend", function (e) {
-      if (!tracking) return;
+    var tx = 0,
+      ty = 0,
       tracking = false;
-      var t = e.changedTouches[0];
-      var dx = t.clientX - tx;
-      var dy = t.clientY - ty;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-        if (dx < 0) next(); else prev();
-      }
-      start();
-    }, { passive: true });
+    g.addEventListener(
+      "touchstart",
+      function (e) {
+        var t = e.touches[0];
+        tx = t.clientX;
+        ty = t.clientY;
+        tracking = true;
+        stop();
+      },
+      { passive: true },
+    );
+    g.addEventListener(
+      "touchend",
+      function (e) {
+        if (!tracking) return;
+        tracking = false;
+        var t = e.changedTouches[0];
+        var dx = t.clientX - tx;
+        var dy = t.clientY - ty;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) next();
+          else prev();
+        }
+        start();
+      },
+      { passive: true },
+    );
 
     // 트랙패드 가로 스와이프 (PC)
     var wheelLock = false;
-    g.addEventListener("wheel", function (e) {
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      e.preventDefault();
-      if (wheelLock) return;
-      if (Math.abs(e.deltaX) < 12) return;
-      wheelLock = true;
-      if (e.deltaX > 0) next(); else prev();
-      start();
-      setTimeout(function () { wheelLock = false; }, 600);
-    }, { passive: false });
+    g.addEventListener(
+      "wheel",
+      function (e) {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        if (wheelLock) return;
+        if (Math.abs(e.deltaX) < 12) return;
+        wheelLock = true;
+        if (e.deltaX > 0) next();
+        else prev();
+        start();
+        setTimeout(function () {
+          wheelLock = false;
+        }, 600);
+      },
+      { passive: false },
+    );
 
     start();
   });
@@ -1274,12 +1417,12 @@ function shuffleProjectCards() {
 
   var pinnedIds = [
     "against-smoothness",
+    "by-meesh",
+    "we-refuse-to-be-comfortable",
     "other-islands",
     "galleria-2023",
     "iap-residency",
     "descente-social",
-    "palindrome",
-    "hype-slider",
   ];
 
   var pinnedPerCol = [[], [], []];

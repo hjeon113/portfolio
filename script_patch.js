@@ -23,19 +23,81 @@
     document.body.appendChild(mh);
   }
 
+  // ---- 로고 클릭: All로 리셋 후 인덱스 ----
+  window.resetToAll = function () {
+    var allTab = document.querySelector(".f-tab");
+    if (allTab && typeof window.filterProjects === "function") {
+      window.filterProjects(allTab, "all");
+    }
+    if (typeof window.showIndex === "function") window.showIndex();
+  };
+
   // ---- filterProjects ----
   window.filterProjects = function (el, cat) {
     document.querySelectorAll(".f-tab").forEach(function (t) {
       t.classList.remove("active");
     });
     el.classList.add("active");
-    document.querySelectorAll(".project-card").forEach(function (card) {
-      if (cat === "all") {
-        card.style.display = "";
-        return;
+
+    var cols = Array.from(document.querySelectorAll(".grid-col"));
+    if (!cols.length) return;
+    var allCards = Array.from(document.querySelectorAll(".project-card"));
+
+    // 원래 column 위치 + column 내 인덱스 최초 1회 기록
+    allCards.forEach(function (card) {
+      if (card.dataset.origCol === undefined || card.dataset.origCol === "") {
+        var parent = card.parentElement;
+        var colIdx = cols.indexOf(parent);
+        var siblingIdx = parent
+          ? Array.from(parent.querySelectorAll(".project-card")).indexOf(card)
+          : 0;
+        card.dataset.origCol = String(colIdx >= 0 ? colIdx : 0);
+        card.dataset.origIdx = String(siblingIdx);
       }
+    });
+
+    if (cat === "all") {
+      // 원래 column으로 모은 뒤 origIdx 순으로 정렬해서 복원
+      var byCol = cols.map(function () { return []; });
+      allCards.forEach(function (card) {
+        card.style.display = "";
+        var orig = parseInt(card.dataset.origCol, 10) || 0;
+        byCol[orig].push(card);
+      });
+      byCol.forEach(function (list, i) {
+        list.sort(function (a, b) {
+          return (
+            parseInt(a.dataset.origIdx, 10) - parseInt(b.dataset.origIdx, 10)
+          );
+        });
+        list.forEach(function (card) {
+          cols[i].appendChild(card);
+        });
+      });
+      return;
+    }
+
+    // 필터링: 보이는 카드만 masonry(가장 짧은 column에 추가)로 재배치
+    var visible = [];
+    allCards.forEach(function (card) {
       var hasTag = card.querySelector(".tag-" + cat);
-      card.style.display = hasTag ? "" : "none";
+      if (hasTag) {
+        card.style.display = "";
+        visible.push(card);
+      } else {
+        card.style.display = "none";
+      }
+    });
+    // detach 후 각 카드를 가장 짧은 column에 차례로 append
+    visible.forEach(function (card) {
+      if (card.parentElement) card.parentElement.removeChild(card);
+    });
+    visible.forEach(function (card) {
+      var shortest = cols[0];
+      cols.forEach(function (col) {
+        if (col.offsetHeight < shortest.offsetHeight) shortest = col;
+      });
+      shortest.appendChild(card);
     });
   };
 
@@ -366,7 +428,7 @@
       var p = projectsData[id];
       var titleEl = card.querySelector(".project-title-en");
       if (titleEl)
-        titleEl.textContent = currentLang === "en" ? p.titleEn : p.titleKr;
+        titleEl.textContent = currentLang === "en" ? p.title : p.titleKr;
     });
   };
 
