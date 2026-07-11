@@ -206,10 +206,9 @@ const projectsData = {
       "gif:full:images/we-refuse-to-be-comfortable/07.mp4",
     ],
   },
-  /*
   "by-meesh": {
-    title: "by Meesh",
-    titleKr: "by Meesh",
+    title: "By Meesh",
+    titleKr: "By Meesh",
     date: "2026.04",
     collaborator: "Kevin Hui, Saloni Sharma, Xinran Xing",
     collaboratorKr: "Kevin Hui, Saloni Sharma, Xinran Xing",
@@ -225,9 +224,17 @@ const projectsData = {
     descKr:
       "By Meesh는 케이터링 운영 전반을 통합 관리하는 플랫폼이다. 기존에는 고객 문의, 메뉴 구성, 재고 확인, 제안서 작성, 인보이스 발행 등의 과정이 여러 개의 툴과 수작업에 의존하고 있어 반복적인 업무와 비효율이 발생하였다. 이 프로젝트는 이러한 분산된 워크플로우를 하나의 시스템 안에서 연결하여 운영 과정을 보다 직관적이고 효율적으로 관리할 수 있도록 설계되었다. 고객은 예약 사이트를 통해 이벤트 정보를 제출할 수 있으며, 운영자는 백오피스 대시보드에서 메뉴 구성, 원가 계산, 재고 관리, 공급업체 조율, 제안서 및 인보이스 생성을 통합적으로 관리할 수 있다. 또한 고객–운영자–공급업체 간의 흐름을 시각적으로 구조화하여 이벤트 준비부터 현장 운영까지의 전체 프로세스를 하나의 흐름 안에서 관리할 수 있도록 구현하였다.",
     thumbnail: "images/by-meesh/thumb.webp",
-    media: ["full:images/by-meesh/01.webp"],
+    media: [
+      "full:images/by-meesh/01.webp",
+      "gif:full:images/by-meesh/03-1.mp4",
+      "gif:full:images/by-meesh/03-2.mp4",
+      "gallery:images/by-meesh/02-1.webp|images/by-meesh/02-2.webp|images/by-meesh/02-3.webp|images/by-meesh/02-4.webp|images/by-meesh/02-5.webp|images/by-meesh/02-6.webp|images/by-meesh/02-7.webp|images/by-meesh/02-8.webp",
+      "col2:images/by-meesh/04-1.webp",
+      "col2:images/by-meesh/04-2.webp",
+      "full:images/by-meesh/05.webp",
+      "full:images/by-meesh/07.webp",
+    ],
   },
-  */
   "against-smoothness": {
     title: "Against Smoothness",
     titleKr: "Against Smoothness",
