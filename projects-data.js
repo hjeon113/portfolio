@@ -212,10 +212,8 @@ const projectsData = {
     date: "2026.04",
     collaborator: "Kevin Hui, Saloni Sharma, Xinran Xing",
     collaboratorKr: "Kevin Hui, Saloni Sharma, Xinran Xing",
-    medium:
-      "Responsive web platform, booking interface, dashboard system<br>Brand Identity",
-    mediumKr:
-      "반응형 웹 플랫폼, 예약 인터페이스, 대시보드 시스템<br>브랜드 아이덴티티",
+    medium: "Web, Booking Interface, Dashboard System<br>Brand Identity",
+    mediumKr: "웹, 예약 인터페이스, 대시보드 시스템<br>브랜드 아이덴티티",
     award:
       '<a href="https://welcometochinatown.com/" target="_blank">Welcome to Chinatown</a> 2026 Tech Hackathon, 1st Place',
     awardKr:
